@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public bool spawnComplete = false;
+
     //chasing
 
     //Attacking
@@ -22,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     //death
-    public bool isDead;
+    public bool isDead = false;
 
     private void Awake()
     {
@@ -40,6 +42,26 @@ public class EnemyAI : MonoBehaviour
         var AttackingState = fsm.CreateState("Attacking");
         var ChasingState = fsm.CreateState("Chasing");
         var deadState = fsm.CreateState("Dead");
+
+        spawningState.onEnter = delegate
+        {
+            print("Entered Spawning State!");
+        };
+
+        spawningState.onFrame = delegate
+        {
+            Invoke("CompleteSpawning", 1);
+
+            if (spawnComplete)
+            {
+                fsm.TransitionTo("Chasing");
+            }
+        };
+
+        spawningState.onExit = delegate
+        {
+            print("Exited Spawning State!");
+        };
 
         //chasing state
         ChasingState.onEnter = delegate
@@ -128,6 +150,11 @@ public class EnemyAI : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void CompleteSpawning()
+    {
+        spawnComplete = true;
     }
 
     private void AttackPlayer()
