@@ -21,6 +21,9 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //death
+    public bool isDead;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform; //find the player in the scene
@@ -36,6 +39,7 @@ public class EnemyAI : MonoBehaviour
         var spawningState = fsm.CreateState("Spawning");
         var AttackingState = fsm.CreateState("Attacking");
         var ChasingState = fsm.CreateState("Chasing");
+        var deadState = fsm.CreateState("Dead");
 
         //chasing state
         ChasingState.onEnter = delegate
@@ -50,6 +54,10 @@ public class EnemyAI : MonoBehaviour
             if (CheckIfInAttackRange())
             {
                 fsm.TransitionTo("Attacking");
+            }
+            if (CheckIfDead())
+            {
+                fsm.TransitionTo("Dead");
             }
         };
 
@@ -71,11 +79,31 @@ public class EnemyAI : MonoBehaviour
             {
                 fsm.TransitionTo("Chasing");
             }
+            if (CheckIfDead())
+            {
+                fsm.TransitionTo("Dead");
+            }
         };
 
         AttackingState.onExit = delegate
         {
             print("Exited Attacking State!");
+        };
+
+        deadState.onEnter = delegate
+        {
+            print("Entered Dead State!");
+        };
+
+        deadState.onFrame = delegate
+        {
+            //put death code here
+            print("ENEMY IS DEAD");
+        };
+
+        deadState.onExit = delegate
+        {
+            print("Exited Dead State!");
         };
     }
 
@@ -88,6 +116,18 @@ public class EnemyAI : MonoBehaviour
     private bool CheckIfInAttackRange()
     {
         return Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+    }
+
+    public bool CheckIfDead()
+    {
+        if (isDead)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void AttackPlayer()
