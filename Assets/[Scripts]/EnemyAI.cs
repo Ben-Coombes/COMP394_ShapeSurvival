@@ -33,6 +33,7 @@ public class EnemyAI : MonoBehaviour
 
         //var patrolingState = fsm.CreateState("Patroling");
         //var wanderingState = fsm.CreateState("Wandering");
+        var spawningState = fsm.CreateState("Spawning");
         var AttackingState = fsm.CreateState("Attacking");
         var ChasingState = fsm.CreateState("Chasing");
 
