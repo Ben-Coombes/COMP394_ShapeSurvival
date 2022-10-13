@@ -1,14 +1,14 @@
 {
-    "name": "PlayerInput",
+    "name": "PlayerInputActions",
     "maps": [
         {
-            "name": "PlayerMovement",
-            "id": "74439332-2621-4c5c-b463-864ac5969990",
+            "name": "OnGround",
+            "id": "b6e6e36f-0222-44ca-af1c-a4c4be6f9ff6",
             "actions": [
                 {
                     "name": "Movement",
                     "type": "Value",
-                    "id": "348ea0f0-31f4-45f5-a1dd-cf97577b459b",
+                    "id": "41646323-e705-4a32-83fa-962745114753",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -17,7 +17,7 @@
                 {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "75a4c17a-a7a2-4c60-a65d-b246dffae572",
+                    "id": "86baf513-2717-49db-a00e-518c94d038df",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -26,17 +26,26 @@
                 {
                     "name": "Look",
                     "type": "Value",
-                    "id": "518bd26a-8828-4ca9-887e-4535b8851e4d",
+                    "id": "ba764ea3-9960-4a39-9322-5dd5a71a3432",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "a5e9ae21-65f8-4382-93f6-f1448fa807e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "WASD",
-                    "id": "b7cff310-4836-4979-ae60-505448bb54ef",
+                    "id": "c53125b1-d8dc-477d-9e47-de9923a5020c",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -47,7 +56,7 @@
                 },
                 {
                     "name": "Up",
-                    "id": "301ca20a-411d-4463-b0c7-35bec7164605",
+                    "id": "e6ff0c40-e102-42c1-8bfc-a24c001b32e8",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -58,7 +67,7 @@
                 },
                 {
                     "name": "Down",
-                    "id": "0c1c4c8b-f76c-4a38-851e-9b8ae323d3cb",
+                    "id": "93c312d1-3563-4c92-8fc1-4cc0fa240b92",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -69,7 +78,7 @@
                 },
                 {
                     "name": "Left",
-                    "id": "df2e4428-b584-4844-8986-90a44191e802",
+                    "id": "d1eec784-4dba-4ac2-b90a-8151378172ab",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -80,7 +89,7 @@
                 },
                 {
                     "name": "Right",
-                    "id": "f7c617a1-e2bd-43c2-953c-87d064679573",
+                    "id": "1eb316fb-fa58-4d22-916d-497be1328487",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -91,7 +100,7 @@
                 },
                 {
                     "name": "LeftStick",
-                    "id": "912ccc5a-e584-4855-833c-a08e56415e22",
+                    "id": "678df767-f379-406c-8a1f-7d43a030d8ce",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -102,7 +111,7 @@
                 },
                 {
                     "name": "Up",
-                    "id": "e918009f-6b5f-44dd-a77d-c0fbd6008ddf",
+                    "id": "b3904835-6976-49a4-9d85-0c123af06112",
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
@@ -113,7 +122,7 @@
                 },
                 {
                     "name": "Down",
-                    "id": "d296abf4-84a0-49ce-bd1d-74ecdd2749b7",
+                    "id": "5bb422bc-a7cf-418c-b672-3d9a51a1e802",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
@@ -124,7 +133,7 @@
                 },
                 {
                     "name": "Left",
-                    "id": "bdb5d45d-1995-4fbb-9bb7-4c3f535672fe",
+                    "id": "59c436be-e40f-4d7b-88a3-155189e52050",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
@@ -135,7 +144,7 @@
                 },
                 {
                     "name": "Right",
-                    "id": "7d6ed0c0-cec1-46e2-9fde-e4a5e4ca89b9",
+                    "id": "b0e2d481-5743-4b27-8f43-9b5f10975d8b",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
@@ -146,7 +155,7 @@
                 },
                 {
                     "name": "",
-                    "id": "4d530128-ad15-4729-9d25-d334219539fc",
+                    "id": "11630e79-c70f-45c7-8461-9a212edeefe4",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -157,7 +166,7 @@
                 },
                 {
                     "name": "",
-                    "id": "ad06db58-37ab-44c4-a859-74a7921828ef",
+                    "id": "402bb78f-4514-46c5-a073-8c265bcbffe2",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
@@ -168,7 +177,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0683aad6-f69b-4b82-a29d-cd313b85df84",
+                    "id": "3070921c-dcf3-4fd2-a961-269dc7560474",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
@@ -179,12 +188,34 @@
                 },
                 {
                     "name": "",
-                    "id": "5add0778-9940-4bd1-a22f-d7e2622b8b4f",
+                    "id": "a4a58461-f98d-495a-b88b-e22a46b4618e",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d5e0ac3-cdae-4ad7-b1c2-dd2369a46713",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a27042d3-0b87-4000-a082-9e9305fdeb86",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
