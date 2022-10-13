@@ -14,17 +14,17 @@ public class InputManager : MonoBehaviour
     private PlayerController playerController;
 
     private PlayerLook playerLook;
-
+    [SerializeField]
     private Gun playerGun;
     // Start is called before the first frame update
     void Awake()
     {
+        playerGun = GetComponent<Gun>();
         playerInput = GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         onGround = playerInputActions.OnGround;
         playerController = GetComponent<PlayerController>();
         playerLook = GetComponent<PlayerLook>();
-        playerGun = GetComponent<Gun>();
         onGround.Jump.performed += ctx => playerController.Jump();
     }
 

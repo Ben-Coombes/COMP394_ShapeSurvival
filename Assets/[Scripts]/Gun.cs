@@ -11,18 +11,21 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public Camera playerCam;
     public Transform bulletSpawnPoint;
-    public GameObject muzzleFlash;
+    public ParticleSystem muzzleFlash;
 
-    [Header("Bullet Stats")]
-    public float speed, upwardSpeed;
+    [Header("Bullet Stats")] 
+    public float speed;
+    public float upwardSpeed;
 
-    [Header("Gun Stats")]
-    public float fireRate, spread;
-    public float bulletsPerTap, fireRateTap;
+    [Header("Gun Stats")] 
+    public float fireRate;
+    public float spread;
+    public float bulletsPerTap;
+    public float fireRateTap;
     public bool automatic;
     
     private int bulletsShot;
-    private bool shooting, canFire;
+    private bool shooting, canFire = true;
 
     public bool allowInvoke = true;
 
@@ -42,6 +45,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
+        Debug.Log("Shot Fired");
         canFire = false;
         bulletsShot++;
 
@@ -71,7 +75,7 @@ public class Gun : MonoBehaviour
 
         if (muzzleFlash != null)
         {
-            Instantiate(muzzleFlash, bulletSpawnPoint.position, Quaternion.identity);
+            muzzleFlash.Play();
         }
 
         if (allowInvoke)
