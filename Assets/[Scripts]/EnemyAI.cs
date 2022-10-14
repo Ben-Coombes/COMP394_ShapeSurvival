@@ -14,7 +14,8 @@ public class EnemyAI : MonoBehaviour
 
     public bool spawnComplete = false;
 
-    //chasing
+    //spawning
+    public bool enemySpawned = false;
 
     //Attacking
     public float timeBetweenAttacks;
@@ -73,7 +74,7 @@ public class EnemyAI : MonoBehaviour
 
         spawningState.onFrame = delegate
         {
-            Invoke("CompleteSpawning", 1);
+            StartCoroutine(SpawnAnaimator());
 
             if (spawnComplete)
             {
@@ -199,6 +200,13 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(anaimator.GetCurrentAnimatorStateInfo(0).length);
         //drop item
         Destroy(this.gameObject);
+    }
+
+    IEnumerator SpawnAnaimator()
+    {
+        anaimator.Play("EnemySpawn");
+        yield return new WaitForSeconds(anaimator.GetCurrentAnimatorStateInfo(0).length);
+        CompleteSpawning();
     }
 
     IEnumerator Knockback()
