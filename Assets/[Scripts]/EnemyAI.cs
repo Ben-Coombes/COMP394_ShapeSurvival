@@ -213,7 +213,9 @@ public class EnemyAI : MonoBehaviour
     {
         isknockedBack = true;
         agent.enabled = false;
-        rb.AddForce(knockbackDirection, ForceMode.Impulse);
+        if(rb != null)
+            rb.AddForce(knockbackDirection, ForceMode.Impulse);
+
         yield return new WaitForSeconds(0.1f);
         rb.velocity = Vector3.zero;
         agent.enabled = true;
