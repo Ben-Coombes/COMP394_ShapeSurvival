@@ -26,10 +26,21 @@ public class EnemyAI : MonoBehaviour
     //death
     public bool isDead = false;
 
+    //health
+    public float health = 100;
+
+    //knockback
+    public bool isknockedBack = false;
+    private Vector3 knockbackDirection;
+
+    public Rigidbody rb;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform; //find the player in the scene
         agent = GetComponent<NavMeshAgent>();
+
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -42,6 +53,7 @@ public class EnemyAI : MonoBehaviour
         var AttackingState = fsm.CreateState("Attacking");
         var ChasingState = fsm.CreateState("Chasing");
         var deadState = fsm.CreateState("Dead");
+        var knockbackState = fsm.CreateState("Knockback");
 
         spawningState.onEnter = delegate
         {
@@ -127,6 +139,26 @@ public class EnemyAI : MonoBehaviour
         {
             print("Exited Dead State!");
         };
+
+        knockbackState.onEnter = delegate
+        {
+            StartCoroutine(Knockback());
+        };
+
+        knockbackState.onFrame = delegate
+        {
+            if (!isknockedBack)
+            {
+                fsm.TransitionTo("Chasing");
+            }
+        };
+
+        knockbackState.onExit = delegate
+        {
+            print("Exited Knockback State!");
+        };
+
+
     }
 
     // Update is called once per frame
@@ -157,14 +189,31 @@ public class EnemyAI : MonoBehaviour
         spawnComplete = true;
     }
 
+    IEnumerator Knockback()
+    {
+        isknockedBack = true;
+        agent.enabled = false;
+        rb.AddForce(knockbackDirection, ForceMode.Impulse);
+        yield return new WaitForSeconds(0.4f);
+        rb.velocity = Vector3.zero;
+        agent.enabled = true;
+        isknockedBack = false;
+    }
+
     private void AttackPlayer()
     {
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        Vector3 rot = Quaternion.LookRotation(player.position - transform.position).eulerAngles;
+        rot.x = rot.z = 0;
+        transform.rotation = Quaternion.Euler(rot);
+
+        
+        
 
         if (!alreadyAttacked)
         {
+            OnKnockback(-transform.forward * 3);
             //attack code goes under here
             Debug.Log("Enemy has attacked player!");
 
@@ -178,7 +227,20 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-   
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            fsm.TransitionTo("Dead");
+        }
+    }
+
+   public void OnKnockback(Vector3 directionForce)
+    {
+        knockbackDirection = directionForce;
+        fsm.TransitionTo("Knockback");
+    }
 
     private void OnDrawGizmosSelected()
     {
