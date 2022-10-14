@@ -311,7 +311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &55153191
 Transform:
   m_ObjectHideFlags: 0
@@ -664,11 +664,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5156368439495993816, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5156368439495993816, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5156368440485137012, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
       propertyPath: m_RootOrder
@@ -717,6 +717,10 @@ PrefabInstance:
     - target: {fileID: 5156368440485137017, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
       propertyPath: m_Name
       value: EnemyParent (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156368440485137017, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
@@ -783,6 +787,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   spawnComplete: 0
+  enemySpawned: 0
   timeBetweenAttacks: 1
   sightRange: 20
   attackRange: 2
@@ -875,11 +880,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a365c6eff7d1fd643bdd387f486e0ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 2479626645483046804, guid: f64adde787837d54d9683e592e4ceddf, type: 3}
+  enemyToSpawn: {fileID: 5156368440485137017, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
   spawnPoint: {fileID: 877717855}
   spawnTimer: 3
   timer: 3
   range: 20
+  maxClusterSize: 8
+  minClusterSize: 3
+  spawnOffset: 4
 --- !u!4 &877717857
 Transform:
   m_ObjectHideFlags: 0

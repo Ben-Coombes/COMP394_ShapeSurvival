@@ -13,6 +13,12 @@ public class EnemySpawner : MonoBehaviour
 
     public float range = 20.0f;
 
+    //cluster
+    public int maxClusterSize;
+    public int minClusterSize;
+
+    public float spawnOffset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,15 +32,28 @@ public class EnemySpawner : MonoBehaviour
         if (spawnTimer > timer)
         {
             spawnTimer -= timer;
+            
             SpawnEnemy();
 
             
         }
+
+
     }
 
     public void SpawnEnemy()
     {
-        Instantiate(enemyToSpawn, RandomPoint(), Quaternion.identity);
+        Vector3 clusterPoint = RandomPoint();
+        int amount = Random.Range(minClusterSize, maxClusterSize + 1);
+        for (int i = 0; i < amount; i++)
+        {
+            float xOffset = Random.Range(-spawnOffset, spawnOffset);
+            float yOffset = Random.Range(-spawnOffset, spawnOffset);
+            clusterPoint += new Vector3(xOffset,0, yOffset);
+            print(xOffset+yOffset);
+            Instantiate(enemyToSpawn, clusterPoint, Quaternion.identity);
+        }
+        
     }
 
 
@@ -48,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         NavMesh.SamplePosition(randomPoint, out hit, 40.0f, NavMesh.AllAreas);
 
         return hit.position;
-       
+        
         
     }
 
