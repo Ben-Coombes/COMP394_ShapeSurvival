@@ -93,7 +93,7 @@ public class Bullet : MonoBehaviour
         material.bounciness = bounciness;
         material.frictionCombine = PhysicMaterialCombine.Minimum;
         material.bounceCombine = PhysicMaterialCombine.Maximum;
-        GetComponent<BoxCollider>().material = material;
+        GetComponent<Collider>().material = material;
 
         rb.useGravity = useGravity;
     }
