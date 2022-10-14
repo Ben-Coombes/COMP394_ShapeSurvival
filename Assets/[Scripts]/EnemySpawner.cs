@@ -8,8 +8,11 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyToSpawn;
     public GameObject spawnPoint;
 
-    public float spawnTimer;
-    public float timer = 3;
+    private float spawnTimer;
+    private float increaseSpawnTimer;
+    public float timeBetweenIncrease = 10; //time between each spawning speed increase
+    public float timer = 5; //starting time between spawns
+    public float minTimeBetweenSpawns = 2; //timer increase cutoff speed
 
     public float range = 20.0f;
 
@@ -28,15 +31,27 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //increase spawn speed
+        increaseSpawnTimer += Time.deltaTime;
+        if (increaseSpawnTimer > timeBetweenIncrease)
+        {
+            increaseSpawnTimer = 0;
+            timer = timer - 1;
+            if (timer <= minTimeBetweenSpawns)
+            {
+                timer = minTimeBetweenSpawns;
+            }
+        }
+
         spawnTimer += Time.deltaTime;
         if (spawnTimer > timer)
         {
             spawnTimer -= timer;
-            
             SpawnEnemy();
-
-            
         }
+
+        //increase cluster size
+
 
 
     }
