@@ -277,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7059088905225959, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -9.243
       objectReference: {fileID: 0}
     - target: {fileID: 7059088905225959, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -574,6 +574,7 @@ MonoBehaviour:
   isDead: 0
   health: 100
   isknockedBack: 0
+  anaimator: {fileID: 1185495068}
   rb: {fileID: 0}
 --- !u!4 &637421576
 Transform:

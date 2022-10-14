@@ -33,6 +33,7 @@ public class EnemyAI : MonoBehaviour
     public bool isknockedBack = false;
     private Vector3 knockbackDirection;
 
+    public Animator anaimator;
     public Rigidbody rb;
 
     private void Awake()
@@ -46,7 +47,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         fsm = new FiniteStateMachine();
-
+       
         //var patrolingState = fsm.CreateState("Patroling");
         //var wanderingState = fsm.CreateState("Wandering");
         var spawningState = fsm.CreateState("Spawning");
@@ -84,7 +85,7 @@ public class EnemyAI : MonoBehaviour
         ChasingState.onFrame = delegate
         {
             agent.SetDestination(player.position);
-
+            anaimator.Play("EnemyIdle2");
             if (CheckIfInAttackRange())
             {
                 fsm.TransitionTo("Attacking");
