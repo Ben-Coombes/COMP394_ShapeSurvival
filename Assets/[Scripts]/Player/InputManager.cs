@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerGun = GetComponent<Gun>();
+        playerGun = GetComponentInChildren<Gun>();
         playerInput = GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         onGround = playerInputActions.OnGround;
