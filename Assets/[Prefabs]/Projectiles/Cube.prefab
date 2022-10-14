@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7208932059771452752}
-  impactEffect: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  impactEffect: {fileID: 1000010844420130, guid: 9956fe4974204194ba2e6d7c19874b74, type: 3}
   enemiesMask:
     serializedVersion: 2
     m_Bits: 128
