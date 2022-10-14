@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 7059088929324157}
   - component: {fileID: 7059088929324163}
   - component: {fileID: 704335066}
+  - component: {fileID: 1390558790}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -265,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3378d80cbe72d143bc88f76aa931963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGun: {fileID: 0}
+  playerGunController: {fileID: 0}
 --- !u!114 &7059088929324157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,11 +338,29 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a5e9ae21-65f8-4382-93f6-f1448fa807e2
     m_ActionName: PlayerMovement/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3eb5ab60-ad3c-49ad-956e-89d328d8342f
+    m_ActionName: OnGround/SwitchWeapon[/Keyboard/1]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: OnGround
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1390558790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059088905225955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c34133e95643340bd8ef98ba2fd518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGun: {fileID: 0}
+  guns: []
 --- !u!1 &8789057411587836404
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5783787805313242223, guid: 398971aff604ddf4689d5e8d7eb62624, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 398971aff604ddf4689d5e8d7eb62624, type: 3}
