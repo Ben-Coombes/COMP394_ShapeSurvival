@@ -45,7 +45,6 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shot Fired");
         canFire = false;
         bulletsShot++;
 

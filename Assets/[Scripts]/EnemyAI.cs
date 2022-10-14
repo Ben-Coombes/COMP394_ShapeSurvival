@@ -195,7 +195,7 @@ public class EnemyAI : MonoBehaviour
         isknockedBack = true;
         agent.enabled = false;
         rb.AddForce(knockbackDirection, ForceMode.Impulse);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
         rb.velocity = Vector3.zero;
         agent.enabled = true;
         isknockedBack = false;
@@ -214,7 +214,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            OnKnockback(-transform.forward * 3);
+            
             //attack code goes under here
             Debug.Log("Enemy has attacked player!");
 
@@ -231,6 +231,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(float damage, Vector3 force)
     {
         health -= damage;
+        Debug.Log("Enemy Hit");
         if (health <= 0)
         {
             fsm.TransitionTo("Dead");
