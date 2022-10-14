@@ -227,13 +227,18 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector3 force)
     {
         health -= damage;
         if (health <= 0)
         {
             fsm.TransitionTo("Dead");
         }
+        else
+        {
+            OnKnockback(force);
+        }
+
     }
 
    public void OnKnockback(Vector3 directionForce)
