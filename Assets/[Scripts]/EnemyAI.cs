@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -27,7 +28,11 @@ public class EnemyAI : MonoBehaviour
     public bool isDead = false;
 
     //health
-    public float health = 100;
+    public float health;
+    public float maxHealth;
+
+    public GameObject healthBarUI;
+    public Slider healthBarSlider; 
 
     //knockback
     public bool isknockedBack = false;
@@ -44,12 +49,15 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         rb = GetComponent<Rigidbody>();
+        health = maxHealth;
+        healthBarUI.SetActive(false);
     }
 
     private void Start()
     {
         fsm = new FiniteStateMachine();
        
+
         //var patrolingState = fsm.CreateState("Patroling");
         //var wanderingState = fsm.CreateState("Wandering");
         var spawningState = fsm.CreateState("Spawning");
@@ -92,10 +100,7 @@ public class EnemyAI : MonoBehaviour
             {
                 fsm.TransitionTo("Attacking");
             }
-            if (CheckIfDead())
-            {
-                fsm.TransitionTo("Dead");
-            }
+            
         };
 
         ChasingState.onExit = delegate
@@ -116,10 +121,7 @@ public class EnemyAI : MonoBehaviour
             {
                 fsm.TransitionTo("Chasing");
             }
-            if (CheckIfDead())
-            {
-                fsm.TransitionTo("Dead");
-            }
+            
         };
 
         AttackingState.onExit = delegate
@@ -131,6 +133,7 @@ public class EnemyAI : MonoBehaviour
         {
             print("Entered Dead State!");
             //disable everything 
+            healthBarUI.SetActive(false);
             agent.enabled = false;
             Destroy(rb);
             Destroy(GetComponentInChildren<Rigidbody>());
@@ -183,19 +186,6 @@ public class EnemyAI : MonoBehaviour
     private bool CheckIfInAttackRange()
     {
         return Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-    }
-
-    //dont need
-    public bool CheckIfDead()
-    {
-        if (isDead)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     private void CompleteSpawning()
@@ -251,7 +241,10 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(float damage, Vector3 force)
     {
+        healthBarUI.SetActive(true);
         health -= damage;
+        healthBarSlider.value = CalculateHealth();
+
         Debug.Log("Enemy Hit");
         if (health <= 0)
         {
@@ -262,6 +255,11 @@ public class EnemyAI : MonoBehaviour
             OnKnockback(force);
         }
 
+    }
+
+    public float CalculateHealth()
+    {
+        return health / maxHealth;
     }
 
    public void OnKnockback(Vector3 directionForce)
