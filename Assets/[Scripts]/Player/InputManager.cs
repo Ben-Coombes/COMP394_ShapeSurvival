@@ -14,18 +14,19 @@ public class InputManager : MonoBehaviour
     private PlayerController playerController;
 
     private PlayerLook playerLook;
-    [SerializeField]
-    private Gun playerGun;
+
+    [SerializeField] private PlayerGunController playerGunController;
     // Start is called before the first frame update
     void Awake()
     {
-        playerGun = GetComponentInChildren<Gun>();
+        playerGunController = GetComponent<PlayerGunController>();
         playerInput = GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         onGround = playerInputActions.OnGround;
         playerController = GetComponent<PlayerController>();
         playerLook = GetComponent<PlayerLook>();
         onGround.Jump.performed += ctx => playerController.Jump();
+        onGround.SwitchWeapon.performed += ctx => playerGunController.SwitchGun();
     }
 
 
@@ -33,7 +34,7 @@ public class InputManager : MonoBehaviour
     void FixedUpdate()
     {
         playerController.Move(onGround.Movement.ReadValue<Vector2>());
-        playerGun.CheckInput(onGround.Fire);
+        playerGunController.currentGun.CheckInput(onGround.Fire);
     }
 
     void LateUpdate()

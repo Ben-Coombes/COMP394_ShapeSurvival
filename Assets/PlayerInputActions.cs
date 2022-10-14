@@ -62,6 +62,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""3eb5ab60-ad3c-49ad-956e-89d328d8342f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +249,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec862cc0-6ef6-4f88-8601-3a4eec5d7c8f"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c687ec1a-8f8b-4f66-8daa-8342fa875703"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +283,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_OnGround_Jump = m_OnGround.FindAction("Jump", throwIfNotFound: true);
         m_OnGround_Look = m_OnGround.FindAction("Look", throwIfNotFound: true);
         m_OnGround_Fire = m_OnGround.FindAction("Fire", throwIfNotFound: true);
+        m_OnGround_SwitchWeapon = m_OnGround.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +347,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnGround_Jump;
     private readonly InputAction m_OnGround_Look;
     private readonly InputAction m_OnGround_Fire;
+    private readonly InputAction m_OnGround_SwitchWeapon;
     public struct OnGroundActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -323,6 +356,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_OnGround_Jump;
         public InputAction @Look => m_Wrapper.m_OnGround_Look;
         public InputAction @Fire => m_Wrapper.m_OnGround_Fire;
+        public InputAction @SwitchWeapon => m_Wrapper.m_OnGround_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_OnGround; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -344,6 +378,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnFire;
+                @SwitchWeapon.started -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.performed -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.canceled -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSwitchWeapon;
             }
             m_Wrapper.m_OnGroundActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +397,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @SwitchWeapon.started += instance.OnSwitchWeapon;
+                @SwitchWeapon.performed += instance.OnSwitchWeapon;
+                @SwitchWeapon.canceled += instance.OnSwitchWeapon;
             }
         }
     }
@@ -370,5 +410,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }
