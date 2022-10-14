@@ -56,18 +56,26 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
 
         Vector3 targetPoint;
-
-        if (Physics.Raycast(ray, out hit))
-            targetPoint = hit.point;
+        if (spread < 0.3)
+        {
+            if (Physics.Raycast(ray, out hit))
+                targetPoint = hit.point;
+            else
+                targetPoint = ray.GetPoint(75);
+        }
         else
-            targetPoint = ray.GetPoint(75);
+        {
+            targetPoint = ray.GetPoint(10);
+        }
+        
 
         Vector3 direction = targetPoint - bulletSpawnPoint.position;
 
         float xSpread = Random.Range(-spread, spread);
         float ySpread = Random.Range(-spread, spread);
+        float zSpread = Random.Range(-spread, spread);
 
-        Vector3 directionWithSpread = direction + new Vector3(xSpread, ySpread, 0);
+        Vector3 directionWithSpread = direction + new Vector3(xSpread, ySpread, zSpread);
 
         GameObject currentBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
 

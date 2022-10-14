@@ -211,15 +211,16 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator Knockback()
     {
-        isknockedBack = true;
-        agent.enabled = false;
-        if(rb != null)
+        if (rb != null)
+        {
+            isknockedBack = true;
+            agent.enabled = false;
             rb.AddForce(knockbackDirection, ForceMode.Impulse);
-
-        yield return new WaitForSeconds(0.1f);
-        rb.velocity = Vector3.zero;
-        agent.enabled = true;
-        isknockedBack = false;
+            yield return new WaitForSeconds(0.1f);
+            rb.velocity = Vector3.zero;
+            agent.enabled = true;
+            isknockedBack = false;
+        }
     }
 
     private void AttackPlayer()

@@ -86,7 +86,7 @@ MonoBehaviour:
   speed: 75
   upwardSpeed: 0
   fireRate: 0.3
-  spread: 1
+  spread: 1.2
   bulletsPerTap: 12
   fireRateTap: 0
   automatic: 0
