@@ -29,6 +29,10 @@ public class Gun : MonoBehaviour
 
     public bool allowInvoke = true;
 
+    private void Awake()
+    {
+        playerCam = Camera.main;
+    }
     public void CheckInput(InputAction action)
     {
         if (automatic)
