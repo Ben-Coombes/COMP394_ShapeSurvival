@@ -36,6 +36,8 @@ public class EnemyAI : MonoBehaviour
     public Animator anaimator;
     public Rigidbody rb;
 
+    
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform; //find the player in the scene
@@ -128,12 +130,22 @@ public class EnemyAI : MonoBehaviour
         deadState.onEnter = delegate
         {
             print("Entered Dead State!");
+            //disable everything 
+            agent.enabled = false;
+            Destroy(rb);
+            Destroy(GetComponentInChildren<Rigidbody>());
+            var collidersObj = gameObject.GetComponentsInChildren<Collider>();
+            for (var index = 0; index < collidersObj.Length; index++)
+            {
+                var colliderItem = collidersObj[index];
+                colliderItem.enabled = false;
+            }
         };
 
         deadState.onFrame = delegate
         {
             //put death code here
-            print("ENEMY IS DEAD");
+            StartCoroutine(DeathAnaimator());
         };
 
         deadState.onExit = delegate
@@ -173,6 +185,7 @@ public class EnemyAI : MonoBehaviour
         return Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
     }
 
+    //dont need
     public bool CheckIfDead()
     {
         if (isDead)
@@ -188,6 +201,14 @@ public class EnemyAI : MonoBehaviour
     private void CompleteSpawning()
     {
         spawnComplete = true;
+    }
+
+    IEnumerator DeathAnaimator()
+    {
+        anaimator.Play("EnemyDeath");
+        yield return new WaitForSeconds(anaimator.GetCurrentAnimatorStateInfo(0).length);
+        //drop item
+        Destroy(this.gameObject);
     }
 
     IEnumerator Knockback()
