@@ -296,35 +296,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 91.624, z: 0}
---- !u!1 &52167840 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8636552438667715029, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
-  m_PrefabInstance: {fileID: 292941977}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &52167842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52167840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 089e9cd8ec93f9345bf72113c8e9c011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7208932059771452719, guid: 599102725b68e6844a0a1565f2941f79, type: 3}
-  playerCam: {fileID: 788503237}
-  bulletSpawnPoint: {fileID: 1808322755}
-  muzzleFlash: {fileID: 605865189}
-  speed: 75
-  upwardSpeed: 0
-  fireRate: 0.3
-  spread: 1
-  bulletsPerTap: 12
-  fireRateTap: 0
-  automatic: 0
-  allowInvoke: 1
 --- !u!1 &55153190
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,12 +383,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7059088929324158, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
-      propertyPath: playerGun
-      value: 
-      objectReference: {fileID: 52167842}
-    m_RemovedComponents:
-    - {fileID: 2087497652, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
 --- !u!1 &328677822
 GameObject:
@@ -689,11 +655,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 91.624, z: 0}
---- !u!198 &605865189 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 190976108471443955, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
-  m_PrefabInstance: {fileID: 292941977}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &637421573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,11 +1069,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &1808322755 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1602962963016941640, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
-  m_PrefabInstance: {fileID: 292941977}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1855105759
 GameObject:
   m_ObjectHideFlags: 0
