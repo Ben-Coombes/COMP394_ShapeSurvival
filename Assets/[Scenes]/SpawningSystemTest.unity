@@ -597,6 +597,7 @@ MonoBehaviour:
   range: 20
   maxClusterSize: 2
   minClusterSize: 1
+  timeBetweenClusterIncrease: 5
   spawnOffset: 4
 --- !u!4 &877717857
 Transform:

@@ -251,6 +251,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 2682295106190103625}
   speed: 75
   upwardSpeed: 0
+  name: rifle
   fireRate: 0.1
   spread: 0.2
   bulletsPerTap: 1
