@@ -13,12 +13,17 @@ public class EnemySpawner : MonoBehaviour
     public float timeBetweenIncrease = 10; //time between each spawning speed increase
     public float timer = 5; //starting time between spawns
     public float minTimeBetweenSpawns = 2; //timer increase cutoff speed
+    private bool maxSpawnSpeedReached = false;
 
     public float range = 20.0f;
+
+
 
     //cluster
     public int maxClusterSize;
     public int minClusterSize;
+    private float clusterTimer; //cluster timer
+    public float timeBetweenClusterIncrease = 5; // time between cluster increase
 
     public float spawnOffset;
 
@@ -33,13 +38,14 @@ public class EnemySpawner : MonoBehaviour
     {
         //increase spawn speed
         increaseSpawnTimer += Time.deltaTime;
-        if (increaseSpawnTimer > timeBetweenIncrease)
+        if (increaseSpawnTimer > timeBetweenIncrease && !maxSpawnSpeedReached)
         {
             increaseSpawnTimer = 0;
             timer = timer - 1;
             if (timer <= minTimeBetweenSpawns)
             {
-                timer = minTimeBetweenSpawns;
+                maxSpawnSpeedReached = true;
+                
             }
         }
 
@@ -51,7 +57,16 @@ public class EnemySpawner : MonoBehaviour
         }
 
         //increase cluster size
-
+        
+        clusterTimer += Time.deltaTime;
+        if (clusterTimer > timeBetweenClusterIncrease)
+        {
+            clusterTimer = 0;
+            minClusterSize++;
+            maxClusterSize++;
+            
+        }
+        
 
 
     }
