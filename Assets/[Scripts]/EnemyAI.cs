@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     FiniteStateMachine fsm;
+    public GameObject xp;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -27,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     //death
     public bool isDead = false;
+    private Vector3 deathPosition;
 
     //health
     public float health;
@@ -133,6 +135,7 @@ public class EnemyAI : MonoBehaviour
         deadState.onEnter = delegate
         {
             print("Entered Dead State!");
+            deathPosition = transform.position;
             //disable everything 
             healthBarUI.SetActive(false);
             agent.enabled = false;
@@ -199,6 +202,8 @@ public class EnemyAI : MonoBehaviour
         anaimator.Play("EnemyDeath");
         yield return new WaitForSeconds(anaimator.GetCurrentAnimatorStateInfo(0).length);
         //drop item
+        Instantiate(xp, transform.position, Quaternion.identity);
+
         Destroy(this.gameObject);
     }
 

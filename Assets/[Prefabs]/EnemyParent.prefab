@@ -603,6 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5156368440485137018}
   player: {fileID: 0}
+  xp: {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -610,6 +611,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   spawnComplete: 0
+  enemySpawned: 0
   timeBetweenAttacks: 1
   sightRange: 20
   attackRange: 2

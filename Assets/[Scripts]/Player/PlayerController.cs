@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.8f;
 
     public float jumpHeight = 3f;
+
+    public float pickupRange = 5f;
     // Start is called before the first frame update
     void Start()
     {
