@@ -136,7 +136,7 @@ public class EnemyAI : MonoBehaviour
             //disable everything 
             healthBarUI.SetActive(false);
             agent.enabled = false;
-            Destroy(rb);
+            rb.detectCollisions = false;
             Destroy(GetComponentInChildren<Rigidbody>());
             var collidersObj = gameObject.GetComponentsInChildren<Collider>();
             for (var index = 0; index < collidersObj.Length; index++)
@@ -217,6 +217,9 @@ public class EnemyAI : MonoBehaviour
             agent.enabled = false;
             rb.AddForce(knockbackDirection, ForceMode.Impulse);
             yield return new WaitForSeconds(0.1f);
+        }
+        if (rb != null)
+        {
             rb.velocity = Vector3.zero;
             agent.enabled = true;
             isknockedBack = false;
