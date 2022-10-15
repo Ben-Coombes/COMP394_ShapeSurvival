@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
     public float upwardSpeed;
 
     [Header("Gun Stats")] 
+    public string name;
     public float fireRate;
     public float spread;
     public float bulletsPerTap;

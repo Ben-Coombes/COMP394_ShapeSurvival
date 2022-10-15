@@ -636,6 +636,66 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 7059088013316360, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
   m_PrefabInstance: {fileID: 292941977}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1353370849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353370851}
+  - component: {fileID: 1353370850}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1353370850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353370849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a867f854140664abc0d92bf657aa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guns:
+  - {fileID: 0}
+  player: {fileID: 0}
+  upgrades:
+  - title: Rifle
+    description: 
+    level: 1
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    damageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+--- !u!4 &1353370851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353370849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1531739997
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,50 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+[Serializable]
+public class GunUpgrade
+{
+    [Header("UI")]
+    public string title;
+    public string description;
+    [Range(1,10)]
+    public int level;
+    [Header("Gun")]
+    public string gunName;
+
+    [Header("Gun Values")] 
+    public float fireRateIncrease;
+    public float spreadDecrease;
+    public int bulletsIncrease;
+    public bool manualToAuto;
+
+    [Header("Bullet Values")] 
+    public float damageIncrease;
+    public float knockbackIncrease;
+    public int collisionsIncrease;
+
+    [Header("Other Values")] 
+    public bool explodeOnImpact;
+    public float explosionRange;
+
+    public GunUpgrade(string title, string description, int level, string gunName, float fireRateIncrease, float spreadDecrease, int bulletsIncrease, bool manualToAuto, float damageIncrease, float knockbackIncrease, int collisionsIncrease, bool explodeOnImpact, float explosionRange)
+    {
+        this.title = title;
+        this.description = description;
+        this.level = level;
+        this.gunName = gunName;
+        this.fireRateIncrease = fireRateIncrease;
+        this.spreadDecrease = spreadDecrease;
+        this.bulletsIncrease = bulletsIncrease;
+        this.manualToAuto = manualToAuto;
+        this.damageIncrease = damageIncrease;
+        this.knockbackIncrease = knockbackIncrease;
+        this.collisionsIncrease = collisionsIncrease;
+        this.explodeOnImpact = explodeOnImpact;
+        this.explosionRange = explosionRange;
+    }
+
+}
