@@ -1329,9 +1329,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 8041679460282720295, guid: a6ef30a9cf9ecfe44a6e0f77c5cd9d1c, type: 3}
-      propertyPath: m_text
-      value: Rifle - Level 3
-      objectReference: {fileID: 0}
+    - target: {fileID: 8041679460340493945, guid: a6ef30a9cf9ecfe44a6e0f77c5cd9d1c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 016d567a4df3c86478f9271a4c794f1b, type: 2}
+    - target: {fileID: 8041679460340493945, guid: a6ef30a9cf9ecfe44a6e0f77c5cd9d1c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 016d567a4df3c86478f9271a4c794f1b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ef30a9cf9ecfe44a6e0f77c5cd9d1c, type: 3}
