@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 7059088905225952}
   - component: {fileID: 7059088905225953}
   - component: {fileID: 7059088905225954}
-  - component: {fileID: 7059088929324158}
   - component: {fileID: 7059088929324157}
   - component: {fileID: 7059088929324163}
   - component: {fileID: 704335066}
@@ -227,19 +226,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7059088929324158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059088905225955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3378d80cbe72d143bc88f76aa931963, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerGunController: {fileID: 0}
 --- !u!114 &7059088929324157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +302,46 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3eb5ab60-ad3c-49ad-956e-89d328d8342f
     m_ActionName: OnGround/SwitchWeapon[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d9f5f5ff-9614-45d8-82cb-22cf897a2588
+    m_ActionName: OnMenu/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 325827fb-044b-4e08-9433-cfbe3ed22504
+    m_ActionName: OnMenu/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bcd98825-d866-40ad-92dc-a8a5a4b13632
+    m_ActionName: OnMenu/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 872bbabf-987c-4ada-aa2e-b1047df902e9
+    m_ActionName: OnMenu/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 470e5111-42e4-4e29-a084-a532a585cab4
+    m_ActionName: OnMenu/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a51d5c7d-329f-4f40-8175-f9181a93da0d
+    m_ActionName: OnMenu/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7b137ca2-a4b7-4f7f-ace0-99e853a24d64
+    m_ActionName: OnMenu/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fc742d79-9ea9-4c12-98de-e5010d72f449
+    m_ActionName: OnMenu/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b6e4592d-03cc-4aa5-8398-a9738510fb92
+    m_ActionName: OnMenu/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20831a01-5d77-4092-8637-93747fb7f475
+    m_ActionName: OnMenu/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: OnGround
