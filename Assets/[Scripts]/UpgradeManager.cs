@@ -16,7 +16,8 @@ public class UpgradeManager : MonoBehaviour
         guns = player.GetComponentsInChildren<Gun>();
         GunUpgrade test = new GunUpgrade(
             "t",
-            "t",
+            "t", 
+            null,
             1,
             "rifle",
             0,

@@ -10,6 +10,7 @@ public class GunUpgrade
     [Header("UI")]
     public string title;
     public string description;
+    public Sprite image;
     [Range(1,10)]
     public int level;
     [Header("Gun")]
@@ -30,10 +31,11 @@ public class GunUpgrade
     public bool explodeOnImpact;
     public float explosionRange;
 
-    public GunUpgrade(string title, string description, int level, string gunName, float fireRateIncrease, float spreadDecrease, int bulletsIncrease, bool manualToAuto, float damageIncrease, float knockbackIncrease, int collisionsIncrease, bool explodeOnImpact, float explosionRange)
+    public GunUpgrade(string title, string description, Sprite image, int level, string gunName, float fireRateIncrease, float spreadDecrease, int bulletsIncrease, bool manualToAuto, float damageIncrease, float knockbackIncrease, int collisionsIncrease, bool explodeOnImpact, float explosionRange)
     {
         this.title = title;
         this.description = description;
+        this.image = image;
         this.level = level;
         this.gunName = gunName;
         this.fireRateIncrease = fireRateIncrease;

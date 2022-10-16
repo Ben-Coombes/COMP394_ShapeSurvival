@@ -8,6 +8,7 @@ public class XP : MonoBehaviour
     public Transform player;
 
     public float xpMovementSpeed;
+    public float xpAmount = 1;
     public float acceleration;
 
     public float pickupRange;
@@ -56,7 +57,7 @@ public class XP : MonoBehaviour
 
     public void CollectXP()
     {
-        //collect XP code goes here
+        LevelUpManager.Instance.AddXp(xpAmount);
         Destroy(this.gameObject);
     }
     private void OnDrawGizmosSelected()
