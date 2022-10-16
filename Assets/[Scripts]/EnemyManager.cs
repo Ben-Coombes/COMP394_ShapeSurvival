@@ -80,7 +80,6 @@ public class EnemyManager : MonoBehaviour
             float xOffset = Random.Range(-spawnOffset, spawnOffset);
             float yOffset = Random.Range(-spawnOffset, spawnOffset);
             clusterPoint += new Vector3(xOffset,0, yOffset);
-            print(xOffset+yOffset);
             Instantiate(enemyToSpawn, clusterPoint, Quaternion.identity);
         }
         
@@ -92,7 +91,6 @@ public class EnemyManager : MonoBehaviour
         Vector3 rand = new Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-range, range));
 
         Vector3 randomPoint = rand;
-        print(randomPoint);
         NavMeshHit hit;
         NavMesh.SamplePosition(randomPoint, out hit, 40.0f, NavMesh.AllAreas);
 

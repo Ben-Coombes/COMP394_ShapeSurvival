@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour
         if (collision.collider.CompareTag("Enemy") && destroyOnImpact)
         {
             Impact(collision.collider);
-            Debug.Log("Bullet Collision");
+            //Debug.Log("Bullet Collision");
         }
 
     }
@@ -58,7 +58,7 @@ public class Bullet : MonoBehaviour
         if (collider.CompareTag("Enemy") && destroyOnImpact)
         {
             Impact(collider);
-            Debug.Log("Bullet Trigger");
+            //Debug.Log("Bullet Trigger");
         }
             
     }

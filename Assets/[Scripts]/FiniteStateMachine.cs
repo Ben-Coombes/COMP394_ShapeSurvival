@@ -75,7 +75,6 @@ public class FiniteStateMachine
         }
 
         // [Log Transition from currentState to newSTate]
-        Debug.Log($"Transition from {CurrentState} to {newState}");
 
 
         CurrentState = newState;

@@ -71,7 +71,7 @@ public class EnemyAI : MonoBehaviour
 
         spawningState.onEnter = delegate
         {
-            print("Entered Spawning State!");
+            
         };
 
         spawningState.onFrame = delegate
@@ -86,13 +86,13 @@ public class EnemyAI : MonoBehaviour
 
         spawningState.onExit = delegate
         {
-            print("Exited Spawning State!");
+           
         };
 
         //chasing state
         ChasingState.onEnter = delegate
         {
-            print("Entered Chasing State!");
+            
         };
 
         ChasingState.onFrame = delegate
@@ -108,13 +108,13 @@ public class EnemyAI : MonoBehaviour
 
         ChasingState.onExit = delegate
         {
-            print("Exited Chasing State!");
+           
         };
 
         //attack state
         AttackingState.onEnter = delegate
         {
-            print("Entered Attacking State!");
+            
         };
 
         AttackingState.onFrame = delegate
@@ -129,12 +129,11 @@ public class EnemyAI : MonoBehaviour
 
         AttackingState.onExit = delegate
         {
-            print("Exited Attacking State!");
+            
         };
 
         deadState.onEnter = delegate
         {
-            print("Entered Dead State!");
             deathPosition = transform.position;
             //disable everything 
             healthBarUI.SetActive(false);
@@ -157,7 +156,7 @@ public class EnemyAI : MonoBehaviour
 
         deadState.onExit = delegate
         {
-            print("Exited Dead State!");
+
         };
 
         knockbackState.onEnter = delegate
@@ -169,13 +168,12 @@ public class EnemyAI : MonoBehaviour
         {
             if (!isknockedBack)
             {
-                fsm.TransitionTo("Chasing");
             }
         };
 
         knockbackState.onExit = delegate
         {
-            print("Exited Knockback State!");
+            
         };
 
 
@@ -246,7 +244,6 @@ public class EnemyAI : MonoBehaviour
         {
             
             //attack code goes under here
-            Debug.Log("Enemy has attacked player!");
 
 
             alreadyAttacked = true;
@@ -264,7 +261,6 @@ public class EnemyAI : MonoBehaviour
         health -= damage;
         healthBarSlider.value = CalculateHealth();
 
-        Debug.Log("Enemy Hit");
         if (health <= 0)
         {
             fsm.TransitionTo("Dead");
