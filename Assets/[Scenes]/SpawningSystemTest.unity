@@ -1329,5 +1329,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8041679460282720295, guid: a6ef30a9cf9ecfe44a6e0f77c5cd9d1c, type: 3}
+      propertyPath: m_text
+      value: Rifle - Level 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ef30a9cf9ecfe44a6e0f77c5cd9d1c, type: 3}
