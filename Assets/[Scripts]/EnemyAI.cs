@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("Unity")]
     public NavMeshAgent agent;
     public Transform player;
     FiniteStateMachine fsm;
@@ -13,34 +14,29 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    [Header("Spawning/Death")]
     public bool spawnComplete = false;
-
-    //spawning
     public bool enemySpawned = false;
-
-    //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-
-    //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-
     //death
     public bool isDead = false;
     private Vector3 deathPosition;
 
-    //health
+    [Header("Attacking")]
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+    public float attackRange;
+    public bool playerInAttackRange;
+
+    [Header("Health")]
     public float health;
     public float maxHealth;
-
-    public GameObject healthBarUI;
-    public Slider healthBarSlider; 
-
     //knockback
     public bool isknockedBack = false;
     private Vector3 knockbackDirection;
 
+    [Header("UI/Anaimation")]
+    public GameObject healthBarUI;
+    public Slider healthBarSlider;
     public Animator anaimator;
     public Rigidbody rb;
 
