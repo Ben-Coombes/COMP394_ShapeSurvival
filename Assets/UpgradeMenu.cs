@@ -7,7 +7,7 @@ public class UpgradeMenu : MonoBehaviour
 {
     public UpgradeUIHolder[] upgradesUI;
 
-    public void UpdateUI(GunUpgrade upgrade, int i)
+    public void UpdateUI(Upgrade upgrade, int i)
     {
         upgradesUI[i].image.sprite = upgrade.image;
         upgradesUI[i].title.text = upgrade.title;

@@ -31,9 +31,9 @@ public class LevelUpManager : MonoBehaviour
     public int currentLvl;
     public float xpMultiplier = 1f;
     private GameObject upgradeMenu, xpMenu;
-    public List<GunUpgrade> upgrades = new();
-    public List<GunUpgrade> rifleUpgrades = new();
-    public List<GunUpgrade> shotgunUpgrades = new();
+    public List<Upgrade> upgrades = new();
+    public List<Upgrade> rifleUpgrades = new();
+    public List<Upgrade> shotgunUpgrades = new();
 
     private void Start()
     {
@@ -61,7 +61,7 @@ public class LevelUpManager : MonoBehaviour
         }
 
         
-        //upgrades.Add(new GunUpgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
+        //upgrades.Add(new Upgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
     }
     public void AddXp(float amount)
     {
@@ -86,7 +86,7 @@ public class LevelUpManager : MonoBehaviour
 
     private void UpdateMenu()
     {
-        List<GunUpgrade> pool = new();
+        List<Upgrade> pool = new();
         pool.AddRange(upgrades);
 
         int length = 3;
@@ -95,7 +95,7 @@ public class LevelUpManager : MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             int rand = Random.Range(0, pool.Count);
-            GunUpgrade upgrade = pool[rand];
+            Upgrade upgrade = pool[rand];
             upgradeMenu.GetComponent<UpgradeMenu>().UpdateUI(upgrade, i);
             pool.Remove(upgrade);
         }
@@ -103,8 +103,8 @@ public class LevelUpManager : MonoBehaviour
 
     public void UpgradeSelected(TextMeshProUGUI title)
     {
-        GunUpgrade upgradeSelected = null;
-        foreach (GunUpgrade upgrade in upgrades)
+        Upgrade upgradeSelected = null;
+        foreach (Upgrade upgrade in upgrades)
         {
             if (upgrade.title == title.text)
             {
