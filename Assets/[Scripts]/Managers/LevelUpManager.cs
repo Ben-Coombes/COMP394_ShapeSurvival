@@ -49,6 +49,9 @@ public class LevelUpManager : MonoBehaviour
         try
         {
             xpMenu = GameObject.Find("XP Menu");
+            currentLvl = startingLvl;
+            xpToLvl = Mathf.Pow(currentLvl + 1, 3);
+            xpLeft = xpToLvl - currentXp;
             float percentageToLvl = (currentXp - Mathf.Pow(currentLvl, 3)) / (Mathf.Pow(currentLvl + 1, 3) - Mathf.Pow(currentLvl, 3));
             xpMenu.GetComponent<LevelUI>().UpdateXP(percentageToLvl, currentLvl);
         }
@@ -57,9 +60,7 @@ public class LevelUpManager : MonoBehaviour
             Debug.Log("No XP Menu found in Scene");
         }
 
-        currentLvl = startingLvl;
-        xpToLvl = Mathf.Pow(currentLvl + 1, 3);
-        xpLeft = xpToLvl - currentXp;
+        
         //upgrades.Add(new GunUpgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
     }
     public void AddXp(float amount)
