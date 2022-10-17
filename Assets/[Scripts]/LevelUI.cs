@@ -11,7 +11,7 @@ public class LevelUI : MonoBehaviour
 
     
 
-    public void UpdateXP(float xp)
+    public void UpdateXP(float xp, int level)
     {
         xpBarSlider.value = xp;
     }

@@ -21,13 +21,13 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
-    public float currentXp = 0;
+    public float currentXp = 1;
     public float xpLeft;
     public float xpToLvl;
     public int startingLvl = 1;
     public int currentLvl;
     public float xpMultiplier = 1f;
-    private GameObject upgradeMenu;
+    private GameObject upgradeMenu, xpMenu;
     public List<GunUpgrade> upgrades = new();
     public List<GunUpgrade> rifleUpgrades = new();
     public List<GunUpgrade> shotgunUpgrades = new();
@@ -35,6 +35,7 @@ public class LevelUpManager : MonoBehaviour
     private void Start()
     {
         upgradeMenu = GameObject.Find("Upgrade Menu");
+        xpMenu = GameObject.Find("XP Menu");
         upgradeMenu.SetActive(false);
         currentLvl = startingLvl;
 
@@ -55,8 +56,11 @@ public class LevelUpManager : MonoBehaviour
         }
         xpLeft = xpToLvl - currentXp;
 
-        //Debug.Log($"Level: {currentLvl} \nXP Left: {xpLeft} \nCurrent XP: {currentXp} \nXP Needed for Level {xpToLvl}");
 
+
+        float percentageToLvl = (currentXp - Mathf.Pow(currentLvl, 3)) / (Mathf.Pow(currentLvl + 1, 3) - Mathf.Pow(currentLvl, 3));
+        xpMenu.GetComponent<LevelUI>().UpdateXP(percentageToLvl, currentLvl);
+        //Debug.Log($"Level: {currentLvl} \nXP Left: {xpLeft} \nCurrent XP: {currentXp} \nXP Needed for Level {xpToLvl}");
     }
 
     private void UpdateMenu()

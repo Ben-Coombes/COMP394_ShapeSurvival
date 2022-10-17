@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad46847b4dc3f941b79c2e861be20c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentXp: 0
+  currentXp: 1
   xpLeft: 0
   xpToLvl: 0
   startingLvl: 1
