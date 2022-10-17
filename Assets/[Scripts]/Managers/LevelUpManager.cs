@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 public class LevelUpManager : MonoBehaviour
 {
@@ -34,11 +37,27 @@ public class LevelUpManager : MonoBehaviour
 
     private void Start()
     {
-        upgradeMenu = GameObject.Find("Upgrade Menu");
-        xpMenu = GameObject.Find("XP Menu");
-        upgradeMenu.SetActive(false);
-        currentLvl = startingLvl;
+        try
+        {
+            upgradeMenu = GameObject.Find("Upgrade Menu");
+            upgradeMenu.SetActive(false);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.Log("No Upgrade Menu found in Scene");
+        }
+        try
+        {
+            xpMenu = GameObject.Find("XP Menu");
+            float percentageToLvl = (currentXp - Mathf.Pow(currentLvl, 3)) / (Mathf.Pow(currentLvl + 1, 3) - Mathf.Pow(currentLvl, 3));
+            xpMenu.GetComponent<LevelUI>().UpdateXP(percentageToLvl, currentLvl);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.Log("No XP Menu found in Scene");
+        }
 
+        currentLvl = startingLvl;
         xpToLvl = Mathf.Pow(currentLvl + 1, 3);
         xpLeft = xpToLvl - currentXp;
         //upgrades.Add(new GunUpgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
@@ -52,6 +71,7 @@ public class LevelUpManager : MonoBehaviour
             currentLvl++;
             xpToLvl = Mathf.Pow(currentLvl + 1, 3);
             UpdateMenu();
+            xpMenu.SetActive(false);
             GameManager.Instance.Pause(upgradeMenu);
         }
         xpLeft = xpToLvl - currentXp;
@@ -91,7 +111,7 @@ public class LevelUpManager : MonoBehaviour
                 
             }
         }
-
+        xpMenu.SetActive(true);
         GameManager.Instance.Resume(upgradeMenu);
         UpgradeManager.Instance.Upgrade(upgradeSelected);
         upgrades.Remove(upgradeSelected);
