@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3378d80cbe72d143bc88f76aa931963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGunController: {fileID: 0}
 --- !u!1 &6885015425855729035
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +130,7 @@ Transform:
   - {fileID: 6885015426809324845}
   - {fileID: 877717857}
   - {fileID: 4197367316146451441}
+  - {fileID: 4655742162195362690}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,11 +179,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentXp: 0
-  XpLeft: 0
-  XpToLvl: 0
+  xpLeft: 0
+  xpToLvl: 0
   startingLvl: 1
   currentLvl: 0
-  XpMultiplier: 1
+  xpMultiplier: 1
+  upgradeMenu: {fileID: 0}
+  upgradesUI:
+  - image: {fileID: 0}
+    title: {fileID: 0}
+    description: {fileID: 0}
+  - image: {fileID: 0}
+    title: {fileID: 0}
+    description: {fileID: 0}
+  - image: {fileID: 0}
+    title: {fileID: 0}
+    description: {fileID: 0}
+  upgrades:
+  - title: Upgrade 1
+    description: Test Description
+    image: {fileID: 21300000, guid: fbcd6f6f592150f46b4587e99301b2de, type: 3}
+    level: 1
+    gunName: Rifle
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    damageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - title: Upgrade 2
+    description: Test Description
+    image: {fileID: 21300000, guid: 28d2c2677149d45e290e8fa042b1b80f, type: 3}
+    level: 1
+    gunName: Rifle
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    damageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - title: Upgrade 3
+    description: Test Description
+    image: {fileID: 21300000, guid: 892af21ad16d3df4bb7e4a8ff2c56506, type: 3}
+    level: 1
+    gunName: Rifle
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    damageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - title: Upgrade 4
+    description: Test Description
+    image: {fileID: 21300000, guid: 9afd653e65d74044bb0a77d515e12dbe, type: 3}
+    level: 1
+    gunName: Rifle
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    damageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - title: Upgrade 5
+    description: Test Description
+    image: {fileID: 21300006, guid: ce97ed62c0a56e84ab25e22c8dfd5bca, type: 3}
+    level: 1
+    gunName: Rifle
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    damageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  rifleUpgrades: []
+  shotgunUpgrades: []
 --- !u!1 &6885015427144589389
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,18 +315,47 @@ MonoBehaviour:
   guns:
   - {fileID: 0}
   player: {fileID: 0}
-  upgrades:
-  - title: Rifle
-    description: 
-    image: {fileID: 0}
-    level: 1
-    gunName: 
-    fireRateIncrease: 0
-    spreadDecrease: 0
-    bulletsIncrease: 0
-    manualToAuto: 0
-    damageIncrease: 0
-    knockbackIncrease: 0
-    collisionsIncrease: 0
-    explodeOnImpact: 0
-    explosionRange: 0
+--- !u!1 &8915158205337005615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4655742162195362690}
+  - component: {fileID: 1106236888}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4655742162195362690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915158205337005615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6885015425855729028}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1106236888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915158205337005615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8e3c39f6387ad41b5c27284e382404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

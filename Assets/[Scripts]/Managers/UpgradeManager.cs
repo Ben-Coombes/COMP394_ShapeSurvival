@@ -5,10 +5,23 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public static UpgradeManager Instance { get; private set; }
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     public Gun[] guns;
     public GameObject player;
-    public List<GunUpgrade> upgrades = new();
-
 
     private void Start()
     {
@@ -35,7 +48,6 @@ public class UpgradeManager : MonoBehaviour
     {
         Gun gunToBeUpgraded = null;
         
-        upgrades.Remove(upgrade);
         foreach (Gun gun in guns)
         {
             if (gun.name == upgrade.gunName)

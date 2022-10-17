@@ -24,6 +24,7 @@ public class Gun : MonoBehaviour
     public float bulletsPerTap;
     public float fireRateTap;
     public bool automatic;
+    public int level = 0;
     
     private int bulletsShot;
     private bool shooting, canFire = true;
