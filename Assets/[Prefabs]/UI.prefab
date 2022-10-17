@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2734123387652494645}
   - component: {fileID: 2734123387652494642}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Current Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,6 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xpBarUI: {fileID: 2734123387653046846}
   xpBarSlider: {fileID: 2734123388797395961}
+  currentLevelText: {fileID: 2734123387652494642}
+  NextLevelText: {fileID: 2734123388065020811}
 --- !u!1 &2734123387769853916
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +279,7 @@ GameObject:
   - component: {fileID: 2734123388065020810}
   - component: {fileID: 2734123388065020811}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Next Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
