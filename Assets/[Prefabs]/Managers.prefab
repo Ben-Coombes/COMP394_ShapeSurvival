@@ -184,17 +184,6 @@ MonoBehaviour:
   startingLvl: 1
   currentLvl: 0
   xpMultiplier: 1
-  upgradeMenu: {fileID: 0}
-  upgradesUI:
-  - image: {fileID: 0}
-    title: {fileID: 0}
-    description: {fileID: 0}
-  - image: {fileID: 0}
-    title: {fileID: 0}
-    description: {fileID: 0}
-  - image: {fileID: 0}
-    title: {fileID: 0}
-    description: {fileID: 0}
   upgrades:
   - title: Upgrade 1
     description: Test Description

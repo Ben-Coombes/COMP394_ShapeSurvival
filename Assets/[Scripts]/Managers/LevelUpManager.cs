@@ -27,8 +27,7 @@ public class LevelUpManager : MonoBehaviour
     public int startingLvl = 1;
     public int currentLvl;
     public float xpMultiplier = 1f;
-    public GameObject upgradeMenu;
-    public UpgradeUIHolder[] upgradesUI;
+    private GameObject upgradeMenu;
     public List<GunUpgrade> upgrades = new();
     public List<GunUpgrade> rifleUpgrades = new();
     public List<GunUpgrade> shotgunUpgrades = new();
@@ -64,18 +63,15 @@ public class LevelUpManager : MonoBehaviour
     {
         List<GunUpgrade> pool = new();
         pool.AddRange(upgrades);
+
         int length = 3;
         if (upgrades.Count < 3)
             length = upgrades.Count;
-
         for (int i = 0; i < length; i++)
         {
             int rand = Random.Range(0, pool.Count);
             GunUpgrade upgrade = pool[rand];
-            upgradesUI[i].image.sprite = upgrade.image;
-            upgradesUI[i].title.text = upgrade.title;
-            upgradesUI[i].description.text = upgrade.description;
-
+            upgradeMenu.GetComponent<UpgradeMenu>().UpdateUI(upgrade, i);
             pool.Remove(upgrade);
         }
     }
