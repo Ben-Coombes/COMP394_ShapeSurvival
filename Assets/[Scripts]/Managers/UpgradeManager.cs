@@ -27,7 +27,7 @@ public class UpgradeManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         guns = player.GetComponentsInChildren<Gun>();
-        GunUpgrade test = new GunUpgrade(
+        Upgrade test = new Upgrade(
             "t",
             "t", 
             null,
@@ -44,7 +44,7 @@ public class UpgradeManager : MonoBehaviour
             0);
         Upgrade(test);
     }
-    public void Upgrade(GunUpgrade upgrade)
+    public void Upgrade(Upgrade upgrade)
     {
         Gun gunToBeUpgraded = null;
         

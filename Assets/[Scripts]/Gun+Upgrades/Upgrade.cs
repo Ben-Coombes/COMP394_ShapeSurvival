@@ -1,3 +1,4 @@
+using MyBox;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,9 +6,9 @@ using UnityEngine;
 
 
 [Serializable]
-public class GunUpgrade
+public class Upgrade
 {
-    [Header("UI")]
+    [Header("UI")] 
     public string title;
     public string description;
     public Sprite image;
@@ -31,7 +32,7 @@ public class GunUpgrade
     public bool explodeOnImpact;
     public float explosionRange;
 
-    public GunUpgrade(string title, string description, Sprite image, int level, string gunName, float fireRateIncrease, float spreadDecrease, int bulletsIncrease, bool manualToAuto, float damageIncrease, float knockbackIncrease, int collisionsIncrease, bool explodeOnImpact, float explosionRange)
+    public Upgrade(string title, string description, Sprite image, int level, string gunName, float fireRateIncrease, float spreadDecrease, int bulletsIncrease, bool manualToAuto, float damageIncrease, float knockbackIncrease, int collisionsIncrease, bool explodeOnImpact, float explosionRange)
     {
         this.title = title;
         this.description = description;
