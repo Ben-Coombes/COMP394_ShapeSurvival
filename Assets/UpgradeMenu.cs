@@ -10,7 +10,7 @@ public class UpgradeMenu : MonoBehaviour
     public void UpdateUI(Upgrade upgrade, int i)
     {
         upgradesUI[i].image.sprite = upgrade.image;
-        upgradesUI[i].title.text = upgrade.title;
+        upgradesUI[i].title.text = upgrade.upgradeName + " - " + upgrade.level;
         upgradesUI[i].description.text = upgrade.description;
     }
 

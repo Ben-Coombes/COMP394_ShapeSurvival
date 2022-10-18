@@ -27,22 +27,6 @@ public class UpgradeManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         guns = player.GetComponentsInChildren<Gun>();
-        Upgrade test = new Upgrade(
-            "t",
-            "t", 
-            null,
-            1,
-            "rifle",
-            0,
-            0,
-            1,
-            false,
-            0,
-            0,
-            0,
-            false,
-            0);
-        Upgrade(test);
     }
     public void Upgrade(Upgrade upgrade)
     {
@@ -50,7 +34,7 @@ public class UpgradeManager : MonoBehaviour
         
         foreach (Gun gun in guns)
         {
-            if (gun.name == upgrade.gunName)
+            if (gun.name == upgrade.upgradeName)
                 gunToBeUpgraded = gun;
         }
         if (gunToBeUpgraded == null)
@@ -65,7 +49,7 @@ public class UpgradeManager : MonoBehaviour
             gunToBeUpgraded.automatic = true;
 
         //Bullet Upgrades - damage increase, knockback increase, max collisions/piercing
-        bulletToBeUpgraded.damage += upgrade.damageIncrease;
+        bulletToBeUpgraded.damage += upgrade.gDamageIncrease;
         bulletToBeUpgraded.knockback += upgrade.knockbackIncrease;
         bulletToBeUpgraded.maxCollisions += upgrade.collisionsIncrease;
 

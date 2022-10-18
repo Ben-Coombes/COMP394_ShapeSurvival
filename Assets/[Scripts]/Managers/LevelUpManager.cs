@@ -32,8 +32,17 @@ public class LevelUpManager : MonoBehaviour
     public float xpMultiplier = 1f;
     private GameObject upgradeMenu, xpMenu;
     public List<Upgrade> upgrades = new();
+    [Header("Guns")]
     public List<Upgrade> rifleUpgrades = new();
     public List<Upgrade> shotgunUpgrades = new();
+    [Header("Upgrades")]
+    public List<Upgrade> damageUpgrades = new();
+    public List<Upgrade> pickupUpgrades = new();
+    public List<Upgrade> xpUpgrades = new();
+    public List<Upgrade> movementUpgrades = new();
+    public List<Upgrade> maxHealthUpgrades = new();
+    public List<Upgrade> recoveryUpgrades = new();
+    public List<Upgrade> projectileUpgrades = new();
 
     private void Start()
     {
@@ -106,7 +115,7 @@ public class LevelUpManager : MonoBehaviour
         Upgrade upgradeSelected = null;
         foreach (Upgrade upgrade in upgrades)
         {
-            if (upgrade.title == title.text)
+            if (upgrade.upgradeName + " - " + upgrade.level == title.text)
             {
                 upgradeSelected = upgrade;
                 

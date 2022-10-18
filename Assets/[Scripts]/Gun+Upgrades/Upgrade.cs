@@ -8,46 +8,46 @@ using UnityEngine;
 [Serializable]
 public class Upgrade
 {
-    [Header("UI")] 
-    public string title;
-    public string description;
-    public Sprite image;
-    [Range(1,10)]
-    public int level;
-    [Header("Gun")]
-    public string gunName;
-
-    [Header("Gun Values")] 
-    public float fireRateIncrease;
-    public float spreadDecrease;
-    public int bulletsIncrease;
-    public bool manualToAuto;
-
-    [Header("Bullet Values")] 
-    public float damageIncrease;
-    public float knockbackIncrease;
-    public int collisionsIncrease;
-
-    [Header("Other Values")] 
-    public bool explodeOnImpact;
-    public float explosionRange;
-
-    public Upgrade(string title, string description, Sprite image, int level, string gunName, float fireRateIncrease, float spreadDecrease, int bulletsIncrease, bool manualToAuto, float damageIncrease, float knockbackIncrease, int collisionsIncrease, bool explodeOnImpact, float explosionRange)
+    public enum UpgradeType
     {
-        this.title = title;
-        this.description = description;
-        this.image = image;
-        this.level = level;
-        this.gunName = gunName;
-        this.fireRateIncrease = fireRateIncrease;
-        this.spreadDecrease = spreadDecrease;
-        this.bulletsIncrease = bulletsIncrease;
-        this.manualToAuto = manualToAuto;
-        this.damageIncrease = damageIncrease;
-        this.knockbackIncrease = knockbackIncrease;
-        this.collisionsIncrease = collisionsIncrease;
-        this.explodeOnImpact = explodeOnImpact;
-        this.explosionRange = explosionRange;
+        None,
+        Rifle,
+        Shotgun,
+        Damage,
+        Pickup,
+        Xp,
+        Movement,
+        MaxHealth,
+        Recovery,
+        Armour,
+        Projectile
     }
+    public UpgradeType _upgradeType;
+    [Header("UI")]
+    [ConditionalField("_upgradeType", true, UpgradeType.None)] public string description;
+    [ConditionalField("_upgradeType", true, UpgradeType.None)] public Sprite image;
+    [Header("Upgrade Values")]
+    [ConditionalField("_upgradeType", true, UpgradeType.None)] public int level;
+    [ConditionalField("_upgradeType", true, UpgradeType.None)] public string upgradeName;
+    [ConditionalField("_upgradeType", false, UpgradeType.Damage)] public float uDamageIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Pickup)] public float pickupRangeIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Xp)] public float xpMultiplierIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Movement)] public float movementSpeedIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.MaxHealth)] public float healthIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Recovery)] public float healthRecoveryIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Armour)] public float armourIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Projectile)] public float projectileIncrease;
+    //gun
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public float fireRateIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public float spreadDecrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public int bulletsIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public bool manualToAuto;
+    //bullet
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public float gDamageIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public float knockbackIncrease;
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public int collisionsIncrease;
+    //optional stuff
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public bool explodeOnImpact;
+    [ConditionalField("_upgradeType", false, UpgradeType.Rifle, UpgradeType.Shotgun)] public float explosionRange;
 
 }
