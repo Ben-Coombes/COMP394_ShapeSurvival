@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7365349306837565496, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e59a7f94f1fcd4687e4566b47c95a5, type: 3}
 --- !u!1 &483079405
@@ -483,9 +487,7 @@ MonoBehaviour:
   spawnComplete: 0
   enemySpawned: 0
   isDead: 0
-  timeBetweenAttacks: 1
-  attackRange: 2
-  playerInAttackRange: 0
+  playerInTrigger: 0
   health: 100
   maxHealth: 0
   isknockedBack: 0
@@ -659,6 +661,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 877717855, guid: 2cb3523e457347145982ef695bc6d084, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6885015425855729028, guid: 2cb3523e457347145982ef695bc6d084, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1343,7 +1349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9016407818598943480, guid: ed78ae92b5d57864188410bc84a131e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.956
+      value: -11.18
       objectReference: {fileID: 0}
     - target: {fileID: 9016407818598943480, guid: ed78ae92b5d57864188410bc84a131e8, type: 3}
       propertyPath: m_LocalPosition.y
