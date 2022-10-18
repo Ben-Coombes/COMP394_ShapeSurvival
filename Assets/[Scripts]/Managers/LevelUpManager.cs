@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -102,11 +103,6 @@ public class LevelUpManager : MonoBehaviour
             GameManager.Instance.Pause(upgradeMenu);
         }
         xpLeft = xpToLvl - currentXp;
-
-
-
-        
-        
         float percentageToLvl = (currentXp - Mathf.Pow(currentLvl, 3)) / (Mathf.Pow(currentLvl + 1, 3) - Mathf.Pow(currentLvl, 3));
         xpMenu.GetComponent<LevelUI>().UpdateXP(percentageToLvl, currentLvl);
         //Debug.Log($"Level: {currentLvl} \nXP Left: {xpLeft} \nCurrent XP: {currentXp} \nXP Needed for Level {xpToLvl}");
@@ -118,6 +114,8 @@ public class LevelUpManager : MonoBehaviour
         int length = 3;
         if (pool.Count < 3)
             length = pool.Count;
+        upgradeMenu.GetComponent<UpgradeMenu>().HideUpgradeButtons(length);
+        Debug.Log(length);
         for (int i = 0; i < length; i++)
         {
             int rand = Random.Range(0, pool.Count);
@@ -125,6 +123,8 @@ public class LevelUpManager : MonoBehaviour
             upgradeMenu.GetComponent<UpgradeMenu>().UpdateUI(upgrade, i);
             pool.Remove(upgrade);
         }
+
+        
         //if length is 1 or 2 hide the second/third update container (needs to be added)
     }
 
@@ -136,17 +136,72 @@ public class LevelUpManager : MonoBehaviour
             if (upgrade.upgradeName + " - " + upgrade.level == title.text)
             {
                 upgradeSelected = upgrade;
-                
             }
         }
         xpMenu.SetActive(true);
-        GameManager.Instance.Resume(upgradeMenu);
+        UpdateCurrentUpgrades(upgradeSelected);
         UpgradeManager.Instance.ApplyUpgrade(upgradeSelected);
+        GameManager.Instance.Resume(upgradeMenu);
+    }
+
+    private void UpdateCurrentUpgrades(Upgrade upgrade)
+    {
+        switch (upgrade._upgradeType)
+        {
+            case Upgrade.UpgradeType.None:
+                break;
+            case Upgrade.UpgradeType.Rifle:
+                rifleLvl++;
+                break;
+            case Upgrade.UpgradeType.Shotgun:
+                shotgunLvl++;
+                break;
+            case Upgrade.UpgradeType.Damage:
+                if (damageUpgradeLvl == 0)
+                    currentUpgrades++;
+                damageUpgradeLvl++;
+                break;
+            case Upgrade.UpgradeType.Pickup:
+                if (pickupUpgradeLvl == 0)
+                    currentUpgrades++;
+                pickupUpgradeLvl++;
+                break;
+            case Upgrade.UpgradeType.Xp:
+                if (xpUpgradeLvl == 0)
+                    currentUpgrades++;
+                xpUpgradeLvl++;
+                break;
+            case Upgrade.UpgradeType.Movement:
+                if (movementUpgradeLvl == 0)
+                    currentUpgrades++;
+                movementUpgradeLvl++;
+                break;
+            case Upgrade.UpgradeType.MaxHealth:
+                if (healthUpgradeLvl == 0)
+                    currentUpgrades++;
+                healthUpgradeLvl++;
+                break;
+            case Upgrade.UpgradeType.Recovery:
+                if (recoveryUpgradeLvl == 0)
+                    currentUpgrades++;
+                recoveryUpgradeLvl++;
+                break;
+            case Upgrade.UpgradeType.Armour:
+                break;
+            case Upgrade.UpgradeType.Projectile:
+                if (projectileUpgradeLvl == 0)
+                    currentUpgrades++;
+                projectileUpgradeLvl++;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private List<Upgrade> UpdatePool()
     {
         List<Upgrade> pool = new();
+        pool.Clear();
         if (rifleLvl < maxGunLvl)
         {
             pool.Add(rifleUpgrades[rifleLvl]);
@@ -188,6 +243,7 @@ public class LevelUpManager : MonoBehaviour
                 pool.Add(projectileUpgrades[projectileUpgradeLvl]);
             }
         }
+        
 
         return pool;
     }

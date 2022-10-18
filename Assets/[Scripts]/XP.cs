@@ -25,7 +25,7 @@ public class XP : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (CheckIfInPickupRange() || enteredPickupRange)
         {

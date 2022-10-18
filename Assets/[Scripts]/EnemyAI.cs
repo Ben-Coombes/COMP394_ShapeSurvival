@@ -249,7 +249,6 @@ public class EnemyAI : MonoBehaviour
         playerInTrigger = true;
         while (playerInTrigger)
         {
-            Debug.Log("Attacked");
             OnKnockback(-transform.position * 0.5f);
             yield return new WaitForSeconds(0.3f);
 
