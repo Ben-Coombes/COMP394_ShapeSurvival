@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,11 +41,10 @@ public class LevelUpManager : MonoBehaviour
     public int projectileUpgradeLvl = 0;
     public int currentUpgrades = 0;
     public int maxUpgrades = 3;
-    public int maxUpgradeLvl = 5;
-    public int maxGunLvl = 8;
+    public int maxUpgradeLvl;
+    public int maxGunLvl;
     public float xpMultiplier = 1f;
     private GameObject upgradeMenu, xpMenu;
-    public List<Upgrade> upgrades = new();
     [Header("Guns")]
     public List<Upgrade> rifleUpgrades = new();
     public List<Upgrade> shotgunUpgrades = new();
@@ -56,17 +56,18 @@ public class LevelUpManager : MonoBehaviour
     public List<Upgrade> maxHealthUpgrades = new();
     public List<Upgrade> recoveryUpgrades = new();
     public List<Upgrade> projectileUpgrades = new();
+    private List<Upgrade> allUpgrades = new();
 
     private void Start()
     {
         try
         {
-            upgradeMenu = GameObject.Find("ApplyUpgrade Menu");
+            upgradeMenu = GameObject.Find("Upgrade Menu");
             upgradeMenu.SetActive(false);
         }
         catch (NullReferenceException)
         {
-            Debug.Log("No ApplyUpgrade Menu found in Scene");
+            Debug.Log("Upgrade Menu found in Scene");
         }
         try
         {
@@ -82,7 +83,10 @@ public class LevelUpManager : MonoBehaviour
             Debug.Log("No XP Menu found in Scene");
         }
 
-        
+        maxGunLvl = rifleUpgrades.Count;
+        maxUpgradeLvl = damageUpgrades.Count;
+        allUpgrades = rifleUpgrades.Concat(shotgunUpgrades).Concat(damageUpgrades).Concat(pickupUpgrades).Concat(xpUpgrades).Concat(movementUpgrades).Concat(maxHealthUpgrades).Concat(recoveryUpgrades).Concat(projectileUpgrades).ToList();
+
         //upgrades.Add(new ApplyUpgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
     }
     public void AddXp(float amount)
@@ -112,8 +116,8 @@ public class LevelUpManager : MonoBehaviour
     {
         List<Upgrade> pool = UpdatePool();
         int length = 3;
-        if (upgrades.Count < 3)
-            length = upgrades.Count;
+        if (pool.Count < 3)
+            length = pool.Count;
         for (int i = 0; i < length; i++)
         {
             int rand = Random.Range(0, pool.Count);
@@ -121,12 +125,13 @@ public class LevelUpManager : MonoBehaviour
             upgradeMenu.GetComponent<UpgradeMenu>().UpdateUI(upgrade, i);
             pool.Remove(upgrade);
         }
+        //if length is 1 or 2 hide the second/third update container (needs to be added)
     }
 
     public void UpgradeSelected(TextMeshProUGUI title)
     {
         Upgrade upgradeSelected = null;
-        foreach (Upgrade upgrade in upgrades)
+        foreach (Upgrade upgrade in allUpgrades)
         {
             if (upgrade.upgradeName + " - " + upgrade.level == title.text)
             {
@@ -137,7 +142,6 @@ public class LevelUpManager : MonoBehaviour
         xpMenu.SetActive(true);
         GameManager.Instance.Resume(upgradeMenu);
         UpgradeManager.Instance.ApplyUpgrade(upgradeSelected);
-        upgrades.Remove(upgradeSelected);
     }
 
     private List<Upgrade> UpdatePool()

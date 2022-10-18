@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &877717857
 Transform:
   m_ObjectHideFlags: 0
@@ -185,17 +185,469 @@ MonoBehaviour:
   xpToLvl: 0
   startingLvl: 1
   currentLvl: 0
+  rifleLvl: 0
+  shotgunLvl: 0
+  damageUpgradeLvl: 0
+  pickupUpgradeLvl: 0
+  xpUpgradeLvl: 0
+  movementUpgradeLvl: 0
+  healthUpgradeLvl: 0
+  recoveryUpgradeLvl: 0
+  projectileUpgradeLvl: 0
+  currentUpgrades: 0
+  maxUpgrades: 3
+  maxUpgradeLvl: 5
+  maxGunLvl: 8
   xpMultiplier: 1
-  upgrades: []
-  rifleUpgrades: []
-  shotgunUpgrades: []
-  damageUpgrades: []
-  pickupUpgrades: []
-  xpUpgrades: []
-  movementUpgrades: []
-  maxHealthUpgrades: []
-  recoveryUpgrades: []
-  projectileUpgrades: []
+  rifleUpgrades:
+  - _upgradeType: 1
+    description: 
+    image: {fileID: 21300000, guid: ce97ed62c0a56e84ab25e22c8dfd5bca, type: 3}
+    level: 1
+    upgradeName: Rifle
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 1
+    description: 
+    image: {fileID: 21300000, guid: ce97ed62c0a56e84ab25e22c8dfd5bca, type: 3}
+    level: 2
+    upgradeName: Rifle
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 1
+    description: 
+    image: {fileID: 21300000, guid: ce97ed62c0a56e84ab25e22c8dfd5bca, type: 3}
+    level: 3
+    upgradeName: Rifle
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  shotgunUpgrades:
+  - _upgradeType: 2
+    description: 
+    image: {fileID: 21300000, guid: 892af21ad16d3df4bb7e4a8ff2c56506, type: 3}
+    level: 1
+    upgradeName: Shotgun
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 2
+    description: 
+    image: {fileID: 21300000, guid: 892af21ad16d3df4bb7e4a8ff2c56506, type: 3}
+    level: 2
+    upgradeName: Shotgun
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 2
+    description: 
+    image: {fileID: 21300000, guid: 892af21ad16d3df4bb7e4a8ff2c56506, type: 3}
+    level: 3
+    upgradeName: Shotgun
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  damageUpgrades:
+  - _upgradeType: 3
+    description: 
+    image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    level: 1
+    upgradeName: Damage
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 3
+    description: 
+    image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    level: 2
+    upgradeName: Damage
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  pickupUpgrades:
+  - _upgradeType: 4
+    description: 
+    image: {fileID: 0}
+    level: 1
+    upgradeName: Pickup
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 4
+    description: 
+    image: {fileID: 0}
+    level: 2
+    upgradeName: Pickup
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  xpUpgrades:
+  - _upgradeType: 5
+    description: 
+    image: {fileID: 0}
+    level: 1
+    upgradeName: XP
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 5
+    description: 
+    image: {fileID: 0}
+    level: 2
+    upgradeName: XP
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  movementUpgrades:
+  - _upgradeType: 6
+    description: 
+    image: {fileID: 0}
+    level: 1
+    upgradeName: Movement
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 6
+    description: 
+    image: {fileID: 0}
+    level: 2
+    upgradeName: Movement
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  maxHealthUpgrades:
+  - _upgradeType: 7
+    description: 
+    image: {fileID: 0}
+    level: 1
+    upgradeName: Max Health
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 7
+    description: 
+    image: {fileID: 0}
+    level: 2
+    upgradeName: Max Health
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  recoveryUpgrades:
+  - _upgradeType: 8
+    description: 
+    image: {fileID: 0}
+    level: 1
+    upgradeName: Recovery
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 8
+    description: 
+    image: {fileID: 0}
+    level: 2
+    upgradeName: Recovery
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  projectileUpgrades:
+  - _upgradeType: 10
+    description: 
+    image: {fileID: 0}
+    level: 1
+    upgradeName: Projectile
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 10
+    description: 
+    image: {fileID: 0}
+    level: 2
+    upgradeName: Projectile
+    uDamageIncrease: 0
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
 --- !u!1 &6885015427144589389
 GameObject:
   m_ObjectHideFlags: 0
