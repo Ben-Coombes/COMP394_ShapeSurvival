@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
@@ -27,11 +28,10 @@ public class UpgradeMenu : MonoBehaviour
         for (int i = 3; i > length; i--)
         {
             GameObject container = upgradesUI[i - 1].image.rectTransform.parent.gameObject;
-            Navigation navigation = new Navigation();
-            navigation.mode = Navigation.Mode.None;
-            container.GetComponent<Button>().navigation = navigation;
-            container.GetComponent<Button>().interactable = false;
-
+            //Navigation navigation = new Navigation();
+            //navigation.mode = Navigation.Mode.None;
+            //container.GetComponent<Button>().navigation = navigation;
+            Destroy(container);
         }
     }
 }

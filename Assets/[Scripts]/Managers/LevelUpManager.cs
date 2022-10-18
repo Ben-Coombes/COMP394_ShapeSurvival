@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
@@ -99,6 +100,7 @@ public class LevelUpManager : MonoBehaviour
             currentLvl++;
             xpToLvl = Mathf.Pow(currentLvl + 1, 3);
             UpdateMenu();
+            EventSystem.current.SetSelectedGameObject(upgradeMenu.GetComponent<UpgradeMenu>().upgradesUI[0].image.rectTransform.parent.gameObject);
             xpMenu.SetActive(false);
             GameManager.Instance.Pause(upgradeMenu);
         }
