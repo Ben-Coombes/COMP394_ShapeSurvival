@@ -15,7 +15,7 @@ public class ChildTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            enemy.AttackPlayer();
+            enemy.playerInTrigger = true;
         }
     }
 

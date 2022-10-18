@@ -93,7 +93,15 @@ public class EnemyAI : MonoBehaviour
 
         ChasingState.onFrame = delegate
         {
-            agent.SetDestination(player.position);
+            if (agent != null)
+            {
+                agent.SetDestination(player.position);
+
+            }
+            if (playerInTrigger)
+            {
+                fsm.TransitionTo("Attacking");
+            }
             anaimator.Play("EnemyIdle2");
             
             
@@ -107,7 +115,7 @@ public class EnemyAI : MonoBehaviour
         //attack state
         AttackingState.onEnter = delegate
         {
-            StartCoroutine(AttackDamage());
+            StartCoroutine(AttackPlayer());
         };
 
         AttackingState.onFrame = delegate
@@ -235,18 +243,14 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void AttackPlayer()
-    {
-        fsm.TransitionTo("Attacking");
-        
-    }
 
-    IEnumerator AttackDamage()
+    IEnumerator AttackPlayer()
     {
         playerInTrigger = true;
         while (playerInTrigger)
         {
             Debug.Log("Attacked");
+            OnKnockback(-transform.position * 0.5f);
             yield return new WaitForSeconds(0.3f);
 
         }
