@@ -25,10 +25,7 @@ public class EnemyAI : MonoBehaviour
     private Vector3 deathPosition;
 
     [Header("Attacking")]
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public float attackRange;
-    public bool playerInAttackRange;
+    public bool playerInTrigger = false;
 
     [Header("Health")]
     public float health;
@@ -96,12 +93,17 @@ public class EnemyAI : MonoBehaviour
 
         ChasingState.onFrame = delegate
         {
-            agent.SetDestination(player.position);
-            anaimator.Play("EnemyIdle2");
-            if (CheckIfInAttackRange())
+            if (agent != null)
+            {
+                agent.SetDestination(player.position);
+
+            }
+            if (playerInTrigger)
             {
                 fsm.TransitionTo("Attacking");
             }
+            anaimator.Play("EnemyIdle2");
+            
             
         };
 
@@ -113,13 +115,12 @@ public class EnemyAI : MonoBehaviour
         //attack state
         AttackingState.onEnter = delegate
         {
-            
+            StartCoroutine(AttackPlayer());
         };
 
         AttackingState.onFrame = delegate
         {
-            AttackPlayer();
-            if (!CheckIfInAttackRange())
+            if (!playerInTrigger)
             {
                 fsm.TransitionTo("Chasing");
             }
@@ -185,11 +186,6 @@ public class EnemyAI : MonoBehaviour
         fsm.Update();
     }
 
-    private bool CheckIfInAttackRange()
-    {
-        return Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-    }
-
     private void CompleteSpawning()
     {
         spawnComplete = true;
@@ -247,31 +243,19 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void AttackPlayer()
+
+    IEnumerator AttackPlayer()
     {
-        agent.SetDestination(transform.position);
-
-        Vector3 rot = Quaternion.LookRotation(player.position - transform.position).eulerAngles;
-        rot.x = rot.z = 0;
-        transform.rotation = Quaternion.Euler(rot);
-
-        
-        
-
-        if (!alreadyAttacked)
+        playerInTrigger = true;
+        while (playerInTrigger)
         {
-            
-            //attack code goes under here
+            Debug.Log("Attacked");
+            OnKnockback(-transform.position * 0.5f);
+            yield return new WaitForSeconds(0.3f);
 
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks); //call reset attack function on delay
         }
     }
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
+
 
     public void TakeDamage(float damage, Vector3 force)
     {
@@ -301,10 +285,9 @@ public class EnemyAI : MonoBehaviour
         fsm.TransitionTo("Knockback");
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnTriggerEnter(Collider other)
     {
-        //draw ranges on screen
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Debug.Log("Touch");
     }
+   
 }
