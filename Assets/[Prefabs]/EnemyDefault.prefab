@@ -800,6 +800,11 @@ MonoBehaviour:
   agent: {fileID: 5156368440485137018}
   player: {fileID: 0}
   xp: {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
+  xpList:
+  - {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
+  - {fileID: 5209531997897779918, guid: 2e146808678e6594d97b30b010364110, type: 3}
+  - {fileID: 4338310673909624379, guid: 9df32e19f32b4aa4fab498646017cfe1, type: 3}
+  xpRange: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -808,17 +813,15 @@ MonoBehaviour:
     m_Bits: 64
   spawnComplete: 0
   enemySpawned: 0
-  timeBetweenAttacks: 1
-  sightRange: 20
-  attackRange: 2
-  playerInSightRange: 0
-  playerInAttackRange: 0
   isDead: 0
+  timeBetweenAttacks: 1
+  attackRange: 2
+  playerInAttackRange: 0
   health: 0
   maxHealth: 1
+  isknockedBack: 0
   healthBarUI: {fileID: 5156368439826537668}
   healthBarSlider: {fileID: 5156368439583263699}
-  isknockedBack: 0
   anaimator: {fileID: 5156368438862658144}
   rb: {fileID: 0}
 --- !u!195 &5156368440485137018

@@ -10,7 +10,10 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     FiniteStateMachine fsm;
+    [Header("XP")]
     public GameObject xp;
+    public List<GameObject> xpList = new();
+    public int xpRange;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -164,6 +167,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (!isknockedBack)
             {
+                fsm.TransitionTo("Chasing");
             }
         };
 
@@ -195,10 +199,28 @@ public class EnemyAI : MonoBehaviour
     {
         anaimator.Play("EnemyDeath");
         yield return new WaitForSeconds(anaimator.GetCurrentAnimatorStateInfo(0).length);
-        //drop item
-        Instantiate(xp, transform.position, Quaternion.identity);
+        //drop XP
+        Instantiate(xpList[XpToSpawn()], transform.position, Quaternion.identity);
 
         Destroy(this.gameObject);
+    }
+
+    public int XpToSpawn()
+    {
+        xpRange = Random.Range(0, 100);
+        if (xpRange >= 0 && xpRange <70)
+        {
+            return 0;
+        }
+        else if (xpRange >= 70 && xpRange < 90)
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+        
     }
 
     IEnumerator SpawnAnaimator()
