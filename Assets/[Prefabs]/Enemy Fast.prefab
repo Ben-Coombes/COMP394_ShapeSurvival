@@ -662,6 +662,11 @@ MonoBehaviour:
   agent: {fileID: 9016407818598943478}
   player: {fileID: 0}
   xp: {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
+  xpList:
+  - {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
+  - {fileID: 5209531997897779918, guid: 2e146808678e6594d97b30b010364110, type: 3}
+  - {fileID: 4338310673909624379, guid: 9df32e19f32b4aa4fab498646017cfe1, type: 3}
+  xpRange: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256

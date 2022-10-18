@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject enemyToSpawn;
+    public List<GameObject> enemyList = new();
+
     public GameObject spawnPoint;
 
     private float spawnTimer;
@@ -80,7 +81,8 @@ public class EnemyManager : MonoBehaviour
             float xOffset = Random.Range(-spawnOffset, spawnOffset);
             float yOffset = Random.Range(-spawnOffset, spawnOffset);
             clusterPoint += new Vector3(xOffset,0, yOffset);
-            Instantiate(enemyToSpawn, clusterPoint, Quaternion.identity);
+            int randomOption = Random.Range(0, enemyList.Count);
+            Instantiate(enemyList[randomOption], clusterPoint, Quaternion.identity);
         }
         
     }
