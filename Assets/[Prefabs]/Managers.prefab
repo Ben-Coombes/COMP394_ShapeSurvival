@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &877717857
 Transform:
   m_ObjectHideFlags: 0
@@ -240,9 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a867f854140664abc0d92bf657aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guns:
-  - {fileID: 0}
-  player: {fileID: 0}
 --- !u!1 &8915158205337005615
 GameObject:
   m_ObjectHideFlags: 0
