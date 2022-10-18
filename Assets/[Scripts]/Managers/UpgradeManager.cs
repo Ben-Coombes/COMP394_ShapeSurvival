@@ -27,10 +27,9 @@ public class UpgradeManager : MonoBehaviour
         guns = player.GetComponentsInChildren<Gun>();
     }
 
-    public void Upgrade(Upgrade upgrade)
+    public void ApplyUpgrade(Upgrade upgrade)
     {
-
-        if (upgrade._upgradeType is global::Upgrade.UpgradeType.Rifle or global::Upgrade.UpgradeType.Shotgun)
+        if (upgrade._upgradeType is Upgrade.UpgradeType.Rifle or Upgrade.UpgradeType.Shotgun)
         {
             Gun gunToBeUpgraded = null;
 
@@ -59,6 +58,10 @@ public class UpgradeManager : MonoBehaviour
             //Niche Upgrades - Explode on impact, Explosion range
             bulletToBeUpgraded.range = upgrade.explosionRange;
             bulletToBeUpgraded.isBullet = !upgrade.explodeOnImpact;
+        }
+        else
+        {
+
         }
     }
 }

@@ -26,7 +26,7 @@ public class Upgrade
     [Header("UI")]
     [ConditionalField("_upgradeType", true, UpgradeType.None)] public string description;
     [ConditionalField("_upgradeType", true, UpgradeType.None)] public Sprite image;
-    [Header("Upgrade Values")]
+    [Header("ApplyUpgrade Values")]
     [ConditionalField("_upgradeType", true, UpgradeType.None)] public int level;
     [ConditionalField("_upgradeType", true, UpgradeType.None)] public string upgradeName;
     [ConditionalField("_upgradeType", false, UpgradeType.Damage)] public float uDamageIncrease;

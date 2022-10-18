@@ -29,6 +29,19 @@ public class LevelUpManager : MonoBehaviour
     public float xpToLvl;
     public int startingLvl = 1;
     public int currentLvl;
+    public int rifleLvl = 0;
+    public int shotgunLvl = 0;
+    public int damageUpgradeLvl = 0;
+    public int pickupUpgradeLvl = 0;
+    public int xpUpgradeLvl = 0;
+    public int movementUpgradeLvl = 0;
+    public int healthUpgradeLvl = 0;
+    public int recoveryUpgradeLvl = 0;
+    public int projectileUpgradeLvl = 0;
+    public int currentUpgrades = 0;
+    public int maxUpgrades = 3;
+    public int maxUpgradeLvl = 5;
+    public int maxGunLvl = 8;
     public float xpMultiplier = 1f;
     private GameObject upgradeMenu, xpMenu;
     public List<Upgrade> upgrades = new();
@@ -48,12 +61,12 @@ public class LevelUpManager : MonoBehaviour
     {
         try
         {
-            upgradeMenu = GameObject.Find("Upgrade Menu");
+            upgradeMenu = GameObject.Find("ApplyUpgrade Menu");
             upgradeMenu.SetActive(false);
         }
         catch (NullReferenceException)
         {
-            Debug.Log("No Upgrade Menu found in Scene");
+            Debug.Log("No ApplyUpgrade Menu found in Scene");
         }
         try
         {
@@ -70,7 +83,7 @@ public class LevelUpManager : MonoBehaviour
         }
 
         
-        //upgrades.Add(new Upgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
+        //upgrades.Add(new ApplyUpgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
     }
     public void AddXp(float amount)
     {
@@ -88,6 +101,8 @@ public class LevelUpManager : MonoBehaviour
 
 
 
+        
+        
         float percentageToLvl = (currentXp - Mathf.Pow(currentLvl, 3)) / (Mathf.Pow(currentLvl + 1, 3) - Mathf.Pow(currentLvl, 3));
         xpMenu.GetComponent<LevelUI>().UpdateXP(percentageToLvl, currentLvl);
         //Debug.Log($"Level: {currentLvl} \nXP Left: {xpLeft} \nCurrent XP: {currentXp} \nXP Needed for Level {xpToLvl}");
@@ -95,9 +110,7 @@ public class LevelUpManager : MonoBehaviour
 
     private void UpdateMenu()
     {
-        List<Upgrade> pool = new();
-        pool.AddRange(upgrades);
-
+        List<Upgrade> pool = UpdatePool();
         int length = 3;
         if (upgrades.Count < 3)
             length = upgrades.Count;
@@ -123,10 +136,56 @@ public class LevelUpManager : MonoBehaviour
         }
         xpMenu.SetActive(true);
         GameManager.Instance.Resume(upgradeMenu);
-        UpgradeManager.Instance.Upgrade(upgradeSelected);
+        UpgradeManager.Instance.ApplyUpgrade(upgradeSelected);
         upgrades.Remove(upgradeSelected);
     }
 
-    
+    private List<Upgrade> UpdatePool()
+    {
+        List<Upgrade> pool = new();
+        if (rifleLvl < maxGunLvl)
+        {
+            pool.Add(rifleUpgrades[rifleLvl]);
+        }
+
+        if (shotgunLvl < maxGunLvl)
+        {
+            pool.Add(shotgunUpgrades[shotgunLvl]);
+        }
+
+        if (currentUpgrades < maxUpgrades)
+        {
+            if (damageUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(damageUpgrades[damageUpgradeLvl]);
+            }
+            if (pickupUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(pickupUpgrades[pickupUpgradeLvl]);
+            }
+            if (xpUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(xpUpgrades[xpUpgradeLvl]);
+            }
+            if (movementUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(movementUpgrades[movementUpgradeLvl]);
+            }
+            if (healthUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(maxHealthUpgrades[healthUpgradeLvl]);
+            }
+            if (recoveryUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(recoveryUpgrades[recoveryUpgradeLvl]);
+            }
+            if (projectileUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(projectileUpgrades[projectileUpgradeLvl]);
+            }
+        }
+
+        return pool;
+    }
 
 }
