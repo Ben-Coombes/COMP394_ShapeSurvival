@@ -193,6 +193,12 @@ public class EnemyAI : MonoBehaviour
         spawnComplete = true;
     }
 
+    IEnumerator HideHealthBar()
+    {
+        yield return new WaitForSeconds(2);
+        healthBarUI.SetActive(false);
+    }
+
     IEnumerator DeathAnaimator()
     {
         anaimator.Play("EnemyDeath");
@@ -260,8 +266,10 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(float damage, Vector3 force)
     {
+        StopCoroutine(HideHealthBar());
         healthBarUI.SetActive(true);
         health -= damage;
+        StartCoroutine(HideHealthBar());
         healthBarSlider.value = CalculateHealth();
 
         if (health <= 0)
