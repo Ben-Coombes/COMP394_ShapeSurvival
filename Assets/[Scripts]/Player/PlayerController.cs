@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         health = maxHealth;
         recoveryRate = 0.2f;
+        StartCoroutine(RestoreHealth());
     }
 
     // Update is called once per frame
