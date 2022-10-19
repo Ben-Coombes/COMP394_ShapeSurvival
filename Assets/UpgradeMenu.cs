@@ -27,11 +27,12 @@ public class UpgradeMenu : MonoBehaviour
     {
         for (int i = 3; i > length; i--)
         {
-            GameObject container = upgradesUI[i - 1].image.rectTransform.parent.gameObject;
-            //Navigation navigation = new Navigation();
-            //navigation.mode = Navigation.Mode.None;
-            //container.GetComponent<Button>().navigation = navigation;
-            Destroy(container);
+            if (upgradesUI[i - 1].image != null)
+            {
+                GameObject container = upgradesUI[i - 1].image.rectTransform.parent.gameObject;
+                Destroy(container);
+            }
+            
         }
     }
 }
