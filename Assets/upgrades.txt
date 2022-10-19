@@ -1,0 +1,110 @@
+EnemyDefault
+	health 100
+	damage 0.8 every 0.3s
+
+EnemyFast
+	health 80
+	damage 0.6 every 0.3s
+
+Player
+	health 100
+	recovery 0.2 every 0.5s
+
+Rifle
+	damage 20
+	speed 100
+	firerate 0.1
+	spread 0.2
+	bulletspertap 1
+	knockback 3
+
+	end stats
+		damage 35
+		firerate 0.05
+		bulletspertap 2
+		maxcollisions 3
+		speed 125
+		knockback 5
+	1
+		damage +1
+		knockback +0.5
+	2
+		damage +1.5
+		speed +5
+	3
+		firerate -0.01
+		speed +5
+		knockback +0.5
+	4
+		damage +2
+		maxcollisions +1
+	5
+		damage +2.5
+		knockback + 0.5
+		speed +5
+	6
+		damage +3.5
+		firerate -0.02
+	7
+		damage +4.5
+		speed +10
+		knockback +0.5
+	8
+		bulletspertap +1
+		maxcollisions +1
+		firerate -0.02
+		spread -0.1
+
+
+Shotgun
+	damage 10
+	speed 75
+	firerate 0.6
+	spread 1.2
+	bulletspertap 8
+	knockback 6
+
+	end stats
+		damage 20 + 10
+		firerate 0.3 - 0.3
+		bulletspertap 14 + 6
+		speed 100 + 25
+		knockback 9 + 3
+		spread 0.7 - 0.5
+
+	1
+		damage +0.5
+		speed +5
+	2
+		damage +0.5
+		bulletspertap +1
+		spread -0.1
+	3
+		firerate -0.1
+		speed +5
+		knockback +1
+	4
+		damage +1
+		speed +5
+		spread -0.2
+	5
+		damage +1
+		bulletspertap +1
+		knockback +1
+	6
+		damage +2
+		firerate -0.1
+		spread -0.1
+	7
+		damage +2
+		bulletspertap +1
+		knockback +1
+	8
+		damage +3
+		firerate -0.1
+		bulletspertap +3
+		speed +10
+		spread -0.1
+
+		
+		
