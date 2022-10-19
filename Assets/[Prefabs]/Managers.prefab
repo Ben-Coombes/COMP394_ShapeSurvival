@@ -194,15 +194,15 @@ MonoBehaviour:
   healthUpgradeLvl: 0
   recoveryUpgradeLvl: 0
   projectileUpgradeLvl: 0
+  armourUpgradeLvl: 0
   currentUpgrades: 0
   maxUpgrades: 3
   maxUpgradeLvl: 5
   maxGunLvl: 8
-  xpMultiplier: 1
   rifleUpgrades:
   - _upgradeType: 1
     description: 
-    image: {fileID: 21300000, guid: ce97ed62c0a56e84ab25e22c8dfd5bca, type: 3}
+    image: {fileID: 21300000, guid: 68e11cf28a9cba245a76efff4ea18778, type: 3}
     level: 1
     upgradeName: Rifle
     uDamageIncrease: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     explosionRange: 0
   - _upgradeType: 1
     description: 
-    image: {fileID: 21300000, guid: ce97ed62c0a56e84ab25e22c8dfd5bca, type: 3}
+    image: {fileID: 21300000, guid: 68e11cf28a9cba245a76efff4ea18778, type: 3}
     level: 2
     upgradeName: Rifle
     uDamageIncrease: 0
@@ -648,6 +648,7 @@ MonoBehaviour:
     collisionsIncrease: 0
     explodeOnImpact: 0
     explosionRange: 0
+  armourUpgrades: []
 --- !u!1 &6885015427144589389
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +693,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a867f854140664abc0d92bf657aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 0
+  pickupRangeIncrease: 0
+  xpMultiplier: 0
+  speedIncrease: 0
+  healthIncrease: 0
+  recoveryMultiplier: 0
+  projectileIncrease: 0
+  armourMultiplier: 0
 --- !u!1 &8915158205337005615
 GameObject:
   m_ObjectHideFlags: 0

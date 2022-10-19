@@ -88,7 +88,7 @@ MonoBehaviour:
   name: shotgun
   fireRate: 0.5
   spread: 1.2
-  bulletsPerTap: 12
+  bulletsPerTap: 8
   fireRateTap: 0
   automatic: 0
   level: 0
