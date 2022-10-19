@@ -13,7 +13,7 @@ public class ChildTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && enemy != null)
         {
             enemy.playerInTrigger = true;
         }
@@ -21,7 +21,7 @@ public class ChildTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && enemy != null)
         {
             enemy.playerInTrigger = false;
         }

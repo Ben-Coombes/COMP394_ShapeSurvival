@@ -41,11 +41,11 @@ public class LevelUpManager : MonoBehaviour
     public int healthUpgradeLvl = 0;
     public int recoveryUpgradeLvl = 0;
     public int projectileUpgradeLvl = 0;
+    public int armourUpgradeLvl;
     public int currentUpgrades = 0;
     public int maxUpgrades = 3;
     public int maxUpgradeLvl;
     public int maxGunLvl;
-    public float xpMultiplier = 1f;
     private GameObject upgradeMenu, xpMenu;
     [Header("Guns")]
     public List<Upgrade> rifleUpgrades = new();
@@ -58,6 +58,7 @@ public class LevelUpManager : MonoBehaviour
     public List<Upgrade> maxHealthUpgrades = new();
     public List<Upgrade> recoveryUpgrades = new();
     public List<Upgrade> projectileUpgrades = new();
+    public List<Upgrade> armourUpgrades = new();
     private List<Upgrade> allUpgrades = new();
 
     private void Start()
@@ -93,7 +94,7 @@ public class LevelUpManager : MonoBehaviour
     }
     public void AddXp(float amount)
     {
-        currentXp += amount * xpMultiplier;
+        currentXp += amount * UpgradeManager.Instance.xpMultiplier;
 
         if (currentXp >= xpToLvl)
         {
@@ -189,6 +190,9 @@ public class LevelUpManager : MonoBehaviour
                 recoveryUpgradeLvl++;
                 break;
             case Upgrade.UpgradeType.Armour:
+                if (armourUpgradeLvl == 0)
+                    currentUpgrades++;
+                armourUpgradeLvl++;
                 break;
             case Upgrade.UpgradeType.Projectile:
                 if (projectileUpgradeLvl == 0)
@@ -243,6 +247,10 @@ public class LevelUpManager : MonoBehaviour
             if (projectileUpgradeLvl < maxUpgradeLvl)
             {
                 pool.Add(projectileUpgrades[projectileUpgradeLvl]);
+            }
+            if (armourUpgradeLvl < maxUpgradeLvl)
+            {
+                pool.Add(armourUpgrades[armourUpgradeLvl]);
             }
         }
         

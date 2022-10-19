@@ -27,6 +27,8 @@ public class EnemyAI : MonoBehaviour
     [Header("Attacking")]
     public bool playerInTrigger = false;
 
+    public float damage;
+
     [Header("Health")]
     public float health;
     public float maxHealth;
@@ -249,9 +251,9 @@ public class EnemyAI : MonoBehaviour
         playerInTrigger = true;
         while (playerInTrigger)
         {
+            player.GetComponent<PlayerController>().TakeDamage(damage);
             OnKnockback(-transform.position * 0.5f);
             yield return new WaitForSeconds(0.3f);
-
         }
     }
 
