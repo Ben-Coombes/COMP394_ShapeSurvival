@@ -588,11 +588,11 @@ MonoBehaviour:
     explosionRange: 0
   damageUpgrades:
   - _upgradeType: 3
-    description: 
-    image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    description: Damage Multiplier increased by 2.5%
+    image: {fileID: 21300000, guid: 8a693c58d9de633468e8fc3500f14764, type: 3}
     level: 1
     upgradeName: Damage
-    uDamageIncrease: 0
+    uDamageIncrease: 0.025
     pickupRangeIncrease: 0
     xpMultiplierIncrease: 0
     movementSpeedIncrease: 0
@@ -610,11 +610,77 @@ MonoBehaviour:
     explodeOnImpact: 0
     explosionRange: 0
   - _upgradeType: 3
-    description: 
-    image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    description: Damage Multiplier increased by 2.5%
+    image: {fileID: 21300000, guid: 8a693c58d9de633468e8fc3500f14764, type: 3}
     level: 2
     upgradeName: Damage
-    uDamageIncrease: 0
+    uDamageIncrease: 0.025
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 3
+    description: Damage Multiplier increased by 5%
+    image: {fileID: 21300000, guid: 8a693c58d9de633468e8fc3500f14764, type: 3}
+    level: 3
+    upgradeName: Damage
+    uDamageIncrease: 0.05
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 3
+    description: Damage Multiplier increased by 5%
+    image: {fileID: 21300000, guid: 8a693c58d9de633468e8fc3500f14764, type: 3}
+    level: 4
+    upgradeName: Damage
+    uDamageIncrease: 0.05
+    pickupRangeIncrease: 0
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 3
+    description: Damage Multiplier increased by 5%
+    image: {fileID: 21300000, guid: 8a693c58d9de633468e8fc3500f14764, type: 3}
+    level: 5
+    upgradeName: Damage
+    uDamageIncrease: 0.05
     pickupRangeIncrease: 0
     xpMultiplierIncrease: 0
     movementSpeedIncrease: 0
@@ -633,12 +699,12 @@ MonoBehaviour:
     explosionRange: 0
   pickupUpgrades:
   - _upgradeType: 4
-    description: 
-    image: {fileID: 0}
+    description: Pickup Range increased by 3
+    image: {fileID: 21300000, guid: a5dabb0b54ab6764d9fdf64ae245df04, type: 3}
     level: 1
     upgradeName: Pickup
     uDamageIncrease: 0
-    pickupRangeIncrease: 0
+    pickupRangeIncrease: 3
     xpMultiplierIncrease: 0
     movementSpeedIncrease: 0
     healthIncrease: 0
@@ -655,12 +721,78 @@ MonoBehaviour:
     explodeOnImpact: 0
     explosionRange: 0
   - _upgradeType: 4
-    description: 
-    image: {fileID: 0}
+    description: Pickup Range increased by 3
+    image: {fileID: 21300000, guid: a5dabb0b54ab6764d9fdf64ae245df04, type: 3}
     level: 2
     upgradeName: Pickup
     uDamageIncrease: 0
-    pickupRangeIncrease: 0
+    pickupRangeIncrease: 3
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 4
+    description: Pickup Range increased by 3
+    image: {fileID: 21300000, guid: a5dabb0b54ab6764d9fdf64ae245df04, type: 3}
+    level: 3
+    upgradeName: Pickup
+    uDamageIncrease: 0
+    pickupRangeIncrease: 3
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 4
+    description: Pickup Range increased by 3
+    image: {fileID: 21300000, guid: a5dabb0b54ab6764d9fdf64ae245df04, type: 3}
+    level: 4
+    upgradeName: Pickup
+    uDamageIncrease: 0
+    pickupRangeIncrease: 3
+    xpMultiplierIncrease: 0
+    movementSpeedIncrease: 0
+    healthIncrease: 0
+    healthRecoveryIncrease: 0
+    armourIncrease: 0
+    projectileIncrease: 0
+    fireRateIncrease: 0
+    spreadDecrease: 0
+    bulletsIncrease: 0
+    manualToAuto: 0
+    gDamageIncrease: 0
+    knockbackIncrease: 0
+    collisionsIncrease: 0
+    explodeOnImpact: 0
+    explosionRange: 0
+  - _upgradeType: 4
+    description: Pickup Range increased by 3
+    image: {fileID: 21300000, guid: a5dabb0b54ab6764d9fdf64ae245df04, type: 3}
+    level: 5
+    upgradeName: Pickup
+    uDamageIncrease: 0
+    pickupRangeIncrease: 3
     xpMultiplierIncrease: 0
     movementSpeedIncrease: 0
     healthIncrease: 0
@@ -901,51 +1033,7 @@ MonoBehaviour:
     collisionsIncrease: 0
     explodeOnImpact: 0
     explosionRange: 0
-  armourUpgrades:
-  - _upgradeType: 9
-    description: 
-    image: {fileID: 0}
-    level: 1
-    upgradeName: Armour
-    uDamageIncrease: 0
-    pickupRangeIncrease: 0
-    xpMultiplierIncrease: 0
-    movementSpeedIncrease: 0
-    healthIncrease: 0
-    healthRecoveryIncrease: 0
-    armourIncrease: 0
-    projectileIncrease: 0
-    fireRateIncrease: 0
-    spreadDecrease: 0
-    bulletsIncrease: 0
-    manualToAuto: 0
-    gDamageIncrease: 0
-    knockbackIncrease: 0
-    collisionsIncrease: 0
-    explodeOnImpact: 0
-    explosionRange: 0
-  - _upgradeType: 9
-    description: 
-    image: {fileID: 0}
-    level: 2
-    upgradeName: Armour
-    uDamageIncrease: 0
-    pickupRangeIncrease: 0
-    xpMultiplierIncrease: 0
-    movementSpeedIncrease: 0
-    healthIncrease: 0
-    healthRecoveryIncrease: 0
-    armourIncrease: 0
-    projectileIncrease: 0
-    fireRateIncrease: 0
-    spreadDecrease: 0
-    bulletsIncrease: 0
-    manualToAuto: 0
-    gDamageIncrease: 0
-    knockbackIncrease: 0
-    collisionsIncrease: 0
-    explodeOnImpact: 0
-    explosionRange: 0
+  armourUpgrades: []
 --- !u!1 &6885015427144589389
 GameObject:
   m_ObjectHideFlags: 0
