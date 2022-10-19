@@ -106,5 +106,38 @@ Shotgun
 		speed +10
 		spread -0.1
 
+damage upgrade
+	0-20% damage multiplier
+	levels 5
+
+	2.5%
+	2.5%
+	5%
+	5%
+	10%
+pickup upgrade
+	7-22
+	levels 5
+
+
+xp upgrade
+	0-25% xp multiplier
+	levels 5
+movement upgrade
+	75% speed increase
+	levels 5
+max health upgrade
+	100-200 health
+	levels 5
+recovery upgrade
+	100% - 300%
+	levels 5
+projectile upgrade
+	+1 projectile
+	level 1
+armour upgrade
+	30% damage reduction
+	levels 5
+
 		
 		

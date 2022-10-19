@@ -220,35 +220,35 @@ public class LevelUpManager : MonoBehaviour
 
         if (currentUpgrades < maxUpgrades)
         {
-            if (damageUpgradeLvl < maxUpgradeLvl)
+            if (damageUpgradeLvl < damageUpgrades.Count)
             {
                 pool.Add(damageUpgrades[damageUpgradeLvl]);
             }
-            if (pickupUpgradeLvl < maxUpgradeLvl)
+            if (pickupUpgradeLvl < pickupUpgrades.Count)
             {
                 pool.Add(pickupUpgrades[pickupUpgradeLvl]);
             }
-            if (xpUpgradeLvl < maxUpgradeLvl)
+            if (xpUpgradeLvl < xpUpgrades.Count)
             {
                 pool.Add(xpUpgrades[xpUpgradeLvl]);
             }
-            if (movementUpgradeLvl < maxUpgradeLvl)
+            if (movementUpgradeLvl < movementUpgrades.Count)
             {
                 pool.Add(movementUpgrades[movementUpgradeLvl]);
             }
-            if (healthUpgradeLvl < maxUpgradeLvl)
+            if (healthUpgradeLvl < maxHealthUpgrades.Count)
             {
                 pool.Add(maxHealthUpgrades[healthUpgradeLvl]);
             }
-            if (recoveryUpgradeLvl < maxUpgradeLvl)
+            if (recoveryUpgradeLvl < recoveryUpgrades.Count)
             {
                 pool.Add(recoveryUpgrades[recoveryUpgradeLvl]);
             }
-            if (projectileUpgradeLvl < maxUpgradeLvl)
+            if (projectileUpgradeLvl < projectileUpgrades.Count)
             {
                 pool.Add(projectileUpgrades[projectileUpgradeLvl]);
             }
-            if (armourUpgradeLvl < maxUpgradeLvl)
+            if (armourUpgradeLvl < armourUpgrades.Count)
             {
                 pool.Add(armourUpgrades[armourUpgradeLvl]);
             }
