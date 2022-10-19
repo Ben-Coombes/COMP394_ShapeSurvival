@@ -74,7 +74,7 @@ public class LevelUpManager : MonoBehaviour
         }
         try
         {
-            xpMenu = GameObject.Find("XP Menu");
+            xpMenu = GameObject.Find("PlayerUI");
             currentLvl = startingLvl;
             xpToLvl = Mathf.Pow(currentLvl + 1, 3);
             xpLeft = xpToLvl - currentXp;
