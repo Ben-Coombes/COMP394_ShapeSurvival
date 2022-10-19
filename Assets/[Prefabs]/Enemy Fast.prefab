@@ -760,8 +760,9 @@ MonoBehaviour:
   enemySpawned: 0
   isDead: 0
   playerInTrigger: 0
+  damage: 0.6
   health: 0
-  maxHealth: 1
+  maxHealth: 80
   isknockedBack: 0
   healthBarUI: {fileID: 9016407818997505096}
   healthBarSlider: {fileID: 9016407817227504479}

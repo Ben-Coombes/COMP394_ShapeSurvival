@@ -351,6 +351,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   gravity: -15
+  health: 0
+  maxHealth: 100
+  recoveryRate: 0
   jumpHeight: 1.5
   pickupRange: 7
 --- !u!114 &7059088929324163
@@ -366,8 +369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 2111108983449276964}
-  xSensitivity: 5
-  ySensitivity: 5
+  xSensitivity: 10
+  ySensitivity: 10
 --- !u!114 &704335066
 MonoBehaviour:
   m_ObjectHideFlags: 0

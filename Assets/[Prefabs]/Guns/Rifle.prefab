@@ -249,7 +249,7 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   bulletSpawnPoint: {fileID: 3576360169292412402}
   muzzleFlash: {fileID: 2682295106190103625}
-  speed: 75
+  speed: 100
   upwardSpeed: 0
   name: rifle
   fireRate: 0.1
@@ -257,6 +257,7 @@ MonoBehaviour:
   bulletsPerTap: 1
   fireRateTap: 0
   automatic: 1
+  level: 0
   allowInvoke: 1
 --- !u!1001 &2847966865902171385
 PrefabInstance:
