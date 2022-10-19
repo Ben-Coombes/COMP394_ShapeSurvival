@@ -25,13 +25,14 @@ public class EnemyManager : MonoBehaviour
     public int minClusterSize;
     private float clusterTimer; //cluster timer
     public float timeBetweenClusterIncrease = 5; // time between cluster increase
+    public int clusterCap;
 
     public float spawnOffset;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        clusterCap = 15;
     }
 
     // Update is called once per frame
@@ -76,6 +77,10 @@ public class EnemyManager : MonoBehaviour
     {
         Vector3 clusterPoint = RandomPoint();
         int amount = Random.Range(minClusterSize, maxClusterSize + 1);
+        if (amount > clusterCap)
+        {
+            amount = clusterCap;
+        }
         for (int i = 0; i < amount; i++)
         {
             float xOffset = Random.Range(-spawnOffset, spawnOffset);

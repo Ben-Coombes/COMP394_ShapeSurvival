@@ -14,7 +14,15 @@ public class XP : MonoBehaviour
     public float pickupRange;
     public LayerMask whatIsPlayer;
 
-    public bool enteredPickupRange = false; 
+    public bool enteredPickupRange = false;
+
+    [Header("Anaimation")]
+    public Animator anaimator;
+
+    private void Awake()
+    {
+        anaimator.Play("XP_Spawn");
+    }
 
     // Start is called before the first frame update
     void Start()

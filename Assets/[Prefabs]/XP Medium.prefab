@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2943402094476592626}
   - component: {fileID: 5250087501378114071}
   - component: {fileID: 3777195615769598625}
+  - component: {fileID: 5837230137181657797}
   m_Layer: 0
   m_Name: XP Medium
   m_TagString: Untagged
@@ -119,3 +120,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   enteredPickupRange: 0
+  anaimator: {fileID: 5837230137181657797}
+--- !u!95 &5837230137181657797
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209531997897779918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6697dc74967c4284ea85c48853859671, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
