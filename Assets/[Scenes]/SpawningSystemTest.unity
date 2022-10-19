@@ -658,14 +658,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 877717856, guid: 2cb3523e457347145982ef695bc6d084, type: 3}
-      propertyPath: timeBetweenIncrease
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 877717856, guid: 2cb3523e457347145982ef695bc6d084, type: 3}
-      propertyPath: timeBetweenClusterIncrease
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 6885015425855729028, guid: 2cb3523e457347145982ef695bc6d084, type: 3}
       propertyPath: m_RootOrder
       value: 12

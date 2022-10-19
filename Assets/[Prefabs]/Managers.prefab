@@ -48,13 +48,13 @@ MonoBehaviour:
   - {fileID: 5156368440485137017, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
   - {fileID: 9016407818598943477, guid: ed78ae92b5d57864188410bc84a131e8, type: 3}
   spawnPoint: {fileID: 877717855}
-  timeBetweenIncrease: 10
+  timeBetweenIncrease: 60
   timer: 5
   minTimeBetweenSpawns: 2
   range: 20
   maxClusterSize: 2
   minClusterSize: 1
-  timeBetweenClusterIncrease: 5
+  timeBetweenClusterIncrease: 80
   spawnOffset: 4
 --- !u!1 &111897811845839449
 GameObject:
@@ -305,8 +305,8 @@ MonoBehaviour:
     spreadDecrease: 0
     bulletsIncrease: 0
     manualToAuto: 0
-    gDamageIncrease: 0
-    knockbackIncrease: 0
+    gDamageIncrease: 2.5
+    knockbackIncrease: 0.5
     collisionsIncrease: 0
     explodeOnImpact: 0
     explosionRange: 0
