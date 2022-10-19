@@ -79,18 +79,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089e9cd8ec93f9345bf72113c8e9c011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7208932059771452719, guid: 599102725b68e6844a0a1565f2941f79, type: 3}
+  bulletPrefab: {fileID: 7208932059771452719, guid: 6d4cf72cf16e3a34ba47966ece6c542f, type: 3}
   playerCam: {fileID: 0}
   bulletSpawnPoint: {fileID: 3576360169292412402}
   muzzleFlash: {fileID: 2682295106190103625}
   speed: 75
   upwardSpeed: 0
   name: shotgun
-  fireRate: 0.3
+  fireRate: 0.5
   spread: 1.2
   bulletsPerTap: 12
   fireRateTap: 0
   automatic: 0
+  level: 0
   allowInvoke: 1
 --- !u!1 &6076759028724609409
 GameObject:

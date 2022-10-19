@@ -28,7 +28,7 @@ public class UpgradeManager : MonoBehaviour
     public float healthIncrease; //
     public float recoveryMultiplier; //
     public float projectileIncrease; //
-    public float armourMultiplier;
+    public float armourMultiplier; //
 
     private void Start()
     {
