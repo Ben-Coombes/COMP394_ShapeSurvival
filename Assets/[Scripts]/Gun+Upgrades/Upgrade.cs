@@ -24,7 +24,7 @@ public class Upgrade
     }
     public UpgradeType _upgradeType;
     [Header("UI")]
-    [ConditionalField("_upgradeType", true, UpgradeType.None)] public string description;
+    [ConditionalField("_upgradeType", true, UpgradeType.None)][TextArea] public string description;
     [ConditionalField("_upgradeType", true, UpgradeType.None)] public Sprite image;
     [Header("ApplyUpgrade Values")]
     [ConditionalField("_upgradeType", true, UpgradeType.None)] public int level;
