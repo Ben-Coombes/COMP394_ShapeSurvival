@@ -88,7 +88,7 @@ public class LevelUpManager : MonoBehaviour
 
         maxGunLvl = rifleUpgrades.Count;
         maxUpgradeLvl = damageUpgrades.Count;
-        allUpgrades = rifleUpgrades.Concat(shotgunUpgrades).Concat(damageUpgrades).Concat(pickupUpgrades).Concat(xpUpgrades).Concat(movementUpgrades).Concat(maxHealthUpgrades).Concat(recoveryUpgrades).Concat(projectileUpgrades).ToList();
+        allUpgrades = rifleUpgrades.Concat(shotgunUpgrades).Concat(damageUpgrades).Concat(pickupUpgrades).Concat(xpUpgrades).Concat(movementUpgrades).Concat(maxHealthUpgrades).Concat(recoveryUpgrades).Concat(projectileUpgrades).Concat(armourUpgrades).ToList();
 
         //upgrades.Add(new ApplyUpgrade("t", "t", null, 1, "rifle", 0, 0, 1, false, 0, 0, 0, false, 0));
     }
@@ -249,6 +249,41 @@ public class LevelUpManager : MonoBehaviour
                 pool.Add(projectileUpgrades[projectileUpgradeLvl]);
             }
             if (armourUpgradeLvl < armourUpgrades.Count)
+            {
+                pool.Add(armourUpgrades[armourUpgradeLvl]);
+            }
+        }
+        else
+        {
+            if (damageUpgradeLvl > 0 && damageUpgradeLvl < damageUpgrades.Count)
+            {
+                pool.Add(damageUpgrades[damageUpgradeLvl]);
+            }
+            if (pickupUpgradeLvl > 0 && pickupUpgradeLvl < pickupUpgrades.Count)
+            {
+                pool.Add(pickupUpgrades[pickupUpgradeLvl]);
+            }
+            if (xpUpgradeLvl > 0 && xpUpgradeLvl < xpUpgrades.Count)
+            {
+                pool.Add(xpUpgrades[xpUpgradeLvl]);
+            }
+            if (movementUpgradeLvl > 0 && movementUpgradeLvl < movementUpgrades.Count)
+            {
+                pool.Add(movementUpgrades[movementUpgradeLvl]);
+            }
+            if (healthUpgradeLvl > 0 && healthUpgradeLvl < maxHealthUpgrades.Count)
+            {
+                pool.Add(maxHealthUpgrades[healthUpgradeLvl]);
+            }
+            if (recoveryUpgradeLvl > 0 && recoveryUpgradeLvl < recoveryUpgrades.Count)
+            {
+                pool.Add(recoveryUpgrades[recoveryUpgradeLvl]);
+            }
+            if (projectileUpgradeLvl > 0 && projectileUpgradeLvl < projectileUpgrades.Count)
+            {
+                pool.Add(projectileUpgrades[projectileUpgradeLvl]);
+            }
+            if (armourUpgradeLvl > 0 && armourUpgradeLvl < armourUpgrades.Count)
             {
                 pool.Add(armourUpgrades[armourUpgradeLvl]);
             }
