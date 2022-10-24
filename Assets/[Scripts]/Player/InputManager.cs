@@ -36,6 +36,7 @@ public class InputManager : MonoBehaviour
 
         onGround.Jump.performed += ctx => playerController.Jump();
         onGround.SwitchWeapon.performed += ctx => playerGunController.SwitchGun();
+        playerInput.SwitchCurrentActionMap("OnGround");
         //playerInput.currentActionMap = onGround.Get();
     }
 
