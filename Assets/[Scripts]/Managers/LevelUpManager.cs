@@ -63,6 +63,20 @@ public class LevelUpManager : MonoBehaviour
 
     private void Start()
     {
+        currentXp = 1;
+
+        startingLvl = 1;
+        rifleLvl = 0;
+        shotgunLvl = 0;
+        damageUpgradeLvl = 0;
+        pickupUpgradeLvl = 0;
+        xpUpgradeLvl = 0;
+        movementUpgradeLvl = 0;
+        healthUpgradeLvl = 0;
+        recoveryUpgradeLvl = 0;
+        projectileUpgradeLvl = 0;
+        currentUpgrades = 0;
+        maxUpgrades = 3;
         try
         {
             upgradeMenu = GameObject.Find("Upgrade Menu");
