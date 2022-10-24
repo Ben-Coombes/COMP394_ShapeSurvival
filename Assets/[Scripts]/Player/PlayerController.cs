@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -65,7 +66,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerDeath()
     {
-        Destroy(this);
+        SceneManager.LoadScene(2);
+        
     }
 
     private IEnumerator RestoreHealth()
