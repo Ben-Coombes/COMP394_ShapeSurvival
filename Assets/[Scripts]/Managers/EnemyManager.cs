@@ -99,7 +99,7 @@ public class EnemyManager : MonoBehaviour
 
         Vector3 randomPoint = rand;
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomPoint, out hit, 40.0f, NavMesh.AllAreas);
+        NavMesh.SamplePosition(randomPoint, out hit, 120f, NavMesh.AllAreas);
 
         return hit.position;
         
