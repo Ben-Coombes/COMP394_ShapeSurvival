@@ -258,7 +258,7 @@ public class EnemyAI : MonoBehaviour
         while (playerInTrigger)
         {
             player.GetComponent<PlayerController>().TakeDamage(damage);
-            OnKnockback(-transform.position * 0.5f);
+            OnKnockback(-transform.position * 0.2f);
             yield return new WaitForSeconds(0.3f);
         }
     }
