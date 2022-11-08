@@ -344,7 +344,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   playerHeight: 2
-  jumpHeight: 7
+  jumpHeight: 10
   pickupRange: 7
   isSprinting: 0
   currentState: 0
