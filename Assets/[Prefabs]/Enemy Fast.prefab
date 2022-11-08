@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 316040876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.43, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 0.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9016407818598943480}
@@ -744,6 +744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 9016407818598943478}
   player: {fileID: 0}
+  coin: {fileID: 1386650386640399895, guid: 04a9be567e88d3e4e83f3930aafe62ac, type: 3}
   xp: {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
   xpList:
   - {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}

@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     FiniteStateMachine fsm;
     [Header("XP")]
+    public GameObject coin;
     public GameObject xp;
     public List<GameObject> xpList = new();
     public int xpRange;
@@ -205,6 +206,8 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(anaimator.GetCurrentAnimatorStateInfo(0).length);
         //drop XP
         Instantiate(xpList[XpToSpawn()], transform.position, Quaternion.identity);
+        //drop coin
+        Instantiate(coin, transform.position, Quaternion.identity);
 
         Destroy(this.gameObject);
     }
