@@ -64,13 +64,14 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        playerController.Move(onGround.Movement.ReadValue<Vector2>());
-       
+        
     }
 
     void Update()
     {
+        playerController.Move(onGround.Movement.ReadValue<Vector2>());
         playerGunController.currentGun.CheckInput(onGround.Fire);
+        playerController.isSprinting = onGround.Sprint.IsPressed();
     }
 
     void LateUpdate()

@@ -239,11 +239,12 @@ GameObject:
   - component: {fileID: 7059088905225959}
   - component: {fileID: 7059088905225952}
   - component: {fileID: 7059088905225953}
-  - component: {fileID: 7059088905225954}
   - component: {fileID: 7059088929324157}
   - component: {fileID: 7059088929324163}
   - component: {fileID: 704335066}
   - component: {fileID: 1390558790}
+  - component: {fileID: 1563124846}
+  - component: {fileID: 1563124845}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -319,24 +320,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!143 &7059088905225954
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059088905225955}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7059088929324157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,13 +332,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61e31cd1326aad42b2b69663d42709f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  walkSpeed: 10
+  sprintSpeed: 20
   gravity: -15
+  groundDrag: 5
+  airSpeedMultiplier: 0.4
   health: 0
   maxHealth: 100
   recoveryRate: 0
-  jumpHeight: 1.5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  playerHeight: 2
+  jumpHeight: 7
   pickupRange: 7
+  isSprinting: 0
+  currentState: 0
 --- !u!114 &7059088929324163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +448,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 20831a01-5d77-4092-8637-93747fb7f475
     m_ActionName: OnMenu/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7a1dbc06-9f58-4c45-b3f7-5059a7ba427d
+    m_ActionName: OnGround/Sprint[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: OnGround
@@ -475,6 +471,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGun: {fileID: 0}
   guns: []
+--- !u!54 &1563124846
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059088905225955}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!136 &1563124845
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059088905225955}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &919132148035704360
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,11 +51,11 @@ MonoBehaviour:
   timeBetweenIncrease: 60
   timer: 5
   minTimeBetweenSpawns: 2
-  range: 20
+  range: 120
   maxClusterSize: 2
   minClusterSize: 1
   timeBetweenClusterIncrease: 80
-  clusterCap: 0
+  clusterCap: 25
   spawnOffset: 4
 --- !u!1 &111897811845839449
 GameObject:
