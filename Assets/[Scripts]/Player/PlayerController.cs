@@ -23,6 +23,12 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     public LayerMask whatIsGround;
     public float playerHeight;
+    [Header("Crouching")] 
+    public float crouchSpeed;
+    public float crouchYScale;
+    private float startYScale;
+    public bool isCrouching;
+
 
 
 
@@ -39,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         walking,
         sprinting,
+        crouching,
         air
     }
     // Start is called before the first frame update
@@ -50,6 +57,8 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
         recoveryRate = 0.2f;
         StartCoroutine(RestoreHealth());
+
+        startYScale = transform.localScale.y;
 
     }
 
@@ -68,6 +77,17 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateState()
     {
+        if (isCrouching)
+        {
+            currentState = MovementState.crouching;
+            speed = crouchSpeed;
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+        }
         if (isGrounded && isSprinting)
         {
             currentState = MovementState.sprinting;
@@ -110,7 +130,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
         }
     }
 

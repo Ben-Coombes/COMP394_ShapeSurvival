@@ -72,6 +72,7 @@ public class InputManager : MonoBehaviour
         playerController.Move(onGround.Movement.ReadValue<Vector2>());
         playerGunController.currentGun.CheckInput(onGround.Fire);
         playerController.isSprinting = onGround.Sprint.IsPressed();
+        playerController.isCrouching = onGround.Crouch.IsPressed();
     }
 
     void LateUpdate()

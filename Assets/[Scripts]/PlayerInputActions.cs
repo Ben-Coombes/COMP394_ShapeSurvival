@@ -80,6 +80,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""597e7f25-1d51-49a6-84db-fcb95e9be2c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62414cbc-5cb7-4a9c-9e56-b16491c11121"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f1c8c2a-930b-4096-864f-04be253600df"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -843,6 +874,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_OnGround_Fire = m_OnGround.FindAction("Fire", throwIfNotFound: true);
         m_OnGround_SwitchWeapon = m_OnGround.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_OnGround_Sprint = m_OnGround.FindAction("Sprint", throwIfNotFound: true);
+        m_OnGround_Crouch = m_OnGround.FindAction("Crouch", throwIfNotFound: true);
         // OnMenu
         m_OnMenu = asset.FindActionMap("OnMenu", throwIfNotFound: true);
         m_OnMenu_Navigate = m_OnMenu.FindAction("Navigate", throwIfNotFound: true);
@@ -920,6 +952,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnGround_Fire;
     private readonly InputAction m_OnGround_SwitchWeapon;
     private readonly InputAction m_OnGround_Sprint;
+    private readonly InputAction m_OnGround_Crouch;
     public struct OnGroundActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -930,6 +963,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_OnGround_Fire;
         public InputAction @SwitchWeapon => m_Wrapper.m_OnGround_SwitchWeapon;
         public InputAction @Sprint => m_Wrapper.m_OnGround_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_OnGround_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_OnGround; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -957,6 +991,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSprint;
+                @Crouch.started -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnCrouch;
             }
             m_Wrapper.m_OnGroundActionsCallbackInterface = instance;
             if (instance != null)
@@ -979,6 +1016,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
             }
         }
     }
@@ -1096,6 +1136,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
     public interface IOnMenuActions
     {
