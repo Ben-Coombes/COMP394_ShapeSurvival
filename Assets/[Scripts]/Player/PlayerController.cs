@@ -2,19 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController controller;
-    private Vector3 playerVelocity;
     [Header("Movement")]
-    private float speed = 5f;
+    public float speed = 5f;
     public float walkSpeed;
     public float sprintSpeed;
     public float gravity = -9.8f;
     public float groundDrag;
     public float airSpeedMultiplier;
+    private Vector3 moveDir;
     [Header("Player Stats")]
     public float health;
     public float maxHealth = 100f;
@@ -28,45 +28,160 @@ public class PlayerController : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
     public bool isCrouching;
+    [Header("Slopes")] 
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    private bool offSlope;
+    [Header("Jump")]
+    public float jumpHeight = 3f;
+    private bool canJump = true;
 
 
-
+    private FiniteStateMachine fsm;
+    [SerializeField]
+    public FiniteStateMachine.State currentState;
 
     private Transform playerCam;
     private Rigidbody rb;
 
-    public float jumpHeight = 3f;
+    
 
     public float pickupRange = 5f;
     public bool isSprinting;
 
-    public MovementState currentState;
-    public enum MovementState
-    {
-        walking,
-        sprinting,
-        crouching,
-        air
-    }
+    
     // Start is called before the first frame update
     void Start()
     {
         playerCam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
         //controller = GetComponent<CharacterController>();
         health = maxHealth;
         recoveryRate = 0.2f;
         StartCoroutine(RestoreHealth());
-
         startYScale = transform.localScale.y;
 
+        fsm = new FiniteStateMachine();
+        var walking = fsm.CreateState("Walking");
+        var sprinting = fsm.CreateState("Sprinting");
+        var crouching = fsm.CreateState("Crouching");
+        var air = fsm.CreateState("Air");
+
+        walking.onEnter = delegate
+        {
+            currentState = walking;
+            speed = walkSpeed;
+        };
+        walking.onFrame = delegate
+        {
+            if (!isGrounded)
+            {
+                fsm.TransitionTo(air);
+            }
+            if (isSprinting)
+            {
+                fsm.TransitionTo(sprinting);
+            } else if (isCrouching)
+            {
+                fsm.TransitionTo(crouching);
+            }
+        };
+        walking.onExit = delegate
+        {
+
+        };
+
+        sprinting.onEnter = delegate
+        {
+            currentState = sprinting;
+            speed = sprintSpeed;
+        };
+        sprinting.onFrame = delegate
+        {
+            if (isGrounded)
+            {
+                if (!isSprinting)
+                {
+                    if (isCrouching)
+                    {
+                        fsm.TransitionTo(crouching);
+                    }
+                    else
+                    {
+                        fsm.TransitionTo(walking);
+                    }
+                }
+            }
+            else
+            {
+                fsm.TransitionTo(air);
+            }
+        };
+        sprinting.onExit = delegate
+        {
+
+        };
+
+        crouching.onEnter = delegate
+        {
+            currentState = crouching;
+            speed = crouchSpeed;
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        };
+        crouching.onFrame = delegate
+        {
+            if (isGrounded)
+            {
+                if (!isCrouching)
+                {
+                    if (isSprinting)
+                    {
+                        fsm.TransitionTo(sprinting);
+                    }
+                    else
+                    {
+                        fsm.TransitionTo(walking);
+                    }
+                }
+            }
+            else
+            {
+                fsm.TransitionTo(air);
+            }
+        };
+        crouching.onExit = delegate
+        {
+            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+        };
+
+        air.onEnter = delegate
+        {
+            currentState = air;
+        };
+        air.onFrame = delegate
+        {
+            if (isGrounded)
+            {
+                fsm.TransitionTo(walking);
+            }
+        };
+        air.onExit = delegate
+        {
+
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        UpdateState();
+        if (isGrounded)
+        {
+            offSlope = false;
+        }
+        fsm.Update();
         SpeedControl();
 
         if (isGrounded)
@@ -75,46 +190,36 @@ public class PlayerController : MonoBehaviour
             rb.drag = 0;
     }
 
-    private void UpdateState()
-    {
-        if (isCrouching)
-        {
-            currentState = MovementState.crouching;
-            speed = crouchSpeed;
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-        }
-        else
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        }
-        if (isGrounded && isSprinting)
-        {
-            currentState = MovementState.sprinting;
-            speed = sprintSpeed;
-        } else if(isGrounded)
-
-        {
-            currentState = MovementState.walking;
-            speed = walkSpeed;
-        }
-        else
-        {
-            currentState = MovementState.air;
-        }
-    }
     public void Move(Vector2 input)
     {
-        Vector3 moveDir = Vector3.zero;
+        moveDir = Vector3.zero;
         moveDir = playerCam.forward * input.y + playerCam.right * input.x;
-        if(isGrounded)
-            rb.AddForce(moveDir * (speed + UpgradeManager.Instance.speedIncrease) * 25f, ForceMode.Force);
+        if (OnSlope())
+        {
+            rb.AddForce(GetSlopeDirection() * (speed + UpgradeManager.Instance.speedIncrease) * 25f, ForceMode.Force);
+            if (rb.velocity.y > 0)
+            {
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+        }
+            
+        else if(isGrounded)
+            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease) * 25f, ForceMode.Force);
         else if (!isGrounded)
-            rb.AddForce(moveDir * (speed + UpgradeManager.Instance.speedIncrease) * 25f * airSpeedMultiplier, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease) * 25f * airSpeedMultiplier, ForceMode.Force);
+
+        rb.useGravity = !OnSlope();
     }
 
     private void SpeedControl()
     {
+        if (OnSlope() && !offSlope)
+        {
+            if (rb.velocity.magnitude > speed)
+            {
+                rb.velocity = rb.velocity.normalized * (speed + UpgradeManager.Instance.speedIncrease);
+            }
+        }
         Vector3 vel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         if (vel.magnitude > speed)
@@ -127,13 +232,36 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded)
+        if (isGrounded && canJump)
         {
+            canJump = false;
+            offSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+            Invoke(nameof(ResetJump), 0.1f);
         }
     }
 
+    public void ResetJump()
+    {
+        canJump = true;
+    }
+
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
+
+    private Vector3 GetSlopeDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDir, slopeHit.normal);
+    }
     public void TakeDamage(float damage)
     {
         health -= damage * UpgradeManager.Instance.armourMultiplier;

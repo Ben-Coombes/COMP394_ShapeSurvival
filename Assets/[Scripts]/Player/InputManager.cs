@@ -34,7 +34,7 @@ public class InputManager : MonoBehaviour
         onGround = playerInputActions.OnGround;
         onMenu = playerInputActions.OnMenu;
 
-        onGround.Jump.performed += ctx => playerController.Jump();
+        //onGround.Jump.performed += ctx => playerController.Jump();
         onGround.SwitchWeapon.performed += ctx => playerGunController.SwitchGun();
         playerInput.SwitchCurrentActionMap("OnGround");
         //playerInput.currentActionMap = onGround.Get();
@@ -64,20 +64,22 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        playerController.Move(onGround.Movement.ReadValue<Vector2>());
+        playerController.isSprinting = onGround.Sprint.IsPressed();
+        playerController.isCrouching = onGround.Crouch.IsPressed();
+        if (onGround.Jump.IsPressed())
+            playerController.Jump();
     }
 
     void Update()
     {
-        playerController.Move(onGround.Movement.ReadValue<Vector2>());
         playerGunController.currentGun.CheckInput(onGround.Fire);
-        playerController.isSprinting = onGround.Sprint.IsPressed();
-        playerController.isCrouching = onGround.Crouch.IsPressed();
+        playerLook.Look(onGround.Look.ReadValue<Vector2>());
     }
 
     void LateUpdate()
     {
-        playerLook.Look(onGround.Look.ReadValue<Vector2>());
+        
     }
 
     private void OnEnable()

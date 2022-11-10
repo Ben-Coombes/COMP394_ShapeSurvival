@@ -332,10 +332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61e31cd1326aad42b2b69663d42709f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   walkSpeed: 10
-  sprintSpeed: 20
+  sprintSpeed: 15
   gravity: -15
-  groundDrag: 5
+  groundDrag: 4
   airSpeedMultiplier: 0.4
   health: 0
   maxHealth: 100
@@ -344,10 +345,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   playerHeight: 2
-  jumpHeight: 10
+  crouchSpeed: 7
+  crouchYScale: 0.75
+  isCrouching: 0
+  maxSlopeAngle: 40
+  jumpHeight: 15
   pickupRange: 7
   isSprinting: 0
-  currentState: 0
 --- !u!114 &7059088929324163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +456,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7a1dbc06-9f58-4c45-b3f7-5059a7ba427d
     m_ActionName: OnGround/Sprint[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 597e7f25-1d51-49a6-84db-fcb95e9be2c7
+    m_ActionName: OnGround/Crouch[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: OnGround
