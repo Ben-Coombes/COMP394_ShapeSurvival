@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
@@ -20,7 +21,6 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Spawning/Death")]
     public bool spawnComplete = false;
-    public bool enemySpawned = false;
     //death
     public bool isDead = false;
     private Vector3 deathPosition;
@@ -43,23 +43,44 @@ public class EnemyAI : MonoBehaviour
     public Animator anaimator;
     public Rigidbody rb;
 
-    
+    private IObjectPool<EnemyAI> _pool;
+
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform; //find the player in the scene
         agent = GetComponent<NavMeshAgent>();
-
         rb = GetComponent<Rigidbody>();
         health = maxHealth;
         healthBarUI.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        if (fsm != null)
+        {
+            health = maxHealth;
+            healthBarUI.SetActive(false);
+            isknockedBack = false;
+            playerInTrigger = false;
+            isDead = false;
+            spawnComplete = false;
+            agent.enabled = true;
+            //rb.detectCollisions = true;
+            var collidersObj = gameObject.GetComponentsInChildren<Collider>();
+            foreach (var colliderItem in collidersObj)
+            {
+                colliderItem.enabled = true;
+            }
+
+            fsm.TransitionTo("Spawning");
+        }
+    }
+
     private void Start()
     {
+        
         fsm = new FiniteStateMachine();
-       
-
         //var patrolingState = fsm.CreateState("Patroling");
         //var wanderingState = fsm.CreateState("Wandering");
         var spawningState = fsm.CreateState("Spawning");
@@ -70,13 +91,11 @@ public class EnemyAI : MonoBehaviour
 
         spawningState.onEnter = delegate
         {
-            
+            StartCoroutine(SpawnAnaimator());
         };
 
         spawningState.onFrame = delegate
         {
-            StartCoroutine(SpawnAnaimator());
-
             if (spawnComplete)
             {
                 fsm.TransitionTo("Chasing");
@@ -142,19 +161,20 @@ public class EnemyAI : MonoBehaviour
             healthBarUI.SetActive(false);
             agent.enabled = false;
             rb.detectCollisions = false;
-            Destroy(GetComponentInChildren<Rigidbody>());
+            //Destroy(GetComponentInChildren<Rigidbody>());
             var collidersObj = gameObject.GetComponentsInChildren<Collider>();
             for (var index = 0; index < collidersObj.Length; index++)
             {
                 var colliderItem = collidersObj[index];
                 colliderItem.enabled = false;
             }
+            StartCoroutine(DeathAnaimator());
         };
 
         deadState.onFrame = delegate
         {
             //put death code here
-            StartCoroutine(DeathAnaimator());
+            
         };
 
         deadState.onExit = delegate
@@ -183,6 +203,11 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    public void SetPool(ObjectPool<EnemyAI> pool)
+    {
+        _pool = pool;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -209,7 +234,11 @@ public class EnemyAI : MonoBehaviour
         //drop coin
         Instantiate(coin, transform.position, Quaternion.identity);
 
-        Destroy(this.gameObject);
+        if (_pool != null)
+            _pool.Release(this);
+        else
+            Destroy(gameObject);
+
     }
 
     public int XpToSpawn()

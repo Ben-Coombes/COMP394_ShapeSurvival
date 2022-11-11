@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -9,27 +10,46 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject spawnPoint;
 
+    [Header("Spawning")]
     private float spawnTimer;
     private float increaseSpawnTimer;
     public float timeBetweenIncrease = 10; //time between each spawning speed increase
     public float timer = 5; //starting time between spawns
     public float minTimeBetweenSpawns = 2; //timer increase cutoff speed
     private bool maxSpawnSpeedReached = false;
-
     public float range = 20.0f;
 
-
-
-    //cluster
+    [Header("Cluster")]
     public int maxClusterSize;
     public int minClusterSize;
     private float clusterTimer; //cluster timer
     public float timeBetweenClusterIncrease = 5; // time between cluster increase
     public int clusterCap;
-
     public float spawnOffset;
 
-    // Start is called before the first frame update
+    [Header("Pooling")] 
+    private ObjectPool<EnemyAI> _pool;
+    public int InactiveCount;
+    public int ActiveCount;
+
+    void Awake() => _pool = new ObjectPool<EnemyAI>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool);
+
+    private void OnReturnEnemyToPool(EnemyAI obj)
+    {
+        obj.gameObject.SetActive(false);
+    }
+
+    private void OnTakeEnemyFromPool(EnemyAI obj)
+    {
+        obj.gameObject.SetActive(true);
+    }
+    private EnemyAI CreateEnemy()
+    {
+        int randomOption = Random.Range(0, enemyList.Count);
+        var enemy = Instantiate(enemyList[randomOption]);
+        enemy.GetComponent<EnemyAI>().SetPool(_pool);
+        return enemy.GetComponent<EnemyAI>();
+    }
     void Start()
     {
         clusterCap = 25;
@@ -50,7 +70,6 @@ public class EnemyManager : MonoBehaviour
                 
             }
         }
-
         spawnTimer += Time.deltaTime;
         if (spawnTimer > timer)
         {
@@ -59,7 +78,6 @@ public class EnemyManager : MonoBehaviour
         }
 
         //increase cluster size
-        
         clusterTimer += Time.deltaTime;
         if (clusterTimer > timeBetweenClusterIncrease)
         {
@@ -68,11 +86,13 @@ public class EnemyManager : MonoBehaviour
             maxClusterSize++;
             
         }
-        
-
-
     }
 
+    private void Update()
+    {
+        InactiveCount = _pool.CountInactive;
+        ActiveCount = _pool.CountActive;
+    }
     public void SpawnEnemy()
     {
         Vector3 clusterPoint = RandomPoint();
@@ -86,13 +106,12 @@ public class EnemyManager : MonoBehaviour
             float xOffset = Random.Range(-spawnOffset, spawnOffset);
             float yOffset = Random.Range(-spawnOffset, spawnOffset);
             clusterPoint += new Vector3(xOffset,0, yOffset);
-            int randomOption = Random.Range(0, enemyList.Count);
-            Instantiate(enemyList[randomOption], clusterPoint, Quaternion.identity);
+            var enemy = _pool.Get();
+            enemy.transform.position = clusterPoint;
         }
-        
     }
 
-
+    
     Vector3 RandomPoint()
     {
         Vector3 rand = new Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-range, range));
