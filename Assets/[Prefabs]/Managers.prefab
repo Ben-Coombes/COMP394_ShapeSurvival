@@ -57,6 +57,8 @@ MonoBehaviour:
   timeBetweenClusterIncrease: 80
   clusterCap: 25
   spawnOffset: 4
+  InactiveCount: 0
+  ActiveCount: 0
 --- !u!1 &111897811845839449
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +103,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3378d80cbe72d143bc88f76aa931963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &792567414915503011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2905169177610945558}
+  - component: {fileID: 9187307630557282394}
+  m_Layer: 0
+  m_Name: Sound Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2905169177610945558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792567414915503011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6885015425855729028}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9187307630557282394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792567414915503011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25e5d19beceb794fb0e291ad0a01609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24300002, guid: 79aa270fdf37b754eb19c26f118d3265, type: 2}
+  sounds:
+  - name: RifleFire
+    clip: {fileID: 8300000, guid: 441a5cf712e49984b85bedfbb12c379c, type: 3}
+    volume: 0.297
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &6885015425855729035
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +187,7 @@ Transform:
   - {fileID: 877717857}
   - {fileID: 4197367316146451441}
   - {fileID: 4655742162195362690}
+  - {fileID: 2905169177610945558}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
