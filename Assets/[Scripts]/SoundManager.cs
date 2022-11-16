@@ -2,7 +2,7 @@ using UnityEngine.Audio;
 using UnityEngine;
 using System;
 
-public class Sound_Manager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     public AudioMixerGroup audioMixer;
     public Sound[] sounds;
@@ -31,6 +31,12 @@ public class Sound_Manager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Stop();
+    }
+
+    public AudioSource GetAudioSource(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        return s.source;
     }
 }
 

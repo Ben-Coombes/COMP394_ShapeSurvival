@@ -51,7 +51,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        FindObjectOfType<Sound_Manager>().Play("RifleFire");
+        FindObjectOfType<SoundManager>().Play("RifleFire");
         canFire = false;
         bulletsShot++;
 
