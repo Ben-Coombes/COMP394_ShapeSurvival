@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         };
         walking.onExit = delegate
         {
-            
+            FindObjectOfType<SoundManager>().Stop("Walking");
         };
 
         sprinting.onEnter = delegate
