@@ -57,6 +57,8 @@ MonoBehaviour:
   timeBetweenClusterIncrease: 80
   clusterCap: 25
   spawnOffset: 4
+  InactiveCount: 0
+  ActiveCount: 0
 --- !u!1 &111897811845839449
 GameObject:
   m_ObjectHideFlags: 0

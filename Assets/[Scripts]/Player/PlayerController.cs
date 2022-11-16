@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float groundDrag;
     public float airSpeedMultiplier;
     private Vector3 moveDir;
+    public Transform orientation;
     [Header("Player Stats")]
     public float health;
     public float maxHealth = 100f;
@@ -193,7 +194,7 @@ public class PlayerController : MonoBehaviour
     public void Move(Vector2 input)
     {
         moveDir = Vector3.zero;
-        moveDir = playerCam.forward * input.y + playerCam.right * input.x;
+        moveDir = orientation.forward * input.y + orientation.right * input.x;
         if (OnSlope())
         {
             rb.AddForce(GetSlopeDirection() * (speed + UpgradeManager.Instance.speedIncrease) * 25f, ForceMode.Force);
@@ -237,7 +238,7 @@ public class PlayerController : MonoBehaviour
             canJump = false;
             offSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
             Invoke(nameof(ResetJump), 0.1f);
         }
     }

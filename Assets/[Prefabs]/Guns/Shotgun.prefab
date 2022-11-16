@@ -85,7 +85,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 2682295106190103625}
   speed: 75
   upwardSpeed: 0
-  name: shotgun
+  name: Shotgun
   fireRate: 0.5
   spread: 1.2
   bulletsPerTap: 8
