@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,7 +46,8 @@ public class PlayerController : MonoBehaviour
     private Transform playerCam;
     private Rigidbody rb;
 
-    
+
+    public CinemachineImpulseSource ImpulseSource;
 
     public float pickupRange = 5f;
     public bool isSprinting;
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ImpulseSource = GetComponent<CinemachineImpulseSource>();
         playerCam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -174,6 +177,9 @@ public class PlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
+                Vector3 jumpForce = new Vector3(0, -0.4f, 0);
+                ImpulseSource.m_ImpulseDefinition.m_ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Recoil;
+                ImpulseSource.GenerateImpulse(jumpForce);
                 fsm.TransitionTo(walking);
             }
         };
