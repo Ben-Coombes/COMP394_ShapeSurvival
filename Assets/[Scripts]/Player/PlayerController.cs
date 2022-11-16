@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
         walking.onEnter = delegate
         {
+            FindObjectOfType<Sound_Manager>().Play("Walking");
             currentState = walking;
             speed = walkSpeed;
         };
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
         };
         walking.onExit = delegate
         {
-
+            FindObjectOfType<Sound_Manager>().Stop("Walking");
         };
 
         sprinting.onEnter = delegate

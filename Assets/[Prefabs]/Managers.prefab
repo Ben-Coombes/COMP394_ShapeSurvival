@@ -154,6 +154,11 @@ MonoBehaviour:
     volume: 0.297
     loop: 0
     source: {fileID: 0}
+  - name: Walking
+    clip: {fileID: 8300000, guid: 3b386ebef8cd1284cbfb565a0ed0385d, type: 3}
+    volume: 0.693
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &6885015425855729035
 GameObject:
   m_ObjectHideFlags: 0
