@@ -883,13 +883,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5156368440485137018}
   player: {fileID: 0}
-  coin: {fileID: 1386650386640399895, guid: 04a9be567e88d3e4e83f3930aafe62ac, type: 3}
   xp: {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
   xpList:
   - {fileID: 5207350360612296390, guid: b16e89d45270a5a4f894a5c88229bced, type: 3}
   - {fileID: 5209531997897779918, guid: 2e146808678e6594d97b30b010364110, type: 3}
   - {fileID: 4338310673909624379, guid: 9df32e19f32b4aa4fab498646017cfe1, type: 3}
   xpRange: 0
+  coin: {fileID: 1386650386640399895, guid: 04a9be567e88d3e4e83f3930aafe62ac, type: 3}
+  coinList:
+  - {fileID: 2272325709435849591, guid: 76ae69ca471f21d40b868318dc0267b4, type: 3}
+  - {fileID: 2959887314671405540, guid: 0a4a18ca1b604b445afabf7d911f564c, type: 3}
+  - {fileID: 1386650386640399895, guid: 04a9be567e88d3e4e83f3930aafe62ac, type: 3}
+  coinRange: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -897,7 +902,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   spawnComplete: 0
-  enemySpawned: 0
   isDead: 0
   playerInTrigger: 0
   damage: 0.8

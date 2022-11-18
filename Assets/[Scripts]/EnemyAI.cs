@@ -12,10 +12,15 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     FiniteStateMachine fsm;
     [Header("XP")]
-    public GameObject coin;
     public GameObject xp;
     public List<GameObject> xpList = new();
     public int xpRange;
+
+    [Header("Coin")]
+    public GameObject coin;
+    public List<GameObject> coinList = new();
+    public int coinRange;
+    private int coinDropChance;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -232,13 +237,36 @@ public class EnemyAI : MonoBehaviour
         //drop XP
         Instantiate(xpList[XpToSpawn()], transform.position, Quaternion.identity);
         //drop coin
-        Instantiate(coin, transform.position, Quaternion.identity);
+        CoinToSpawn();
 
         if (_pool != null)
             _pool.Release(this);
         else
             Destroy(gameObject);
 
+    }
+
+    public void CoinToSpawn()
+    {
+        coinDropChance = Random.Range(0,100);
+        if (coinDropChance >= 40)
+        {
+            coinRange = Random.Range(0, 100);
+            if (coinRange >= 0 && coinRange < 80)
+            {
+                Instantiate(coinList[0], transform.position, Quaternion.identity);
+            }
+            else if (coinRange >= 80 && coinRange < 90)
+            {
+                Instantiate(coinList[1], transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(coinList[2], transform.position, Quaternion.identity);
+            }
+        }
+        
+        
     }
 
     public int XpToSpawn()
