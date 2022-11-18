@@ -14,6 +14,8 @@ public class MenuInput : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = false;
+        
         if (Instance != null && Instance != this)
         {
             Destroy(this);
