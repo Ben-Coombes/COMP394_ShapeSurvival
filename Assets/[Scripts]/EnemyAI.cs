@@ -142,6 +142,7 @@ public class EnemyAI : MonoBehaviour
         //attack state
         AttackingState.onEnter = delegate
         {
+            Debug.Log("In attack state");
             StartCoroutine(AttackPlayer());
         };
 
@@ -156,7 +157,7 @@ public class EnemyAI : MonoBehaviour
 
         AttackingState.onExit = delegate
         {
-            
+            StopCoroutine(AttackPlayer());
         };
 
         deadState.onEnter = delegate
@@ -317,9 +318,9 @@ public class EnemyAI : MonoBehaviour
         playerInTrigger = true;
         while (playerInTrigger)
         {
+            yield return new WaitForSeconds(0.3f);
             player.GetComponent<PlayerController>().TakeDamage(damage);
             OnKnockback(-transform.position * 0.2f);
-            yield return new WaitForSeconds(0.3f);
         }
     }
 
