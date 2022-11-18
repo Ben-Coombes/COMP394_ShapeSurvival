@@ -42,4 +42,19 @@ public class MenuInput : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void UpgradeMenu()
+    {
+
+    }
+
+    public void LevelMenu()
+    {
+
+    }
+
+    public void HelpMenu()
+    {
+
+    }
 }
