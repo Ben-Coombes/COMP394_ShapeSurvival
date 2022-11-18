@@ -32,6 +32,8 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Attacking")]
     public bool playerInTrigger = false;
+    public float timeInCollider;
+    public float timeNotInCollider;
 
     public float damage;
 
@@ -89,7 +91,6 @@ public class EnemyAI : MonoBehaviour
         //var patrolingState = fsm.CreateState("Patroling");
         //var wanderingState = fsm.CreateState("Wandering");
         var spawningState = fsm.CreateState("Spawning");
-        var AttackingState = fsm.CreateState("Attacking");
         var ChasingState = fsm.CreateState("Chasing");
         var deadState = fsm.CreateState("Dead");
         var knockbackState = fsm.CreateState("Knockback");
@@ -125,10 +126,6 @@ public class EnemyAI : MonoBehaviour
                 agent.SetDestination(player.position);
 
             }
-            if (playerInTrigger)
-            {
-                fsm.TransitionTo("Attacking");
-            }
             anaimator.Play("EnemyIdle2");
             
             
@@ -137,27 +134,6 @@ public class EnemyAI : MonoBehaviour
         ChasingState.onExit = delegate
         {
            
-        };
-
-        //attack state
-        AttackingState.onEnter = delegate
-        {
-            Debug.Log("In attack state");
-            StartCoroutine(AttackPlayer());
-        };
-
-        AttackingState.onFrame = delegate
-        {
-            if (!playerInTrigger)
-            {
-                fsm.TransitionTo("Chasing");
-            }
-            
-        };
-
-        AttackingState.onExit = delegate
-        {
-            StopCoroutine(AttackPlayer());
         };
 
         deadState.onEnter = delegate
@@ -312,16 +288,10 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-
-    IEnumerator AttackPlayer()
+    public void DamagePlayer()
     {
-        playerInTrigger = true;
-        while (playerInTrigger)
-        {
-            yield return new WaitForSeconds(0.3f);
-            player.GetComponent<PlayerController>().TakeDamage(damage);
-            OnKnockback(-transform.position * 0.2f);
-        }
+        player.GetComponent<PlayerController>().TakeDamage(damage);
+        OnKnockback(-transform.forward * 0.2f);
     }
 
 
