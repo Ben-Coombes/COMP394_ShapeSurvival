@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 9016407818598943481}
   m_Layer: 13
   m_Name: Enemy Fast
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -765,6 +765,8 @@ MonoBehaviour:
   spawnComplete: 0
   isDead: 0
   playerInTrigger: 0
+  timeInCollider: 0
+  timeNotInCollider: 0
   damage: 0.6
   health: 0
   maxHealth: 80
