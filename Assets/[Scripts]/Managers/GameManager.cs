@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager Instance { get; private set; }
     public TextMeshProUGUI scoreText;
-    public float score = 0;
+    public int currentCoins;
+    public int totalCoins;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        scoreText.text = "Score: " + score;
+        currentCoins = 0;
+        scoreText.text = "Coins: " + currentCoins;
     }
     public void Pause(GameObject obj)
     {
@@ -42,9 +44,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void IncreaseScore(float amount)
+    public void IncreaseCoins(int amount)
     {
-        score += amount;
-        scoreText.text = "Score: " + score;
+        currentCoins += amount;
+        totalCoins += amount;
+        scoreText.text = "Coins: " + currentCoins;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.totalCoins = data.totalCoins;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.totalCoins = this.totalCoins;
     }
 }

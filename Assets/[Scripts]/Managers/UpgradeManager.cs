@@ -21,14 +21,14 @@ public class UpgradeManager : MonoBehaviour
 
     private Gun[] guns;
     private GameObject player;
-    public float damageMultiplier; //
-    public float pickupRangeIncrease; //
-    public float xpMultiplier; //
-    public float speedIncrease; //
-    public float healthIncrease; //
-    public float recoveryMultiplier; //
-    public float projectileIncrease; //
-    public float armourMultiplier; //
+    public float damageMultiplier; 
+    public float pickupRangeIncrease; 
+    public float xpMultiplier;
+    public float speedIncrease;
+    public float healthIncrease;
+    public float recoveryMultiplier;
+    public float projectileIncrease;
+    public float armourMultiplier;
 
     private void Start()
     {

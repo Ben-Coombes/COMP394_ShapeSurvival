@@ -9,7 +9,7 @@ public class Coin : MonoBehaviour
     public float acceleration;
     public float coinMovementSpeed;
 
-    public float coinAmount;
+    public int coinAmount;
 
     public float pickupRange;
     public LayerMask whatIsPlayer;
@@ -55,7 +55,7 @@ public class Coin : MonoBehaviour
 
     public void CollectCoin()
     {
-        GameManager.Instance.IncreaseScore(coinAmount);
+        GameManager.Instance.IncreaseCoins(coinAmount);
         Destroy(this.gameObject);
     }
 

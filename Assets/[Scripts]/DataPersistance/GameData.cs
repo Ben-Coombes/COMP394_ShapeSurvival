@@ -4,10 +4,10 @@ using System.Collections.Generic;
 [System.Serializable]
 public class GameData
 {
-    public int coins;
+    public int totalCoins;
 
     public GameData()
     {
-        this.coins = 0;
+        this.totalCoins = 0;
     }
 }
