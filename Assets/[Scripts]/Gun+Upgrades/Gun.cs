@@ -34,6 +34,7 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         playerCam = Camera.main;
+        bulletsPerTap += EnhancementManager.Instance.projectileIncrease;
     }
     public void CheckInput(InputAction action)
     {

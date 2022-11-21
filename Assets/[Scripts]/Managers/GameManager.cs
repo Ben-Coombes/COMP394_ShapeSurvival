@@ -6,7 +6,6 @@ using TMPro;
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager Instance { get; private set; }
-    public TextMeshProUGUI scoreText;
     public int currentCoins;
     public int totalCoins;
     private void Awake()
@@ -21,12 +20,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
         {
             Instance = this;
         }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
         currentCoins = 0;
-        scoreText.text = "Coins: " + currentCoins;
     }
     public void Pause(GameObject obj)
     {
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         currentCoins += amount;
         totalCoins += amount;
-        scoreText.text = "Coins: " + currentCoins;
     }
 
     public void LoadData(GameData data)

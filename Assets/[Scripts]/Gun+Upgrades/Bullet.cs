@@ -69,7 +69,7 @@ public class Bullet : MonoBehaviour
 
         if (isBullet && collider != null)
         {
-            collider.GetComponentInParent<EnemyAI>().TakeDamage(damage * UpgradeManager.Instance.damageMultiplier, transform.forward * knockback);
+            collider.GetComponentInParent<EnemyAI>().TakeDamage(damage * UpgradeManager.Instance.damageMultiplier * EnhancementManager.Instance.damageMultiplier, transform.forward * knockback);
         }
         else if(!isBullet)
         {
@@ -77,7 +77,7 @@ public class Bullet : MonoBehaviour
 
             foreach (Collider enemy in enemies)
             {
-                enemy.GetComponentInParent<EnemyAI>().TakeDamage(damage * UpgradeManager.Instance.damageMultiplier, transform.forward * knockback);
+                enemy.GetComponentInParent<EnemyAI>().TakeDamage(damage * UpgradeManager.Instance.damageMultiplier * EnhancementManager.Instance.damageMultiplier, transform.forward * knockback);
             }
         }
         Invoke("Destroy", 0.01f);

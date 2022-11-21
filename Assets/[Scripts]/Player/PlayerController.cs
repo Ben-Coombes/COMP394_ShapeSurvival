@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         //controller = GetComponent<CharacterController>();
-        health = maxHealth;
+        health = maxHealth + EnhancementManager.Instance.healthIncrease;
         recoveryRate = 0.2f;
         StartCoroutine(RestoreHealth());
         startYScale = transform.localScale.y;
@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
         moveDir = orientation.forward * input.y + orientation.right * input.x;
         if (OnSlope())
         {
-            rb.AddForce(GetSlopeDirection() * (speed + UpgradeManager.Instance.speedIncrease) * 25f, ForceMode.Force);
+            rb.AddForce(GetSlopeDirection() * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease) * 25f, ForceMode.Force);
             if (rb.velocity.y > 0)
             {
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
@@ -220,9 +220,9 @@ public class PlayerController : MonoBehaviour
         }
             
         else if(isGrounded)
-            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease) * 25f, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease) * 25f, ForceMode.Force);
         else if (!isGrounded)
-            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease) * 25f * airSpeedMultiplier, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease) * 25f * airSpeedMultiplier, ForceMode.Force);
 
         rb.useGravity = !OnSlope();
     }
@@ -233,14 +233,14 @@ public class PlayerController : MonoBehaviour
         {
             if (rb.velocity.magnitude > speed)
             {
-                rb.velocity = rb.velocity.normalized * (speed + UpgradeManager.Instance.speedIncrease);
+                rb.velocity = rb.velocity.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease);
             }
         }
         Vector3 vel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         if (vel.magnitude > speed)
         {
-            Vector3 controlVel = vel.normalized * (speed + UpgradeManager.Instance.speedIncrease);
+            Vector3 controlVel = vel.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease);
 
             rb.velocity = new Vector3(controlVel.x, rb.velocity.y, controlVel.z);
         }
@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        health -= damage * UpgradeManager.Instance.armourMultiplier;
+        health -= damage * UpgradeManager.Instance.armourMultiplier * EnhancementManager.Instance.armourMultiplier;
         if (health <= 0)
         {
             PlayerDeath();
@@ -299,7 +299,7 @@ public class PlayerController : MonoBehaviour
         {
             if (health < maxHealth)
             {
-                health += recoveryRate * UpgradeManager.Instance.recoveryMultiplier;
+                health += recoveryRate * UpgradeManager.Instance.recoveryMultiplier * EnhancementManager.Instance.recoveryMultiplier;
 
                 if (health > maxHealth)
                 {

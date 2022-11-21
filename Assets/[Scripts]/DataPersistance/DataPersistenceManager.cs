@@ -25,13 +25,15 @@ public class DataPersistenceManager : MonoBehaviour
         {
             Instance = this;
         }
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+
     }
     public void NewGame()
     {
