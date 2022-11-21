@@ -73,7 +73,11 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        playerGunController.currentGun.CheckInput(onGround.Fire);
+        if (!playerController.isSprinting)
+        {
+            playerGunController.currentGun.CheckInput(onGround.Fire);
+
+        }
         playerLook.Look(onGround.Look.ReadValue<Vector2>());
     }
 

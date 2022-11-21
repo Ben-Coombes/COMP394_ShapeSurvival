@@ -223,6 +223,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("IsWalking", false);
             }
+
             if (fsm.CurrentState.name.Equals("Sprinting"))
             {
                 animator.SetBool("IsSprinting", true);
@@ -231,6 +232,12 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("IsSprinting", false);
             }
+
+            if (fsm.CurrentState.name.Equals("Air"))
+            {
+                animator.SetBool("IsSprinting", true);
+            }
+            
         }
         else if (rb.velocity.magnitude <= 0.1f)
         {
