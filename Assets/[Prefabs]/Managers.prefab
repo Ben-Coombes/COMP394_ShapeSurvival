@@ -48,12 +48,11 @@ MonoBehaviour:
   - {fileID: 5156368440485137017, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
   - {fileID: 9016407818598943477, guid: ed78ae92b5d57864188410bc84a131e8, type: 3}
   spawnPoint: {fileID: 877717855}
+  maxEnemyCount: 5
   timeBetweenIncrease: 60
   timer: 5
   minTimeBetweenSpawns: 2
   range: 120
-  maxClusterSize: 2
-  minClusterSize: 1
   timeBetweenClusterIncrease: 80
   clusterCap: 25
   spawnOffset: 4
@@ -1518,4 +1517,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  score: 0
+  currentCoins: 0
+  totalCoins: 0

@@ -7,10 +7,12 @@ using UnityEngine.Pool;
 public class EnemyManager : MonoBehaviour
 {
     public List<GameObject> enemyList = new();
+    private GameObject[] totalEnemies;
 
     public GameObject spawnPoint;
 
     [Header("Spawning")]
+    public int maxEnemyCount;
     private float spawnTimer;
     private float increaseSpawnTimer;
     public float timeBetweenIncrease = 10; //time between each spawning speed increase
@@ -20,8 +22,8 @@ public class EnemyManager : MonoBehaviour
     public float range = 20.0f;
 
     [Header("Cluster")]
-    public int maxClusterSize;
-    public int minClusterSize;
+    private int maxClusterSize;
+    private int minClusterSize;
     private float clusterTimer; //cluster timer
     public float timeBetweenClusterIncrease = 5; // time between cluster increase
     public int clusterCap;
@@ -74,7 +76,11 @@ public class EnemyManager : MonoBehaviour
         if (spawnTimer > timer)
         {
             spawnTimer -= timer;
-            SpawnEnemy();
+            if (maxEnemyCount > _pool.CountActive)
+            {
+                SpawnEnemy();
+            }
+            
         }
 
         //increase cluster size
@@ -90,6 +96,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        //totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         InactiveCount = _pool.CountInactive;
         ActiveCount = _pool.CountActive;
     }
