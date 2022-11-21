@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,8 +9,8 @@ using UnityEngine.UI;
 public class EnhancementItem : MonoBehaviour
 {
     public int currentLevel = 0;
-    public List<Enhancement> enhancementList = new();
     public Enhancement.EnhancementType enhancementType;
+    public List<Enhancement> enhancementList = new();
     public List<Toggle> toggleBoxes = new();
     private UnityEvent enhancementPurchased;
 
@@ -44,9 +45,11 @@ public class EnhancementItem : MonoBehaviour
         if (currentLevel < toggleBoxes.Count)
         {
             Enhancement enhToBeUnlocked = enhancementList.ElementAt(currentLevel);
-            if (enhToBeUnlocked.cost <= GameManager.Instance.totalCoins)
+            int totalUnlocked = EnhancementManager.Instance.unlockedEnhancements.Count;
+            int newCost = enhToBeUnlocked.cost * (1 + currentLevel) + 20 * (int)Mathf.Pow(1.1f, totalUnlocked - 1);
+            if (newCost <= GameManager.Instance.totalCoins)
             {
-                GameManager.Instance.totalCoins -= enhToBeUnlocked.cost;
+                GameManager.Instance.totalCoins -= newCost;
                 enhToBeUnlocked.isUnlocked = true;
                 toggleBoxes.ElementAt(enhToBeUnlocked.level - 1).isOn = true;
                 currentLevel++;
