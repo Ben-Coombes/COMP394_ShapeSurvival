@@ -21,7 +21,6 @@ public class Enhancement
     }
     public EnhancementType _EnhancementType;
 
-    [Header("ApplyUpgrade Values")]
     [ConditionalField("_EnhancementType", true, Enhancement.EnhancementType.None)] public int level;
     [ConditionalField("_EnhancementType", true, Enhancement.EnhancementType.None)] public bool isUnlocked;
     [ConditionalField("_EnhancementType", true, Enhancement.EnhancementType.None)] public int cost;

@@ -109,17 +109,9 @@ Shotgun
 damage upgrade
 	0-20% damage multiplier
 	levels 5
-
-	2.5%
-	2.5%
-	5%
-	5%
-	10%
 pickup upgrade
 	7-22
 	levels 5
-
-
 xp upgrade
 	0-25% xp multiplier
 	levels 5
