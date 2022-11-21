@@ -149,7 +149,7 @@ MonoBehaviour:
   audioMixer: {fileID: 24300002, guid: 79aa270fdf37b754eb19c26f118d3265, type: 2}
   sounds:
   - name: RifleFire
-    clip: {fileID: 8300000, guid: 441a5cf712e49984b85bedfbb12c379c, type: 3}
+    clip: {fileID: 8300000, guid: 6ec41267d2e41b9489350785054ec903, type: 3}
     volume: 0.297
     loop: 0
     source: {fileID: 0}
