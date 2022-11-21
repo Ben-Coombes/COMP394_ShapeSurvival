@@ -108,7 +108,7 @@ public class LevelUpManager : MonoBehaviour
     }
     public void AddXp(float amount)
     {
-        currentXp += amount * UpgradeManager.Instance.xpMultiplier;
+        currentXp += amount * (UpgradeManager.Instance.xpMultiplier + EnhancementManager.Instance.xpMultiplier);
 
         if (currentXp >= xpToLvl)
         {

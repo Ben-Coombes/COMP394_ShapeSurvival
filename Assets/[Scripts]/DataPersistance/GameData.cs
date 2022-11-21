@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class GameData
 {
     public int totalCoins;
+    public List<Enhancement> unlockedEnhancements;
 
     public GameData()
     {
         this.totalCoins = 0;
+        unlockedEnhancements = new List<Enhancement>();
     }
 }

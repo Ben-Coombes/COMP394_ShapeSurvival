@@ -45,7 +45,7 @@ public class XP : MonoBehaviour
 
     private bool CheckIfInPickupRange()
     {
-        if (Physics.CheckSphere(transform.position, player.GetComponent<PlayerController>().pickupRange + UpgradeManager.Instance.pickupRangeIncrease, whatIsPlayer))
+        if (Physics.CheckSphere(transform.position, player.GetComponent<PlayerController>().pickupRange + UpgradeManager.Instance.pickupRangeIncrease + EnhancementManager.Instance.pickupRangeIncrease, whatIsPlayer))
         {
             enteredPickupRange = true;
             return true;
