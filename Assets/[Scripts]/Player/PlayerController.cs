@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     public float jumpHeight = 3f;
     private bool canJump = true;
-
+    [Header("Animation")]
+    private Animator animator;
 
     private FiniteStateMachine fsm;
     [SerializeField]
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         ImpulseSource = GetComponent<CinemachineImpulseSource>();
         playerCam = Camera.main.transform;
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         //controller = GetComponent<CharacterController>();
@@ -79,13 +81,13 @@ public class PlayerController : MonoBehaviour
         };
         walking.onFrame = delegate
         {
-            if (rb.velocity.magnitude > 0 && !FindObjectOfType<SoundManager>().GetAudioSource("Walking").isPlaying)
+            if (rb.velocity.magnitude > 0.1f && !FindObjectOfType<SoundManager>().GetAudioSource("Walking").isPlaying)
             {
-
                 FindObjectOfType<SoundManager>().Play("Walking");
             }
-            else if(rb.velocity.magnitude == 0)
+            else if(rb.velocity.magnitude <= 0.1f)
             {
+                
                 FindObjectOfType<SoundManager>().Stop("Walking");
             }
             if (!isGrounded)
@@ -94,6 +96,7 @@ public class PlayerController : MonoBehaviour
             }
             if (isSprinting)
             {
+                
                 fsm.TransitionTo(sprinting);
             } else if (isCrouching)
             {
@@ -192,6 +195,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         if (isGrounded)
         {
@@ -199,11 +203,42 @@ public class PlayerController : MonoBehaviour
         }
         fsm.Update();
         SpeedControl();
+        UpdateAnim();
 
         if (isGrounded)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+    }
+
+    public void UpdateAnim()
+    {
+        if (rb.velocity.magnitude > 0.1f)
+        {
+            if (fsm.CurrentState.name.Equals("Walking"))
+            {
+                animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
+            }
+            if (fsm.CurrentState.name.Equals("Sprinting"))
+            {
+                animator.SetBool("IsSprinting", true);
+            }
+            else
+            {
+                animator.SetBool("IsSprinting", false);
+            }
+        }
+        else if (rb.velocity.magnitude <= 0.1f)
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsSprinting", false);
+        }
+        
+        
     }
 
     public void Move(Vector2 input)
