@@ -83,12 +83,11 @@ public class PlayerController : MonoBehaviour
         {
             if (rb.velocity.magnitude > 0.1f && !FindObjectOfType<SoundManager>().GetAudioSource("Walking").isPlaying)
             {
-                animator.SetBool("IsWalking", true);
                 FindObjectOfType<SoundManager>().Play("Walking");
             }
             else if(rb.velocity.magnitude <= 0.1f)
             {
-                animator.SetBool("IsWalking", false);
+                
                 FindObjectOfType<SoundManager>().Stop("Walking");
             }
             if (!isGrounded)
@@ -97,6 +96,7 @@ public class PlayerController : MonoBehaviour
             }
             if (isSprinting)
             {
+                
                 fsm.TransitionTo(sprinting);
             } else if (isCrouching)
             {
@@ -195,6 +195,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         if (isGrounded)
         {
@@ -202,11 +203,42 @@ public class PlayerController : MonoBehaviour
         }
         fsm.Update();
         SpeedControl();
+        UpdateAnim();
 
         if (isGrounded)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+    }
+
+    public void UpdateAnim()
+    {
+        if (rb.velocity.magnitude > 0.1f)
+        {
+            if (fsm.CurrentState.name.Equals("Walking"))
+            {
+                animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
+            }
+            if (fsm.CurrentState.name.Equals("Sprinting"))
+            {
+                animator.SetBool("IsSprinting", true);
+            }
+            else
+            {
+                animator.SetBool("IsSprinting", false);
+            }
+        }
+        else if (rb.velocity.magnitude <= 0.1f)
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsSprinting", false);
+        }
+        
+        
     }
 
     public void Move(Vector2 input)
