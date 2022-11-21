@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     public float jumpHeight = 3f;
     private bool canJump = true;
-
+    [Header("Animation")]
+    private Animator animator;
 
     private FiniteStateMachine fsm;
     [SerializeField]
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         ImpulseSource = GetComponent<CinemachineImpulseSource>();
         playerCam = Camera.main.transform;
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         //controller = GetComponent<CharacterController>();
@@ -79,13 +81,14 @@ public class PlayerController : MonoBehaviour
         };
         walking.onFrame = delegate
         {
-            if (rb.velocity.magnitude > 0 && !FindObjectOfType<SoundManager>().GetAudioSource("Walking").isPlaying)
+            if (rb.velocity.magnitude > 0.1f && !FindObjectOfType<SoundManager>().GetAudioSource("Walking").isPlaying)
             {
-
+                animator.SetBool("IsWalking", true);
                 FindObjectOfType<SoundManager>().Play("Walking");
             }
-            else if(rb.velocity.magnitude == 0)
+            else if(rb.velocity.magnitude <= 0.1f)
             {
+                animator.SetBool("IsWalking", false);
                 FindObjectOfType<SoundManager>().Stop("Walking");
             }
             if (!isGrounded)
