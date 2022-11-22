@@ -47,6 +47,7 @@ public class EnemyManager : MonoBehaviour
     }
     private EnemyAI CreateEnemy()
     {
+        Debug.Log("Create enemy");
         int randomOption = Random.Range(0, enemyList.Count);
         var enemy = Instantiate(enemyList[randomOption]);
         enemy.GetComponent<EnemyAI>().SetPool(_pool);
@@ -55,6 +56,8 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         clusterCap = 25;
+        minClusterSize = 1;
+        maxClusterSize = 2;
     }
 
     // Update is called once per frame
@@ -106,8 +109,10 @@ public class EnemyManager : MonoBehaviour
         int amount = Random.Range(minClusterSize, maxClusterSize + 1);
         if (amount > clusterCap)
         {
+            Debug.Log("amount > clustre cap");
             amount = clusterCap;
         }
+        Debug.Log(amount);
         for (int i = 0; i < amount; i++)
         {
             float xOffset = Random.Range(-spawnOffset, spawnOffset);
@@ -115,6 +120,7 @@ public class EnemyManager : MonoBehaviour
             clusterPoint += new Vector3(xOffset,0, yOffset);
             var enemy = _pool.Get();
             enemy.transform.position = clusterPoint;
+            Debug.Log("dwadawdwad");
         }
     }
 
