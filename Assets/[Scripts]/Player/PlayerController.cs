@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerDeath()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("GameOver");
         
     }
 
