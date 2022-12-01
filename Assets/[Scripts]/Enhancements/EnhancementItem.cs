@@ -45,11 +45,10 @@ public class EnhancementItem : MonoBehaviour
         if (currentLevel < toggleBoxes.Count)
         {
             Enhancement enhToBeUnlocked = enhancementList.ElementAt(currentLevel);
-            int totalUnlocked = EnhancementManager.Instance.unlockedEnhancements.Count;
-            int newCost = enhToBeUnlocked.cost * (1 + currentLevel) + 20 * (int)Mathf.Pow(1.1f, totalUnlocked - 1);
-            if (newCost <= GameManager.Instance.totalCoins)
+
+            if (CalculateCost() <= GameManager.Instance.totalCoins)
             {
-                GameManager.Instance.totalCoins -= newCost;
+                GameManager.Instance.totalCoins -= CalculateCost();
                 enhToBeUnlocked.isUnlocked = true;
                 toggleBoxes.ElementAt(enhToBeUnlocked.level - 1).isOn = true;
                 currentLevel++;
@@ -57,5 +56,14 @@ public class EnhancementItem : MonoBehaviour
                 EnhancementManager.Instance.ApplyEnhancement(enhToBeUnlocked);
             }
         }
+    }
+
+    public int CalculateCost()
+    {
+        Enhancement enhToBeUnlocked = enhancementList.ElementAt(currentLevel);
+        int totalUnlocked = EnhancementManager.Instance.unlockedEnhancements.Count;
+        int newCost = enhToBeUnlocked.cost * (1 + currentLevel) + 20 * (int)Mathf.Pow(1.1f, totalUnlocked - 1);
+
+        return newCost;
     }
 }
