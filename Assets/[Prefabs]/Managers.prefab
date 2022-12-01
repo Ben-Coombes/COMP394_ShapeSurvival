@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 5156368440485137017, guid: 2b07786d8f1116549b4ee0025cbd0ac8, type: 3}
   - {fileID: 9016407818598943477, guid: ed78ae92b5d57864188410bc84a131e8, type: 3}
   spawnPoint: {fileID: 877717855}
-  maxEnemyCount: 5
+  maxEnemyCount: 100
   timeBetweenIncrease: 60
   timer: 5
   minTimeBetweenSpawns: 2
@@ -157,6 +157,31 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3b386ebef8cd1284cbfb565a0ed0385d, type: 3}
     volume: 0.693
     loop: 1
+    source: {fileID: 0}
+  - name: Land
+    clip: {fileID: 8300000, guid: 577a7b045b93a4848af1a2823681bdcb, type: 3}
+    volume: 0.44
+    loop: 0
+    source: {fileID: 0}
+  - name: SoundtrackIntro
+    clip: {fileID: 8300000, guid: 9be1b339bf5589a43b61854cc6b5e862, type: 3}
+    volume: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: SoundtrackLoop
+    clip: {fileID: 8300000, guid: e339afed2f564c54d95de49b74d7e582, type: 3}
+    volume: 0.1
+    loop: 1
+    source: {fileID: 0}
+  - name: xpPickup
+    clip: {fileID: 8300000, guid: b1806bcd501f38b4ab88998abc143014, type: 3}
+    volume: 0.208
+    loop: 0
+    source: {fileID: 0}
+  - name: Hitmarker
+    clip: {fileID: 8300000, guid: dc7639d2f41a3e54c8f3aec873159256, type: 3}
+    volume: 0.208
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &6057299227292004641
 GameObject:

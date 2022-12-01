@@ -64,15 +64,18 @@ public class Bullet : MonoBehaviour
     }
     private void Impact(Collider collider)
     {
+        
         if (impactEffect != null)
             Instantiate(impactEffect, transform.position, Quaternion.identity);
 
         if (isBullet && collider != null)
         {
+            FindObjectOfType<SoundManager>().Play("Hitmarker");
             collider.GetComponentInParent<EnemyAI>().TakeDamage(damage * UpgradeManager.Instance.damageMultiplier * EnhancementManager.Instance.damageMultiplier, transform.forward * knockback);
         }
         else if(!isBullet)
         {
+            FindObjectOfType<SoundManager>().Play("Hitmarker");
             Collider[] enemies = Physics.OverlapSphere(transform.position, range, enemiesMask, QueryTriggerInteraction.Collide);
 
             foreach (Collider enemy in enemies)

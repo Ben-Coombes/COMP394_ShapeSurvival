@@ -81,15 +81,6 @@ public class PlayerController : MonoBehaviour
         };
         walking.onFrame = delegate
         {
-            if (rb.velocity.magnitude > 0.1f && !FindObjectOfType<SoundManager>().GetAudioSource("Walking").isPlaying)
-            {
-                FindObjectOfType<SoundManager>().Play("Walking");
-            }
-            else if(rb.velocity.magnitude <= 0.1f)
-            {
-                
-                FindObjectOfType<SoundManager>().Stop("Walking");
-            }
             if (!isGrounded)
             {
                 fsm.TransitionTo(air);
@@ -188,7 +179,7 @@ public class PlayerController : MonoBehaviour
         };
         air.onExit = delegate
         {
-
+            FindObjectOfType<SoundManager>().Play("Land");
         };
     }
 

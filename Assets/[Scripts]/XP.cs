@@ -67,6 +67,7 @@ public class XP : MonoBehaviour
     {
         LevelUpManager.Instance.AddXp(xpAmount);
         Destroy(this.gameObject);
+        FindObjectOfType<SoundManager>().Play("xpPickup");
     }
     private void OnDrawGizmosSelected()
     {
