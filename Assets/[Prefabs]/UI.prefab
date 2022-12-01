@@ -1251,6 +1251,7 @@ GameObject:
   - component: {fileID: 9145524826638626395}
   - component: {fileID: 3773341255222472336}
   - component: {fileID: 639692437745368787}
+  - component: {fileID: 1797564125052088517}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1318,6 +1319,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 5
+--- !u!114 &1797564125052088517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318403059238187347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a23aeba1f8972f4f8c0d80d33ca221c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2405462599054153066
 GameObject:
   m_ObjectHideFlags: 0
