@@ -226,7 +226,8 @@ public class PlayerController : MonoBehaviour
 
             if (fsm.CurrentState.name.Equals("Air"))
             {
-                animator.SetBool("IsSprinting", true);
+                animator.SetBool("IsSprinting", false);
+                animator.SetBool("IsWalking", false);
             }
             
         }
