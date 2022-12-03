@@ -120,7 +120,7 @@ MonoBehaviour:
   enemiesMask:
     serializedVersion: 2
     m_Bits: 128
-  bounciness: 0
+  bounciness: 0.3
   useGravity: 0
   damage: 20
   range: 1

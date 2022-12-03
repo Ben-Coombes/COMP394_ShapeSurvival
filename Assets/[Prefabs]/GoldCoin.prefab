@@ -153,7 +153,7 @@ MonoBehaviour:
   player: {fileID: 0}
   acceleration: 0.1
   coinMovementSpeed: 0.01
-  coinAmount: 100
+  coinAmount: 40
   pickupRange: 7
   whatIsPlayer:
     serializedVersion: 2

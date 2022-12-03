@@ -403,9 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61e31cd1326aad42b2b69663d42709f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  walkSpeed: 10
-  sprintSpeed: 15
+  speed: 10
+  walkSpeed: 7
+  sprintSpeed: 10
   gravity: -15
   groundDrag: 4
   airSpeedMultiplier: 0.4
@@ -498,26 +498,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bcd98825-d866-40ad-92dc-a8a5a4b13632
     m_ActionName: OnMenu/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 872bbabf-987c-4ada-aa2e-b1047df902e9
-    m_ActionName: OnMenu/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 470e5111-42e4-4e29-a084-a532a585cab4
-    m_ActionName: OnMenu/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a51d5c7d-329f-4f40-8175-f9181a93da0d
-    m_ActionName: OnMenu/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7b137ca2-a4b7-4f7f-ace0-99e853a24d64
-    m_ActionName: OnMenu/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fc742d79-9ea9-4c12-98de-e5010d72f449
-    m_ActionName: OnMenu/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b6e4592d-03cc-4aa5-8398-a9738510fb92

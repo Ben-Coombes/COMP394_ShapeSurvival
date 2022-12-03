@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float walkSpeed;
     public float sprintSpeed;
-    public float gravity = -9.8f;
     public float groundDrag;
     public float airSpeedMultiplier;
     private Vector3 moveDir;
@@ -43,8 +42,6 @@ public class PlayerController : MonoBehaviour
     private FiniteStateMachine fsm;
     [SerializeField]
     public FiniteStateMachine.State currentState;
-
-    private Transform playerCam;
     private Rigidbody rb;
 
 
@@ -58,7 +55,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         ImpulseSource = GetComponent<CinemachineImpulseSource>();
-        playerCam = Camera.main.transform;
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -246,7 +242,7 @@ public class PlayerController : MonoBehaviour
         moveDir = orientation.forward * input.y + orientation.right * input.x;
         if (OnSlope())
         {
-            rb.AddForce(GetSlopeDirection() * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease) * 25f, ForceMode.Force);
+            rb.AddForce(GetSlopeDirection() * CalculateSpeed() * 25f, ForceMode.Force);
             if (rb.velocity.y > 0)
             {
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
@@ -254,9 +250,9 @@ public class PlayerController : MonoBehaviour
         }
             
         else if(isGrounded)
-            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease) * 25f, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * CalculateSpeed() * 25f, ForceMode.Force);
         else if (!isGrounded)
-            rb.AddForce(moveDir.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease) * 25f * airSpeedMultiplier, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * CalculateSpeed() * 25f * airSpeedMultiplier, ForceMode.Force);
 
         rb.useGravity = !OnSlope();
     }
@@ -267,19 +263,26 @@ public class PlayerController : MonoBehaviour
         {
             if (rb.velocity.magnitude > speed)
             {
-                rb.velocity = rb.velocity.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease);
+                rb.velocity = rb.velocity.normalized * CalculateSpeed();
             }
         }
         Vector3 vel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         if (vel.magnitude > speed)
         {
-            Vector3 controlVel = vel.normalized * (speed + UpgradeManager.Instance.speedIncrease + EnhancementManager.Instance.speedIncrease);
+            Vector3 controlVel = vel.normalized * CalculateSpeed();
 
             rb.velocity = new Vector3(controlVel.x, rb.velocity.y, controlVel.z);
         }
     }
 
+    private float CalculateSpeed()
+    {
+        float calculatedSpeed = speed * UpgradeManager.Instance.speedIncrease *
+                                EnhancementManager.Instance.speedIncrease;
+
+        return calculatedSpeed;
+    }
     public void Jump()
     {
         if (isGrounded && canJump)

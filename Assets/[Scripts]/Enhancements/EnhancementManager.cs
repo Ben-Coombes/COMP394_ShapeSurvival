@@ -26,20 +26,20 @@ public class EnhancementManager : MonoBehaviour, IDataPersistence
 
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
     }
     void Start()
     {
         damageMultiplier = 1;
         pickupRangeIncrease = 0;
         xpMultiplier = 1;
-        speedIncrease = 0;
+        speedIncrease = 1;
         healthIncrease = 0;
         recoveryMultiplier = 1;
         projectileIncrease = 0;

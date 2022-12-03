@@ -8,9 +8,6 @@ public class MenuInput : MonoBehaviour
 {
     public static MenuInput Instance { get; private set; }
     private PlayerInput playerInput;
-    private PlayerInputActions playerInputActions;
-    private PlayerInputActions.OnGroundActions onGround;
-    private PlayerInputActions.OnMenuActions onMenu;
 
     void Awake()
     {

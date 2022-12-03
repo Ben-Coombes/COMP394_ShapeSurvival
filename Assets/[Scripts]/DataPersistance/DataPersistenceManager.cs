@@ -19,16 +19,17 @@ public class DataPersistenceManager : MonoBehaviour
 
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
             Instance = this;
+            this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+            this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+            LoadGame();
+            DontDestroyOnLoad(this.gameObject);
         }
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     private void Start()

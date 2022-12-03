@@ -1435,7 +1435,7 @@ MonoBehaviour:
     explosionRange: 0
   armourUpgrades:
   - _upgradeType: 9
-    description: Damage taken reduced by 10%
+    description: Damage taken reduced by 5%
     image: {fileID: 21300000, guid: 45473d4b9b14a464788c0655695a0b87, type: 3}
     level: 1
     upgradeName: Armour
@@ -1445,7 +1445,7 @@ MonoBehaviour:
     movementSpeedIncrease: 0
     healthIncrease: 0
     healthRecoveryIncrease: 0
-    armourIncrease: 0.1
+    armourIncrease: 0.05
     projectileIncrease: 0
     fireRateIncrease: 0
     spreadDecrease: 0
@@ -1457,7 +1457,7 @@ MonoBehaviour:
     explodeOnImpact: 0
     explosionRange: 0
   - _upgradeType: 9
-    description: Damage taken reduced by 10%
+    description: Damage taken reduced by 5%
     image: {fileID: 21300000, guid: 45473d4b9b14a464788c0655695a0b87, type: 3}
     level: 2
     upgradeName: Armour
@@ -1467,7 +1467,7 @@ MonoBehaviour:
     movementSpeedIncrease: 0
     healthIncrease: 0
     healthRecoveryIncrease: 0
-    armourIncrease: 0.1
+    armourIncrease: 0.05
     projectileIncrease: 0
     fireRateIncrease: 0
     spreadDecrease: 0
@@ -1479,7 +1479,7 @@ MonoBehaviour:
     explodeOnImpact: 0
     explosionRange: 0
   - _upgradeType: 9
-    description: Damage taken reduced by 10%
+    description: Damage taken reduced by 5%
     image: {fileID: 21300000, guid: 45473d4b9b14a464788c0655695a0b87, type: 3}
     level: 3
     upgradeName: Armour
@@ -1489,7 +1489,7 @@ MonoBehaviour:
     movementSpeedIncrease: 0
     healthIncrease: 0
     healthRecoveryIncrease: 0
-    armourIncrease: 0.1
+    armourIncrease: 0.05
     projectileIncrease: 0
     fireRateIncrease: 0
     spreadDecrease: 0

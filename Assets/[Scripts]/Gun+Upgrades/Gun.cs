@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
     public float fireRateTap;
     public bool automatic;
     public int level = 0;
-    
+
     private int bulletsShot;
     private bool shooting, canFire = true;
 
@@ -83,6 +83,9 @@ public class Gun : MonoBehaviour
 
         GameObject currentBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
 
+        Bullet bullet = currentBullet.GetComponent<Bullet>();
+        ApplyBulletUpgrades(bullet);
+
         currentBullet.transform.forward = directionWithSpread.normalized;
 
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * speed, ForceMode.Impulse);
@@ -103,6 +106,15 @@ public class Gun : MonoBehaviour
         {
             Invoke("Shoot", fireRateTap);
         }
+    }
+
+    private void ApplyBulletUpgrades(Bullet bullet)
+    {
+        bullet.damage += UpgradeManager.Instance.bulletDamageIncrease;
+        bullet.knockback += UpgradeManager.Instance.bulletKnockbackIncrease;
+        bullet.maxCollisions += UpgradeManager.Instance.bulletMaxCollisions;
+        bullet.range += UpgradeManager.Instance.bulletRangeIncrease;
+        bullet.isBullet = UpgradeManager.Instance.bulletIsBullet;
     }
 
     private void ResetShot()

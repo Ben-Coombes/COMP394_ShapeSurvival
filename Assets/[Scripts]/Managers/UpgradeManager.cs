@@ -11,7 +11,7 @@ public class UpgradeManager : MonoBehaviour
 
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -28,8 +28,14 @@ public class UpgradeManager : MonoBehaviour
     public float healthIncrease;
     public float recoveryMultiplier;
     public float projectileIncrease;
-    
     public float armourMultiplier;
+
+    [Header("Bullet")] 
+    public float bulletDamageIncrease;
+    public float bulletKnockbackIncrease;
+    public int bulletMaxCollisions;
+    public float bulletRangeIncrease;
+    public bool bulletIsBullet;
 
     private void Start()
     {
@@ -38,11 +44,17 @@ public class UpgradeManager : MonoBehaviour
         damageMultiplier = 1;
         pickupRangeIncrease = 0;
         xpMultiplier = 1;
-        speedIncrease = 0;
+        speedIncrease = 1;
         healthIncrease = 0;
         recoveryMultiplier = 1;
         projectileIncrease = 0;
         armourMultiplier = 1;
+
+        bulletDamageIncrease = 0;
+        bulletKnockbackIncrease = 0;
+        bulletMaxCollisions = 0;
+        bulletRangeIncrease = 0;
+        bulletIsBullet = true;
     }
 
     public void ApplyUpgrade(Upgrade upgrade)
@@ -69,13 +81,13 @@ public class UpgradeManager : MonoBehaviour
                 gunToBeUpgraded.automatic = true;
 
             //Bullet Upgrades - damage increase, knockback increase, max collisions/piercing
-            bulletToBeUpgraded.damage += upgrade.gDamageIncrease;
-            bulletToBeUpgraded.knockback += upgrade.knockbackIncrease;
-            bulletToBeUpgraded.maxCollisions += upgrade.collisionsIncrease;
+            bulletDamageIncrease += upgrade.gDamageIncrease;
+            bulletKnockbackIncrease += upgrade.knockbackIncrease;
+            bulletMaxCollisions += upgrade.collisionsIncrease;
 
             //Niche Upgrades - Explode on impact, Explosion range
-            bulletToBeUpgraded.range = upgrade.explosionRange;
-            bulletToBeUpgraded.isBullet = !upgrade.explodeOnImpact;
+            bulletRangeIncrease = upgrade.explosionRange;
+            bulletIsBullet = !upgrade.explodeOnImpact;
         }
         else
         {

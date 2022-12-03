@@ -14,13 +14,14 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     private void Start()
