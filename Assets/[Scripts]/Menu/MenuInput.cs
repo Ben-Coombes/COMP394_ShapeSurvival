@@ -15,6 +15,7 @@ public class MenuInput : MonoBehaviour
     void Awake()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         
         if (Instance != null && Instance != this)
         {
