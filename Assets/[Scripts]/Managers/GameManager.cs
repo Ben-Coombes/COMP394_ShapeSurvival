@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void Pause(GameObject obj)
     {
         obj.SetActive(true);
-        Cursor.lockState = CursorLockMode.Confined;
         InputManager.Instance.SwitchActionMap();
         Time.timeScale = 0f;
     }

@@ -14,6 +14,9 @@ public class InputManager : MonoBehaviour
     private PlayerController playerController;
     private PlayerLook playerLook;
     private PlayerGunController playerGunController;
+    private GameObject pauseMenuObj;
+
+    private PauseMenu pauseMenu;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,11 +36,17 @@ public class InputManager : MonoBehaviour
         playerInputActions = new PlayerInputActions();
         onGround = playerInputActions.OnGround;
         onMenu = playerInputActions.OnMenu;
+        pauseMenuObj = GameObject.FindGameObjectWithTag("PauseMenu");
+        pauseMenuObj.SetActive(false);
+
+
 
         //onGround.Jump.performed += ctx => playerController.Jump();
+        onGround.Pause.performed += ctx => GameManager.Instance.Pause(pauseMenuObj);
         onGround.SwitchWeapon.performed += ctx => playerGunController.SwitchGun();
         playerInput.SwitchCurrentActionMap("OnGround");
         //playerInput.currentActionMap = onGround.Get();
+
     }
 
     public void SwitchActionMap()
