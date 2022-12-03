@@ -34,7 +34,17 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Start()
     {
-
+#if UNITY_WEBGL
+        StartCoroutine(AutoSaveTimer());
+#endif
+    }
+    IEnumerator AutoSaveTimer()
+    {
+        while (true)
+        {
+            SaveGame();
+            yield return new WaitForSecondsRealtime(30); // 30 SECS, CHANGE IF YOU WANT OTHER TIMER
+        }
     }
     public void NewGame()
     {
