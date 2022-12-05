@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
+        GameManager.Instance.Resume(this.gameObject);
         SceneManager.LoadScene("MainMenu");
     }
 
